@@ -16,24 +16,28 @@ class Geocoding : ObservableObject{
     
     @Published var responses = Response()
     var placeID = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
+    
     func getData(){
         guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeID)&key=AIzaSyAy5J3IPzP2kRbVtWF9ykptla8vV1_o4Pc") else {return}
         
 
         print("elson")
+        
         URLSession.shared.dataTask(with: url) { (data, response, erros) in
             guard let data = data else{
                 print("error with data")
                 return
             }
+            
+           
             let decoder = JSONDecoder()
             
             if let response = try? decoder.decode(Response.self, from: data) {
-                DispatchQueue.main.async{
+                DispatchQueue.main.async{ [self] in
                     self.responses = response
                     
                     
-                    print("elson")
+                    print(self.responses.results)
                 }
                 
             }else {
@@ -51,7 +55,7 @@ struct Response: Codable{
 
 struct result: Codable{
     var formatted_address : String?
-    var geometry : [geometryItem] = [geometryItem]()
+    var geometry : geometryItem
 }
 
 struct geometryItem: Codable{

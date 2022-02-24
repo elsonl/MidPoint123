@@ -11,8 +11,11 @@ import GooglePlaces
 
 struct ContentView: View {
     @StateObject var geocoding = Geocoding()
+    
     var body: some View {
-        Text(geocoding.responses.results.last?.formatted_address ?? "failed")
+        
+        
+        Text("hello")
        
             .padding()
         GoogleMapsView()
