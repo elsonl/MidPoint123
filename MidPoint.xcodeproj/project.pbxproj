@@ -3,16 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40C35FEAD6EDCDBDD4BBAAE4 /* Pods_MidPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD69A1199CDBD0C8BB01AB6 /* Pods_MidPoint.framework */; };
 		F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FD927BF1CD300D90247 /* MidPointApp.swift */; };
 		F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FDB27BF1CD300D90247 /* ContentView.swift */; };
 		F0422FDE27BF1CD500D90247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0422FDD27BF1CD500D90247 /* Assets.xcassets */; };
 		F0422FE127BF1CD500D90247 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0422FE027BF1CD500D90247 /* Preview Assets.xcassets */; };
 		F0422FEC27BF1CD600D90247 /* MidPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FEB27BF1CD600D90247 /* MidPointTests.swift */; };
 		F0422FF727BF1CD600D90247 /* MidPointUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FF627BF1CD600D90247 /* MidPointUITests.swift */; };
+		F042304D27C6AECD00D90247 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042304C27C6AECD00D90247 /* GoogleMapsView.swift */; };
+		F042304F27C730C600D90247 /* Geocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042304E27C730C600D90247 /* Geocoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43F97F5C4715CDE02ED9FB65 /* Pods-MidPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MidPoint.debug.xcconfig"; path = "Target Support Files/Pods-MidPoint/Pods-MidPoint.debug.xcconfig"; sourceTree = "<group>"; };
+		5B24DEA2966882741ECDE981 /* Pods-MidPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MidPoint.release.xcconfig"; path = "Target Support Files/Pods-MidPoint/Pods-MidPoint.release.xcconfig"; sourceTree = "<group>"; };
+		8DD69A1199CDBD0C8BB01AB6 /* Pods_MidPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MidPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0422FD627BF1CD300D90247 /* MidPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0422FD927BF1CD300D90247 /* MidPointApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidPointApp.swift; sourceTree = "<group>"; };
 		F0422FDB27BF1CD300D90247 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +51,8 @@
 		F0422FF227BF1CD600D90247 /* MidPointUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MidPointUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0422FF627BF1CD600D90247 /* MidPointUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidPointUITests.swift; sourceTree = "<group>"; };
 		F0422FF827BF1CD600D90247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F042304C27C6AECD00D90247 /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
+		F042304E27C730C600D90247 /* Geocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40C35FEAD6EDCDBDD4BBAAE4 /* Pods_MidPoint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3908973C5A0C5F8D390874E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8DD69A1199CDBD0C8BB01AB6 /* Pods_MidPoint.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA57F62D3E40B1A152A1D647 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				43F97F5C4715CDE02ED9FB65 /* Pods-MidPoint.debug.xcconfig */,
+				5B24DEA2966882741ECDE981 /* Pods-MidPoint.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F0422FCD27BF1CD300D90247 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +105,8 @@
 				F0422FEA27BF1CD600D90247 /* MidPointTests */,
 				F0422FF527BF1CD600D90247 /* MidPointUITests */,
 				F0422FD727BF1CD300D90247 /* Products */,
+				EA57F62D3E40B1A152A1D647 /* Pods */,
+				C3908973C5A0C5F8D390874E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				F0422FD927BF1CD300D90247 /* MidPointApp.swift */,
-				F0422FDB27BF1CD300D90247 /* ContentView.swift */,
+				F042300F27BF1F0800D90247 /* Views */,
 				F0422FDD27BF1CD500D90247 /* Assets.xcassets */,
 				F0422FE227BF1CD600D90247 /* Info.plist */,
 				F0422FDF27BF1CD500D90247 /* Preview Content */,
@@ -130,6 +158,16 @@
 			path = MidPointUITests;
 			sourceTree = "<group>";
 		};
+		F042300F27BF1F0800D90247 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F0422FDB27BF1CD300D90247 /* ContentView.swift */,
+				F042304C27C6AECD00D90247 /* GoogleMapsView.swift */,
+				F042304E27C730C600D90247 /* Geocoding.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0422FFB27BF1CD600D90247 /* Build configuration list for PBXNativeTarget "MidPoint" */;
 			buildPhases = (
+				AD902D7F8D9ED99601D88215 /* [CP] Check Pods Manifest.lock */,
 				F0422FD227BF1CD300D90247 /* Sources */,
 				F0422FD327BF1CD300D90247 /* Frameworks */,
 				F0422FD427BF1CD300D90247 /* Resources */,
+				165803A44EBD40BDB94278B0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,11 +294,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		165803A44EBD40BDB94278B0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MidPoint/Pods-MidPoint-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MidPoint/Pods-MidPoint-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MidPoint/Pods-MidPoint-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD902D7F8D9ED99601D88215 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MidPoint-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F0422FD227BF1CD300D90247 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F042304D27C6AECD00D90247 /* GoogleMapsView.swift in Sources */,
+				F042304F27C730C600D90247 /* Geocoding.swift in Sources */,
 				F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */,
 				F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */,
 			);
@@ -414,6 +498,7 @@
 		};
 		F0422FFC27BF1CD600D90247 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43F97F5C4715CDE02ED9FB65 /* Pods-MidPoint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -435,6 +520,7 @@
 		};
 		F0422FFD27BF1CD600D90247 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B24DEA2966882741ECDE981 /* Pods-MidPoint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

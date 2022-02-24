@@ -6,16 +6,21 @@
 //
 
 import SwiftUI
+import GoogleMaps
+import GooglePlaces
 
 struct ContentView: View {
+    @StateObject var geocoding = Geocoding()
     var body: some View {
-        Text("Hello, world!")
+        Text(geocoding.responses.results.last?.formatted_address ?? "failed")
+       
             .padding()
+        GoogleMapsView()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(geocoding: Geocoding())
     }
 }
