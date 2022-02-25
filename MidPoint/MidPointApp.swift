@@ -25,10 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 struct MidPointApp: App {
     
     @UIApplicationDelegateAdaptor private var appDelegate : AppDelegate
+    @StateObject var geocoding = Geocoding()
+    
     var body: some Scene {
         
         WindowGroup {
             ContentView()
+                .environmentObject(geocoding)
         }
     }
 }

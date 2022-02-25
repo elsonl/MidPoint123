@@ -10,20 +10,27 @@ import GoogleMaps
 import GooglePlaces
 
 struct ContentView: View {
-    @StateObject var geocoding = Geocoding()
+    @EnvironmentObject var geocoding : Geocoding
     
     var body: some View {
         
+        var thing : String = geocoding.responses.results.first?.formatted_address! ?? "failed"
         
-        Text("hello")
-       
-            .padding()
-        GoogleMapsView()
+        Text(thing)
+    
+        NavigationView{
+
+            
+            NavigationLink("click me", destination: GoogleMapsView())
+
+
+        }.onAppear(perform: {self.geocoding.getData()})
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(geocoding: Geocoding())
+        ContentView()
     }
 }

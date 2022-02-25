@@ -16,10 +16,10 @@ class Geocoding : ObservableObject{
     
     @Published var responses = Response()
     var placeID = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
-    
+   
+//    init(){
     func getData(){
         guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeID)&key=AIzaSyAy5J3IPzP2kRbVtWF9ykptla8vV1_o4Pc") else {return}
-        
 
         print("elson")
         
@@ -29,6 +29,8 @@ class Geocoding : ObservableObject{
                 return
             }
             
+            
+            
            
             let decoder = JSONDecoder()
             
@@ -36,8 +38,15 @@ class Geocoding : ObservableObject{
                 DispatchQueue.main.async{ [self] in
                     self.responses = response
                     
-                    
+                    var r = responses.results.first?.geometry.location.lat!
+                    var w = responses.results.first?.formatted_address
                     print(self.responses.results)
+                    print("elson")
+                    print(r)
+                    print(r!)
+                    print("elson2")
+                    print(w)
+                    print(w!)
                 }
                 
             }else {
@@ -45,6 +54,7 @@ class Geocoding : ObservableObject{
             }
         }.resume()
     }
+    
 }
 
 //Structs for our JSON
