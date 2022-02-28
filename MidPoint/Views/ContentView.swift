@@ -30,7 +30,7 @@ struct ContentView: View {
                 
                 
                 
-                NavigationLink("click me for Maps View", destination: GoogleMapsView()).edgesIgnoringSafeArea(.top)
+                NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
                 
             }
             
