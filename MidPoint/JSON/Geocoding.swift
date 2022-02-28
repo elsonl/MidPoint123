@@ -15,23 +15,39 @@ import GoogleMaps
 class Geocoding : ObservableObject{
     
     @Published var responses = Response()
-    var placeID = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
-   
-//    init(){
-    func getData(){
-        guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeID)&key=AIzaSyAy5J3IPzP2kRbVtWF9ykptla8vV1_o4Pc") else {return}
+    @Binding var placeID : String
 
-        print("elson")
+    var placeid = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
+   
+    init(placeID: Binding<String>){
+        self._placeID = placeID
+        self.getData()
+    }
+    
+    func getData(){
+        
+        print("getting data")
+        
+        guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeid)&key=AIzaSyAy5J3IPzP2kRbVtWF9ykptla8vV1_o4Pc") else {
+            
+            print("error creating url")
+            return
+            
+        }
+
+        print("URL created")
         
         URLSession.shared.dataTask(with: url) { (data, response, erros) in
             guard let data = data else{
-                print("error with data")
+                print("error downloading data")
                 return
             }
-            
-            
-            
            
+            print("Data downloaded")
+            
+            guard let dataAsString = String(data: data, encoding: .utf8) else {return}
+            print(dataAsString)
+            
             let decoder = JSONDecoder()
             
             if let response = try? decoder.decode(Response.self, from: data) {
