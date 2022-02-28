@@ -11,9 +11,11 @@ import GooglePlaces
 
 struct ContentView: View {
     @EnvironmentObject var geocoding : Geocoding
-    @State var place1 : String
-    @State var place2 : String
+    @State var address1 : String
+    @State var address2: String
     @State var placeID : String
+    @State private var showsheet = false
+    
     var body: some View {
         
         //var thing : String = geocoding.responses.results.first?.formatted_address! ?? "failed"
@@ -25,22 +27,60 @@ struct ContentView: View {
             
             VStack{
                 
-                TextField("Search ...", text: $place1).foregroundColor(Color.black).background(Color(.systemGray4))
-                TextField("Search ...", text: $place2).foregroundColor(Color.black).background(Color(.systemGray4))
+                TextField("Search ...", text: $address1,onEditingChanged: { begin in
+                    if begin {
+                        showsheet = true
+                        print("Address1 change")
+                    } else {
+                       
+                        print("Address1 finish")
+                    }
+                }, onCommit: {
+                    showsheet = false
+                    print("address1 committed")
+                }).foregroundColor(Color.black).background(Color(.systemGray4)).sheet(isPresented : $showsheet, onDismiss: {
+                    if(address1 == ""){
+                        print("address 1 showsheet empty")
+                        showsheet = false
+                    }
+                }) { PlacesAutoComplete(address1: $address1) }
                 
+                
+                TextField("Search ...", text: $address2,onEditingChanged: { begin in
+                    if begin {
+                        showsheet = true
+                        print("Address2 change")
+                    } else {
+                        
+                        print("Address2 finish")
+                    }
+                }, onCommit: {
+                    showsheet = false
+                    print("address2 committed")
+                }).foregroundColor(Color.black).background(Color(.systemGray4)).sheet(isPresented : $showsheet, onDismiss: {
+                    if(address2 == ""){
+                        print("address 2 showsheet empty")
+                        showsheet = false
+                
+                    }
+                }) { PlacesAutoComplete2(address2: $address2) }
+                
+         
                 
                 
                 NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
                 
             }
-            
-            
-        }.edgesIgnoringSafeArea(.all)
+        }
+        
+        
+        
     }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(place1: "", place2: "", placeID: "")
+        ContentView(address1: "", address2: "", placeID: "")
     }
 }

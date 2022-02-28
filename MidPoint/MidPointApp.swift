@@ -30,7 +30,7 @@ struct MidPointApp: App {
     var body: some Scene {
         
         WindowGroup {
-            ContentView(place1: "", place2: "", placeID: "")
+            ContentView(address1: "", address2: "", placeID: "")
                 .environmentObject(geocoding)
         }
     }

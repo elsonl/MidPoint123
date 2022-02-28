@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		40C35FEAD6EDCDBDD4BBAAE4 /* Pods_MidPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD69A1199CDBD0C8BB01AB6 /* Pods_MidPoint.framework */; };
+		F02DFCE127CD91AC005FF244 /* PlacesAutoComplete2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DFCE027CD91AC005FF244 /* PlacesAutoComplete2.swift */; };
 		F0352DBC27CD315400DD091D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0352DBB27CD315400DD091D /* FavoritesView.swift */; };
+		F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */; };
 		F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FD927BF1CD300D90247 /* MidPointApp.swift */; };
 		F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FDB27BF1CD300D90247 /* ContentView.swift */; };
 		F0422FDE27BF1CD500D90247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0422FDD27BF1CD500D90247 /* Assets.xcassets */; };
@@ -40,7 +42,9 @@
 		43F97F5C4715CDE02ED9FB65 /* Pods-MidPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MidPoint.debug.xcconfig"; path = "Target Support Files/Pods-MidPoint/Pods-MidPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		5B24DEA2966882741ECDE981 /* Pods-MidPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MidPoint.release.xcconfig"; path = "Target Support Files/Pods-MidPoint/Pods-MidPoint.release.xcconfig"; sourceTree = "<group>"; };
 		8DD69A1199CDBD0C8BB01AB6 /* Pods_MidPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MidPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F02DFCE027CD91AC005FF244 /* PlacesAutoComplete2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesAutoComplete2.swift; sourceTree = "<group>"; };
 		F0352DBB27CD315400DD091D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesAutoComplete.swift; sourceTree = "<group>"; };
 		F0422FD627BF1CD300D90247 /* MidPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0422FD927BF1CD300D90247 /* MidPointApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidPointApp.swift; sourceTree = "<group>"; };
 		F0422FDB27BF1CD300D90247 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,12 +104,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F0352DB627C94DB400DD091D /* JSON */ = {
+		F0352DB627C94DB400DD091D /* Features Implementation */ = {
 			isa = PBXGroup;
 			children = (
 				F042304E27C730C600D90247 /* Geocoding.swift */,
+				F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */,
+				F02DFCE027CD91AC005FF244 /* PlacesAutoComplete2.swift */,
 			);
-			path = JSON;
+			path = "Features Implementation";
 			sourceTree = "<group>";
 		};
 		F0422FCD27BF1CD300D90247 = {
@@ -135,7 +141,7 @@
 			children = (
 				F0422FD927BF1CD300D90247 /* MidPointApp.swift */,
 				F042300F27BF1F0800D90247 /* Views */,
-				F0352DB627C94DB400DD091D /* JSON */,
+				F0352DB627C94DB400DD091D /* Features Implementation */,
 				F0422FDD27BF1CD500D90247 /* Assets.xcassets */,
 				F0422FE227BF1CD600D90247 /* Info.plist */,
 				F0422FDF27BF1CD500D90247 /* Preview Content */,
@@ -352,10 +358,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F02DFCE127CD91AC005FF244 /* PlacesAutoComplete2.swift in Sources */,
 				F0352DBC27CD315400DD091D /* FavoritesView.swift in Sources */,
 				F042304D27C6AECD00D90247 /* GoogleMapsView.swift in Sources */,
 				F042304F27C730C600D90247 /* Geocoding.swift in Sources */,
 				F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */,
+				F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */,
 				F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
