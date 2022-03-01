@@ -10,10 +10,11 @@ import GoogleMaps
 import GooglePlaces
 
 struct ContentView: View {
-    @EnvironmentObject var geocoding : Geocoding
+//    @EnvironmentObject var geocoding : Geocoding
     @State var address1 : String
     @State var address2: String
     @State private var showsheet = false
+    @State var count : Bool = true
     
     var body: some View {
         
@@ -23,14 +24,18 @@ struct ContentView: View {
         
         NavigationView{
             
-            
             VStack{
+                
                 Text(address1 + "1")
                 Text(address2 + "2")
+                
+                
                 TextField("Search ...", text: $address1,onEditingChanged: { _ in
+                    count = true
+                    print("1, count true")
                     if (address1 == "") {
                         showsheet = true
-                        print("Address1 change")
+                        print("Address1 change, showsheet true")
                     }
                     
                 }, onCommit: {
@@ -38,42 +43,43 @@ struct ContentView: View {
                     print("address1 committed")
                 }).foregroundColor(Color.black).background(Color(.systemGray4)).sheet(isPresented : $showsheet, onDismiss: {
                     if(address1 == ""){
-                        print("address 1 empty")
+                        print("address 1 empty, showsheet still true")
                         showsheet = true
                     } else {
                         print("showsheet1 false")
                         showsheet = false
                     }
-                }) { PlacesAutoComplete(address1: $address1, address2: $address2, placeIDThing: "") }
+                }) { PlacesAutoComplete(address1: $address1, address2: $address2, count: $count, placeIDThing: "") }
+                
+                
+                
+                TextField("Search ...", text: $address2,onEditingChanged: { _ in
+                    count = false
+                    print("2, count false")
+                    if (address2 == "") {
+                        showsheet = true
+                        print("Address2 change, showsheet true")
+                    }
+                }, onCommit: {
+                    showsheet = false
+                    print("address2 committed")
+                }).foregroundColor(Color.black).background(Color(.systemGray4)).sheet(isPresented : $showsheet, onDismiss: {
+                    if(address2 == ""){
+                        print("address 2 empty, showsheet true")
+                        showsheet = true
+                    } else {
+                        print("showsheet2 false")
+                        showsheet = false
+                    }
+                }) { PlacesAutoComplete(address1: $address1, address2: $address2, count: $count, placeIDThing: "") }
                 
                 
                 
                 
                 NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
+
                 
                 
-                HStack{
-                    TextField("Search ...", text: $address2,onEditingChanged: { begin2 in
-                        if (address2 == "") {
-                            showsheet = true
-                            print("Address2 change")
-                        }
-                    }, onCommit: {
-                        showsheet = false
-                        print("address2 committed")
-                    }).foregroundColor(Color.black).background(Color(.systemGray4)).sheet(isPresented : $showsheet, onDismiss: {
-                        if(address2 == ""){
-                            print("address 2 empty")
-                            showsheet = true
-                        } else {
-                            print("showsheet2 false")
-                            showsheet = false
-                        }
-                    }) { PlacesAutoComplete(address1: $address1, address2: $address2, placeIDThing: "") }
-                    
-                    
-                    
-                }
                 
                 
             }

@@ -13,15 +13,15 @@ import GoogleMaps
 struct GoogleMapsView: UIViewRepresentable {
     @EnvironmentObject var geocoding : Geocoding
     let marker : GMSMarker = GMSMarker()
-    
-    
+
+
     func makeUIView(context: Self.Context) -> GMSMapView {
-    
-        
-       
+
+
+
         var lat : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 0
         var long : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 0
-        
+
         let camera = GMSCameraPosition.camera(withLatitude:  lat!, longitude:  long!, zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.settings.scrollGestures = true
@@ -32,14 +32,23 @@ struct GoogleMapsView: UIViewRepresentable {
 
     func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
         // Creates a marker in the center of the map.
-        
-        var lat  : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 0
-        var long  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 0
-        
-        marker.position = CLLocationCoordinate2D(latitude:  lat!, longitude: long!)
+
+        var lat1  : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 0
+        var long1  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 0
+
+        var lat2 : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 1
+        var long2  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 1
+
+        marker.position = CLLocationCoordinate2D(latitude:  lat1!, longitude: long1!)
         marker.title = "Sydney"
         marker.snippet = "Australia"
         marker.map = mapView
+
+//        marker.position = CLLocationCoordinate2D(latitude:  lat2!, longitude: long2!)
+//        marker.title = "Sydney"
+//        marker.snippet = "Australia"
+//        marker.map = mapView
     }
 
-}
+    }
+

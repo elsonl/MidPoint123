@@ -12,16 +12,20 @@ import GooglePlaces
 
 
 struct PlacesAutoComplete: UIViewControllerRepresentable {
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-   
-    }
+    
+  
     @Environment(\.presentationMode) var presentationMode
     @Binding var address1 : String
     @Binding var address2 : String
+    @Binding var count : Bool
     @State var placeIDThing : String
     
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self, count: $count, placeIDThing: $placeIDThing)
+    }
+   
+   
     func makeUIViewController(context: UIViewControllerRepresentableContext<PlacesAutoComplete>) -> GMSAutocompleteViewController {
 
         let autocompleteController = GMSAutocompleteViewController()
@@ -46,28 +50,32 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     }
 
     class Coordinator: NSObject, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate {
-      
-
+        @Binding var placeIDThing : String
+        @Binding var count : Bool
         var parent: PlacesAutoComplete
 
-        init(_ parent: PlacesAutoComplete) {
+        init(_ parent: PlacesAutoComplete,count: Binding<Bool>, placeIDThing: Binding<String>) {
             self.parent = parent
+            self._count = count
+            self._placeIDThing = placeIDThing
         }
 
       
-        var count = true
 
         func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-//            placeIDThing = "place.description.description".replacingOccurrences(of: "PlaceID ", with: "")
+            placeIDThing = String(place.description.description).replacingOccurrences(of: "PlaceID: ", with: "")
+            print(placeIDThing + "PLACEIDTHING - ELSON")
             DispatchQueue.main.async {
                 print(place.description.description as Any)
-                if self.count == true{
+                if self.count{
                 self.parent.address1 =  place.name!
-                    self.count.toggle()
+                    print("COUNT 1 BELOW")
+                    print(self.count)
                 }
-                else if self.count == false {
+                else {
                 self.parent.address2 =  place.name!
-                    self.count.toggle()
+                    print("COUNT 2 BELOW")
+                    print(self.count)
                 }
                 self.parent.presentationMode.wrappedValue.dismiss()
             }

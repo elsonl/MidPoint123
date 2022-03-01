@@ -8,69 +8,66 @@
 import Foundation
 import SwiftUI
 import GoogleMaps
-//AIzaSyAy5J3IPzP2kRbVtWF9ykptla8vV1_o4Pc
+//AIzaSyBSbbHUfKBkD3O0gQXQadLJnAuy3nQvHNM
 
-//https://maps.googleapis.com/maps/api/geocode/json?place_id=ChIJeRpOeF67j4AR9ydy_PIzPuM&key=AIzaSyAy5J3IPzP2kRbVtWF9ykptla8vV1_o4Pc
+//https://maps.googleapis.com/maps/api/geocode/json?place_id=ChIJeRpOeF67j4AR9ydy_PIzPuM&key=AIzaSyBSbbHUfKBkD3O0gQXQadLJnAuy3nQvHNM
 
 class Geocoding : ObservableObject{
-    
+
     @Published var responses = Response()
     @Binding var placeIDThing : String
 
     var placeId = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
-   
+
     init(placeIDThing: Binding<String>){
         self._placeIDThing = placeIDThing
         self.getData()
     }
-    
+
     func getData(){
-        
+
         print("getting data")
-        
-        guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeId)&key=AIzaSyAy5J3IPzP2kRbVtWF9ykptla8vV1_o4Pc") else {
-            
+
+        guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeId)&key=AIzaSyBSbbHUfKBkD3O0gQXQadLJnAuy3nQvHNM") else {
+
             print("error creating url")
             return
-            
+
         }
 
         print("URL created")
-        
+
         URLSession.shared.dataTask(with: url) { (data, response, erros) in
             guard let data = data else{
                 print("error downloading data")
                 return
             }
-           
+
             print("Data downloaded")
-            
-            guard let dataAsString = String(data: data, encoding: .utf8) else {return}
-            print(dataAsString)
-            
+
+//            guard let dataAsString = String(data: data, encoding: .utf8) else {return}
+//            print(dataAsString)
+
             let decoder = JSONDecoder()
-            
+
             if let response = try? decoder.decode(Response.self, from: data) {
                 DispatchQueue.main.async{ [self] in
                     self.responses = response
-                    
-                    var r = responses.results.first?.geometry.location.lat!
-                    var w = responses.results.first?.formatted_address
-                    print(self.responses.results)
+
                 }
-                
+
             }else {
                 print("error with decoder")
             }
         }.resume()
     }
-    
+
 }
 
 //Structs for our JSON
 struct Response: Codable{
     var results : [result] = [result]()
-    
+
 }
 
 struct result: Codable{
