@@ -13,7 +13,6 @@ struct ContentView: View {
     @EnvironmentObject var geocoding : Geocoding
     @State var address1 : String
     @State var address2: String
-    @State var placeID : String
     @State private var showsheet = false
     
     var body: some View {
@@ -26,51 +25,59 @@ struct ContentView: View {
             
             
             VStack{
-                
-                TextField("Search ...", text: $address1,onEditingChanged: { begin in
-                    if begin {
+                Text(address1 + "1")
+                Text(address2 + "2")
+                TextField("Search ...", text: $address1,onEditingChanged: { _ in
+                    if (address1 == "") {
                         showsheet = true
                         print("Address1 change")
-                    } else {
-                       
-                        print("Address1 finish")
                     }
+                    
                 }, onCommit: {
                     showsheet = false
                     print("address1 committed")
                 }).foregroundColor(Color.black).background(Color(.systemGray4)).sheet(isPresented : $showsheet, onDismiss: {
                     if(address1 == ""){
-                        print("address 1 showsheet empty")
-                        showsheet = false
-                    }
-                }) { PlacesAutoComplete(address1: $address1) }
-                
-                
-                TextField("Search ...", text: $address2,onEditingChanged: { begin in
-                    if begin {
+                        print("address 1 empty")
                         showsheet = true
-                        print("Address2 change")
                     } else {
-                        
-                        print("Address2 finish")
-                    }
-                }, onCommit: {
-                    showsheet = false
-                    print("address2 committed")
-                }).foregroundColor(Color.black).background(Color(.systemGray4)).sheet(isPresented : $showsheet, onDismiss: {
-                    if(address2 == ""){
-                        print("address 2 showsheet empty")
+                        print("showsheet1 false")
                         showsheet = false
-                
                     }
-                }) { PlacesAutoComplete2(address2: $address2) }
+                }) { PlacesAutoComplete(address1: $address1, address2: $address2, placeIDThing: "") }
                 
-         
+                
                 
                 
                 NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
                 
+                
+                HStack{
+                    TextField("Search ...", text: $address2,onEditingChanged: { begin2 in
+                        if (address2 == "") {
+                            showsheet = true
+                            print("Address2 change")
+                        }
+                    }, onCommit: {
+                        showsheet = false
+                        print("address2 committed")
+                    }).foregroundColor(Color.black).background(Color(.systemGray4)).sheet(isPresented : $showsheet, onDismiss: {
+                        if(address2 == ""){
+                            print("address 2 empty")
+                            showsheet = true
+                        } else {
+                            print("showsheet2 false")
+                            showsheet = false
+                        }
+                    }) { PlacesAutoComplete(address1: $address1, address2: $address2, placeIDThing: "") }
+                    
+                    
+                    
+                }
+                
+                
             }
+            
         }
         
         
@@ -81,6 +88,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(address1: "", address2: "", placeID: "")
+        ContentView(address1: "", address2: "")
     }
 }

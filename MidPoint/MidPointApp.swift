@@ -25,12 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 struct MidPointApp: App {
     
     @UIApplicationDelegateAdaptor private var appDelegate : AppDelegate
-    @StateObject var geocoding = Geocoding(placeID: Binding.constant(""))
+    @StateObject var geocoding = Geocoding(placeIDThing: Binding.constant(""))
     
     var body: some Scene {
         
         WindowGroup {
-            ContentView(address1: "", address2: "", placeID: "")
+            ContentView(address1: "", address2: "")
                 .environmentObject(geocoding)
         }
     }

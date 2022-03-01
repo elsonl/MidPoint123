@@ -15,12 +15,12 @@ import GoogleMaps
 class Geocoding : ObservableObject{
     
     @Published var responses = Response()
-    @Binding var placeID : String
+    @Binding var placeIDThing : String
 
-    var placeid = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
+    var placeId = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
    
-    init(placeID: Binding<String>){
-        self._placeID = placeID
+    init(placeIDThing: Binding<String>){
+        self._placeIDThing = placeIDThing
         self.getData()
     }
     
@@ -28,7 +28,7 @@ class Geocoding : ObservableObject{
         
         print("getting data")
         
-        guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeid)&key=AIzaSyAy5J3IPzP2kRbVtWF9ykptla8vV1_o4Pc") else {
+        guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeId)&key=AIzaSyAy5J3IPzP2kRbVtWF9ykptla8vV1_o4Pc") else {
             
             print("error creating url")
             return
@@ -57,12 +57,6 @@ class Geocoding : ObservableObject{
                     var r = responses.results.first?.geometry.location.lat!
                     var w = responses.results.first?.formatted_address
                     print(self.responses.results)
-                    print("elson")
-                    print(r)
-                    print(r!)
-                    print("elson2")
-                    print(w)
-                    print(w!)
                 }
                 
             }else {

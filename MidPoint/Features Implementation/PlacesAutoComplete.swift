@@ -15,12 +15,13 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
+   
     }
     @Environment(\.presentationMode) var presentationMode
     @Binding var address1 : String
-
-
-
+    @Binding var address2 : String
+    @State var placeIDThing : String
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<PlacesAutoComplete>) -> GMSAutocompleteViewController {
 
         let autocompleteController = GMSAutocompleteViewController()
@@ -29,6 +30,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
 
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
                                                     UInt(GMSPlaceField.placeID.rawValue))
+      
         autocompleteController.placeFields = fields
 
         let filter = GMSAutocompleteFilter()
@@ -52,15 +54,25 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
             self.parent = parent
         }
 
-        func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place1: GMSPlace) {
+      
+        var count = true
+
+        func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+//            placeIDThing = "place.description.description".replacingOccurrences(of: "PlaceID ", with: "")
             DispatchQueue.main.async {
-                print(place1.description.description as Any)
-                self.parent.address1 =  place1.name!
+                print(place.description.description as Any)
+                if self.count == true{
+                self.parent.address1 =  place.name!
+                    self.count.toggle()
+                }
+                else if self.count == false {
+                self.parent.address2 =  place.name!
+                    self.count.toggle()
+                }
                 self.parent.presentationMode.wrappedValue.dismiss()
-                
-                
             }
         }
+
         
       
 
