@@ -23,15 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 @main
 struct MidPointApp: App {
-    
+    //ChIJXwbcTpvAxokRpQBerYSgPqs
     @UIApplicationDelegateAdaptor private var appDelegate : AppDelegate
-    @StateObject var geocoding = Geocoding(placeIDThing: Binding.constant(""), placeIDs: Binding.constant(["",""]), count: Binding.constant(true))
+    
+    @StateObject var geocoding = Geocoding(placeIDThing: "", placeIDs: ["ChIJeRpOeF67j4AR9ydy_PIzPuM","ChIJXwbcTpvAxokRpQBerYSgPqs"], count: false)
  
     var body: some Scene {
 
         WindowGroup {
 
-            ContentView(address1: "", address2: "", placeIDThing: Binding.constant("") )
+            ContentView(address1: "", address2: "" )
                 .environmentObject(geocoding)
         }
     }

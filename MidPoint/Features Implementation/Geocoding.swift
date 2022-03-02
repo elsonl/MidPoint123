@@ -15,16 +15,16 @@ import GoogleMaps
 class Geocoding : ObservableObject{
 
     @Published var responses = Response()
-    @Binding var placeIDThing : String
-    @Binding var placeIDs : [String]
-    @Binding var count : Bool
+    @Published var placeIDThing : String
+    @Published var placeIDs : [String]
+    @Published var count : Bool
 
     var placeId = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
 
-    init(placeIDThing: Binding<String>, placeIDs: Binding<[String]>,count: Binding<Bool>){
-        self._placeIDThing = placeIDThing
-        self._placeIDs = placeIDs
-        self._count = count
+    init(placeIDThing: String, placeIDs: [String],count: Bool){
+        self.placeIDThing = placeIDThing
+        self.placeIDs = placeIDs
+        self.count = count
         
     }
 

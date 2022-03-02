@@ -15,14 +15,13 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     
   
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var geocoding : Geocoding
     @Binding var address1 : String
     @Binding var address2 : String
-    @Binding var count : Bool
-    @State var placeIDThing : String
     
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, count: $count, placeIDThing: $placeIDThing)
+        Coordinator(self)
     }
    
    
@@ -50,39 +49,34 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     }
 
     class Coordinator: NSObject, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate {
-        @Binding var placeIDThing : String
-        @Binding var count : Bool
+        @EnvironmentObject var geocoding : Geocoding
         var parent: PlacesAutoComplete
 
-        init(_ parent: PlacesAutoComplete,count: Binding<Bool>, placeIDThing: Binding<String>) {
+        init(_ parent: PlacesAutoComplete) {
             self.parent = parent
-            self._count = count
-            self._placeIDThing = placeIDThing
+
         }
 
       
 
         func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-          placeIDThing = String(place.description.description).replacingOccurrences(of: "PlaceID: ", with: "")
-            print(placeIDThing + "PLACEIDTHING - ELSON")
+            geocoding.placeIDThing = String(place.description.description).replacingOccurrences(of: "PlaceID: ", with: "")
+            print(geocoding.placeIDThing + "PLACEIDTHING - ELSON")
             DispatchQueue.main.async { [self] in
                 print(place.description.description as Any)
-                if self.count{
+                if self.geocoding.count{
                 self.parent.address1 =  place.name!
                     print("COUNT 1 BELOW")
-                    print(self.count)
+                    print(self.geocoding.count)
                 }
                 else {
                 self.parent.address2 =  place.name!
                     print("COUNT 2 BELOW")
-                    print(self.count)
+                    print(self.geocoding.count)
                 }
                 self.parent.presentationMode.wrappedValue.dismiss()
             }
         }
-
-        
-      
 
         func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
             print("Error: ", error.localizedDescription)

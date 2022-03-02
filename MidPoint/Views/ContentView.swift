@@ -14,9 +14,10 @@ struct ContentView: View {
     @State var address1 : String
     @State var address2: String
     @State private var showsheet = false
-    @State var count : Bool = true
-    @State var placeIDs : [String] = ["",""]
-    @Binding var placeIDThing : String
+//    @State var count : Bool = true
+//    @State var placeIDs : [String] = ["",""]
+//    @Binding var placeIDThing : String
+
 
     
     
@@ -36,7 +37,7 @@ struct ContentView: View {
                 
                 
                 TextField("Search ...", text: $address1,onEditingChanged: { _ in
-                    count = true
+                    geocoding.count = true
                     print("1, count true")
                     if (address1 == "") {
                         showsheet = true
@@ -53,16 +54,16 @@ struct ContentView: View {
                     } else {
                         print("showsheet1 false")
                         showsheet = false
-                        print(placeIDThing + "ONE")
-                        placeIDs[0] = placeIDThing
+                        print(geocoding.placeIDThing + "PlaceIDTHING - ONE")
+                        geocoding.placeIDs[0] = geocoding.placeIDThing
                         geocoding.getData()
                     }
-                }) { PlacesAutoComplete(address1: $address1, address2: $address2, count: $count, placeIDThing: "") }
+                }) { PlacesAutoComplete(address1: $address1, address2: $address2) }
                 
                 
                 
                 TextField("Search ...", text: $address2,onEditingChanged: { _ in
-                    count = false
+                    geocoding.count = false
                     print("2, count false")
                     if (address2 == "") {
                         showsheet = true
@@ -78,25 +79,25 @@ struct ContentView: View {
                     } else {
                         print("showsheet2 false")
                         showsheet = false
-                        print(placeIDThing + "TWO")
-                        placeIDs[1] = placeIDThing
+                        print(geocoding.placeIDThing + "PLACEIDTHING - TWO")
+                        geocoding.placeIDs[1] = geocoding.placeIDThing
                         geocoding.getData()
                         
                      
                     }
-                }) { PlacesAutoComplete(address1: $address1, address2: $address2, count: $count, placeIDThing: "") }
+                }) { PlacesAutoComplete(address1: $address1, address2: $address2) }
                 
                 
                 
                 
-                NavigationLink("click me for Maps View", destination: GoogleMapsView(count: $count).edgesIgnoringSafeArea(.all))
+                NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
                 
                 
                 
                 
             }
             
-        }
+        }.environmentObject(Geocoding(placeIDThing: "", placeIDs: ["",""], count: true))
         
         
         
@@ -106,6 +107,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(address1: "", address2: "", placeIDThing: Binding.constant("213123"))
+        ContentView(address1: "", address2: "")
     }
 }
