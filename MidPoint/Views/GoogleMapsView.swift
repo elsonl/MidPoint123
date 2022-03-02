@@ -12,6 +12,7 @@ import GoogleMaps
 
 struct GoogleMapsView: UIViewRepresentable {
     @EnvironmentObject var geocoding : Geocoding
+    @Binding var count : Bool
     let marker : GMSMarker = GMSMarker()
 
 
@@ -32,22 +33,27 @@ struct GoogleMapsView: UIViewRepresentable {
 
     func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
         // Creates a marker in the center of the map.
-
+        if count {
         var lat1  : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 0
         var long1  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 0
-
+            
+            marker.position = CLLocationCoordinate2D(latitude:  lat1!, longitude: long1!)
+            marker.title = "Sydney"
+            marker.snippet = "Australia"
+            marker.map = mapView
+        } else {
         var lat2 : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 1
         var long2  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 1
+            
+            marker.position = CLLocationCoordinate2D(latitude:  lat2!, longitude: long2!)
+            marker.title = "Sydney"
+            marker.snippet = "Australia"
+            marker.map = mapView
+        }
+        
+       
 
-        marker.position = CLLocationCoordinate2D(latitude:  lat1!, longitude: long1!)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
-
-//        marker.position = CLLocationCoordinate2D(latitude:  lat2!, longitude: long2!)
-//        marker.title = "Sydney"
-//        marker.snippet = "Australia"
-//        marker.map = mapView
+    
     }
 
     }

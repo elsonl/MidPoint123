@@ -15,6 +15,8 @@ struct ContentView: View {
     @State var address2: String
     @State private var showsheet = false
     @State var count : Bool = true
+    @State var placeIDs : [String] = ["",""]
+    @Binding var placeIDThing : String
     
     var body: some View {
         
@@ -48,6 +50,8 @@ struct ContentView: View {
                     } else {
                         print("showsheet1 false")
                         showsheet = false
+                        placeIDs[0] = placeIDThing
+                        print("PLACE ID 1 ABOVE")
                     }
                 }) { PlacesAutoComplete(address1: $address1, address2: $address2, count: $count, placeIDThing: "") }
                 
@@ -70,14 +74,15 @@ struct ContentView: View {
                     } else {
                         print("showsheet2 false")
                         showsheet = false
+                        placeIDs[1] = placeIDThing
+                        print("PLACE ID 2 ABOVE")
                     }
                 }) { PlacesAutoComplete(address1: $address1, address2: $address2, count: $count, placeIDThing: "") }
                 
                 
                 
                 
-                NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
-
+                NavigationLink("click me for Maps View", destination: GoogleMapsView(count: $count).edgesIgnoringSafeArea(.all))
                 
                 
                 
@@ -94,6 +99,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(address1: "", address2: "")
+        ContentView(address1: "", address2: "", placeIDThing: Binding.constant(""))
     }
 }
