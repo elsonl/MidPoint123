@@ -10,13 +10,16 @@ import GoogleMaps
 import GooglePlaces
 
 struct ContentView: View {
-//    @EnvironmentObject var geocoding : Geocoding
+   @EnvironmentObject var geocoding : Geocoding
     @State var address1 : String
     @State var address2: String
     @State private var showsheet = false
     @State var count : Bool = true
     @State var placeIDs : [String] = ["",""]
     @Binding var placeIDThing : String
+
+    
+    
     
     var body: some View {
         
@@ -50,8 +53,9 @@ struct ContentView: View {
                     } else {
                         print("showsheet1 false")
                         showsheet = false
+                        print(placeIDThing + "ONE")
                         placeIDs[0] = placeIDThing
-                        print("PLACE ID 1 ABOVE")
+                        geocoding.getData()
                     }
                 }) { PlacesAutoComplete(address1: $address1, address2: $address2, count: $count, placeIDThing: "") }
                 
@@ -74,8 +78,11 @@ struct ContentView: View {
                     } else {
                         print("showsheet2 false")
                         showsheet = false
+                        print(placeIDThing + "TWO")
                         placeIDs[1] = placeIDThing
-                        print("PLACE ID 2 ABOVE")
+                        geocoding.getData()
+                        
+                     
                     }
                 }) { PlacesAutoComplete(address1: $address1, address2: $address2, count: $count, placeIDThing: "") }
                 
@@ -99,6 +106,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(address1: "", address2: "", placeIDThing: Binding.constant(""))
+        ContentView(address1: "", address2: "", placeIDThing: Binding.constant("213123"))
     }
 }

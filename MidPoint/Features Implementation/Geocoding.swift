@@ -25,7 +25,6 @@ class Geocoding : ObservableObject{
         self._placeIDThing = placeIDThing
         self._placeIDs = placeIDs
         self._count = count
-        self.getData()
         
     }
 
@@ -33,9 +32,11 @@ class Geocoding : ObservableObject{
 
         print("getting data")
         if count {
-            placeId = placeIDs[0]
+            placeId = self.placeIDs[0]
+            print("PLACE Id --> GEOCODING0")
         } else {
-            placeId = placeIDs[1]
+            placeId = self.placeIDs[1]
+            print("PLACE Id --> GEOCODING1")
         }
 
         guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeId)&key=AIzaSyBSbbHUfKBkD3O0gQXQadLJnAuy3nQvHNM") else {

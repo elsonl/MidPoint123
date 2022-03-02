@@ -10,10 +10,11 @@ import SwiftUI
 import UIKit
 import GoogleMaps
 
-struct GoogleMapsView: UIViewRepresentable {
+struct GoogleMapsView: UIViewRepresentable{
     @EnvironmentObject var geocoding : Geocoding
     @Binding var count : Bool
     let marker : GMSMarker = GMSMarker()
+    let marker2 : GMSMarker = GMSMarker()
 
 
     func makeUIView(context: Self.Context) -> GMSMapView {
@@ -33,7 +34,7 @@ struct GoogleMapsView: UIViewRepresentable {
 
     func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
         // Creates a marker in the center of the map.
-        if count {
+  
         var lat1  : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 0
         var long1  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 0
             
@@ -41,15 +42,16 @@ struct GoogleMapsView: UIViewRepresentable {
             marker.title = "Sydney"
             marker.snippet = "Australia"
             marker.map = mapView
-        } else {
-        var lat2 : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 1
-        var long2  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 1
             
-            marker.position = CLLocationCoordinate2D(latitude:  lat2!, longitude: long2!)
-            marker.title = "Sydney"
-            marker.snippet = "Australia"
-            marker.map = mapView
-        }
+        var lat2 : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 0.5
+            var long2  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 0.5
+                
+                marker2.position = CLLocationCoordinate2D(latitude:  lat2!, longitude: long2!)
+                marker2.title = "Sydney"
+                marker2.snippet = "Australia"
+                marker2.map = mapView
+        
+      
         
        
 

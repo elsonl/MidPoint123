@@ -63,9 +63,9 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
       
 
         func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-            placeIDThing = String(place.description.description).replacingOccurrences(of: "PlaceID: ", with: "")
+          placeIDThing = String(place.description.description).replacingOccurrences(of: "PlaceID: ", with: "")
             print(placeIDThing + "PLACEIDTHING - ELSON")
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 print(place.description.description as Any)
                 if self.count{
                 self.parent.address1 =  place.name!
