@@ -36,25 +36,19 @@ struct GoogleMapsView: UIViewRepresentable{
         func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
         // Creates a marker in the center of the map.
   
-            if geocoding.count {
-        var lat1  : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 0
-        var long1  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 0
-            
-            marker.position = CLLocationCoordinate2D(latitude:  lat1!, longitude: long1!)
+         
+            marker.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
             marker.title = "Marker 1"
             marker.snippet = "Marker 1"
             marker.map = mapView
-        }
         
-            if geocoding.count == false {
-        var lat2 : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 0.5
-            var long2  : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 0.5
-                
-                marker2.position = CLLocationCoordinate2D(latitude:  lat2!, longitude: long2!)
+        
+            
+            marker2.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
                 marker2.title = "Marker 2"
                 marker2.snippet = "Marker 2"
                 marker2.map = mapView
-        }
+        
     
     }
 

@@ -16,14 +16,12 @@ class Geocoding : ObservableObject{
 
     @Published var responses = Response()
     @Published var placeIDThing : String
-    @Published var placeIDs : [String]
     @Published var count : Bool
-
+    @Published var coordinates : (Double?, Double?, Double?, Double?) = (0,0,0.5,0.5)
     var placeId = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
 
-    init(placeIDThing: String, placeIDs: [String],count: Bool){
+    init(placeIDThing: String,count: Bool){
         self.placeIDThing = placeIDThing
-        self.placeIDs = placeIDs
         self.count = count
         
     }
@@ -31,12 +29,15 @@ class Geocoding : ObservableObject{
     func getData(){
 
         print("getting data")
-        if count {
-            placeId = self.placeIDs[0]
+        if count == true{
+            placeId = placeIDThing
             print("PLACE Id --> GEOCODING0")
-        } else {
-            placeId = self.placeIDs[1]
-            print("PLACE Id --> GEOCODING1")
+            print("1"+placeId)
+            
+        }
+        if count == false{
+            placeId = placeIDThing
+            print("PLACE Id --> GEOCODING1" + placeId)
         }
 
         guard let url = URL(string: "https://maps.googleapis.com/maps/api/geocode/json?place_id=\(placeId)&key=AIzaSyBSbbHUfKBkD3O0gQXQadLJnAuy3nQvHNM") else {

@@ -13,15 +13,16 @@ import GooglePlaces
 
 struct PlacesAutoComplete: UIViewControllerRepresentable {
     
-  
-    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var geocoding : Geocoding
+    @Environment(\.presentationMode) var presentationMode
     @Binding var address1 : String
     @Binding var address2 : String
     
     
+    
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        Coordinator(self, ACCount: ($geocoding.count), geocoding : geocoding)
+            
     }
    
    
@@ -29,6 +30,8 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
 
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = context.coordinator
+        
+    
 
 
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
@@ -48,35 +51,55 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: GMSAutocompleteViewController, context: UIViewControllerRepresentableContext<PlacesAutoComplete>) {
     }
 
-    class Coordinator: NSObject, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate {
-        @EnvironmentObject var geocoding : Geocoding
+    
+    class Coordinator: NSObject, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate, ObservableObject {
+        var geocoding : Geocoding
+        
+        @Binding var ACCount : Bool
+        
         var parent: PlacesAutoComplete
 
-        init(_ parent: PlacesAutoComplete) {
+        init(_ parent: PlacesAutoComplete, ACCount : Binding<Bool>, geocoding : Geocoding) {
             self.parent = parent
+            self._ACCount = ACCount
+            self.geocoding = geocoding
+           
+            
 
         }
 
       
 
         func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-            geocoding.placeIDThing = String(place.description.description).replacingOccurrences(of: "PlaceID: ", with: "")
-            print(geocoding.placeIDThing + "PLACEIDTHING - ELSON")
+         
+      
+            
+            
             DispatchQueue.main.async { [self] in
                 print(place.description.description as Any)
-                if self.geocoding.count{
+                if self.ACCount == true{
                 self.parent.address1 =  place.name!
                     print("COUNT 1 BELOW")
-                    print(self.geocoding.count)
+                    print(self.ACCount)
+                    geocoding.placeIDThing  = place.placeID!
+             
+                    print(geocoding.placeIDThing + " PLACEIDTHING - ELSON " + geocoding.placeIDThing + " end")
+                    
                 }
-                else {
+                if self.ACCount == false {
                 self.parent.address2 =  place.name!
                     print("COUNT 2 BELOW")
-                    print(self.geocoding.count)
+                    print(self.ACCount)
+                    geocoding.placeIDThing  = place.placeID!
+                    
+                    print(geocoding.placeIDThing + " PLACEIDTHING - ELSON " + geocoding.placeIDThing + " end")
+                    
                 }
                 self.parent.presentationMode.wrappedValue.dismiss()
+         
             }
         }
+        
 
         func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
             print("Error: ", error.localizedDescription)
