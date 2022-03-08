@@ -15,22 +15,8 @@ struct ContentView: View {
     @State var address2: String
     @State private var showsheet = false
     @State var ACCount : Bool
-   
-    
-
-    //    @State var count : Bool = true
-    //    @State var placeIDs : [String] = ["",""]
-    //    @Binding var placeIDThing : String
-    
-    
-    
-    
     
     var body: some View {
-        
-        //var thing : String = geocoding.responses.results.first?.formatted_address! ?? "failed"
-        
-        //        Text(geocoding.responses.results.first?.formatted_address ?? "failed")
         
         NavigationView{
             
@@ -51,6 +37,10 @@ struct ContentView: View {
                 }, onCommit: {
                     showsheet = false
                     print("address1 committed")
+                    geocoding.coordinates.0 = geocoding.responses.results.first?.geometry.location.lat ?? 0
+                    geocoding.coordinates.1 = geocoding.responses.results.first?.geometry.location.lng ?? 0
+                
+                    print(geocoding.coordinates.0,  geocoding.coordinates.1 )
                 }).foregroundColor(Color.black).background(Color(.systemGray4))
                 .sheet(isPresented : $showsheet, onDismiss: {
                     if(address1 == ""){
@@ -58,19 +48,19 @@ struct ContentView: View {
                         showsheet = true
                     } else {
                         geocoding.count = true
+                        
+                        print(geocoding.count)
+                        print("in else")
+                        
                         print("showsheet1false")
                         showsheet = false
                         geocoding.getData()
-                        geocoding.coordinates.0 = geocoding.responses.results.first?.geometry.location.lat ?? 0
-                        geocoding.coordinates.1 = geocoding.responses.results.first?.geometry.location.lng ?? 0
                         
-                        print(geocoding.placeIDThing + "PlaceIDTHING - one")
-                        print(geocoding.coordinates.0,  geocoding.coordinates.1 )
                     }
                 }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2)
                     .environmentObject(geocoding) }
                 
-                
+   
                 
                 TextField("Search ...", text: $address2,onEditingChanged: { _ in
                     geocoding.count = false
@@ -82,6 +72,11 @@ struct ContentView: View {
                     }
                 }, onCommit: {
                     showsheet = false
+                    geocoding.coordinates.2 = geocoding.responses.results.first?.geometry.location.lat ?? 0
+                    geocoding.coordinates.3 = geocoding.responses.results.first?.geometry.location.lng ?? 0
+                    
+
+                    print(geocoding.coordinates.2,  geocoding.coordinates.3 )
                     print("address2 committed")
                 }).foregroundColor(Color.black).background(Color(.systemGray4))
                 .sheet(isPresented : $showsheet, onDismiss: {
@@ -92,30 +87,19 @@ struct ContentView: View {
                         print("showsheet2 false")
                         showsheet = false
                         geocoding.count = false
-                        geocoding.getData()
-                        geocoding.coordinates.2 = geocoding.responses.results.first?.geometry.location.lat ?? 0
-                        geocoding.coordinates.3 = geocoding.responses.results.first?.geometry.location.lng ?? 0
                         
-                        print(geocoding.placeIDThing + "PlaceIDTHING - TWO")
-                        print(geocoding.coordinates.2,  geocoding.coordinates.3 )
+                        print(geocoding.count)
+                        print("in else")
+                        
+                        geocoding.getData()
+                        
                     }
                 }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2)
                     .environmentObject(geocoding) }
-
-                
-                
                 
                 NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
-                
-                
-                
-                
             }
-            
         }
-        
-        
-        
     }
 }
 

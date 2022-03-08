@@ -14,43 +14,39 @@ struct GoogleMapsView: UIViewRepresentable{
     @EnvironmentObject var geocoding : Geocoding
     let marker : GMSMarker = GMSMarker()
     let marker2 : GMSMarker = GMSMarker()
-
-
+    
+    
     func makeUIView(context: Self.Context) -> GMSMapView {
-
-
-
-        var lat : Double? = geocoding.responses.results.first?.geometry.location.lat ?? 0
-        var long : Double? = geocoding.responses.results.first?.geometry.location.lng ?? 0
-
-        var camera = GMSCameraPosition.camera(withLatitude:  lat!, longitude:  long!, zoom: 1.0)
+        
+        
+        var camera = GMSCameraPosition.camera(withLatitude:  (geocoding.coordinates.0! + geocoding.coordinates.2!)/2, longitude:  (geocoding.coordinates.1! + geocoding.coordinates.3!)/2, zoom: 10.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.settings.scrollGestures = true
-         mapView.settings.zoomGestures = true
+        mapView.settings.zoomGestures = true
         mapView.settings.compassButton = true
-      
+        
         return mapView
-      
+        
     }
-
-        func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
-        // Creates a marker in the center of the map.
-  
-         
-            marker.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
-            marker.title = "Marker 1"
-            marker.snippet = "Marker 1"
-            marker.map = mapView
-        
-        
-            
-            marker2.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
-                marker2.title = "Marker 2"
-                marker2.snippet = "Marker 2"
-                marker2.map = mapView
-        
     
+    func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
+        // Creates a marker in the center of the map.
+        
+        
+        marker.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
+        marker.title = "Marker 1"
+        marker.snippet = "Marker 1"
+        marker.map = mapView
+        
+        
+        
+        marker2.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
+        marker2.title = "Marker 2"
+        marker2.snippet = "Marker 2"
+        marker2.map = mapView
+        
+        
     }
-
-    }
+    
+}
 
