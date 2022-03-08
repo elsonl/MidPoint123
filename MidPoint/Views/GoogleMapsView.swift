@@ -24,6 +24,7 @@ struct GoogleMapsView: UIViewRepresentable{
         mapView.settings.scrollGestures = true
         mapView.settings.zoomGestures = true
         mapView.settings.compassButton = true
+    
         
         return mapView
         
