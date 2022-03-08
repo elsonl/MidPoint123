@@ -47,12 +47,25 @@ class Geocoding : ObservableObject{
             
             print("Data downloaded")
             
+            
             let decoder = JSONDecoder()
             
             if let response = try? decoder.decode(Response.self, from: data) {
                 DispatchQueue.main.async{ [self] in
                     self.responses = response
+                    if self.count {
+                         self.coordinates.0 =  self.responses.results.first?.geometry.location.lat ?? 0
+                         self.coordinates.1 =  self.responses.results.first?.geometry.location.lng ?? 0
                     
+                        print( self.coordinates.0,   self.coordinates.1 )
+                        print("true")
+                    } else {
+                         self.coordinates.2 =  self.responses.results.first?.geometry.location.lat ?? 0
+                         self.coordinates.3 =  self.responses.results.first?.geometry.location.lng ?? 0
+                    
+                        print( self.coordinates.2,   self.coordinates.3)
+                        print("false")
+                    }
                 }
                 
             }else {

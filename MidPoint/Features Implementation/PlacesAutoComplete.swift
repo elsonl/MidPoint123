@@ -21,7 +21,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, ACCount: ($geocoding.count), geocoding : geocoding)
+        Coordinator(self, geocoding : geocoding)
         
     }
     
@@ -49,13 +49,11 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     class Coordinator: NSObject, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate, ObservableObject {
         var geocoding : Geocoding
         
-        @Binding var ACCount : Bool
         
         var parent: PlacesAutoComplete
         
-        init(_ parent: PlacesAutoComplete, ACCount : Binding<Bool>, geocoding : Geocoding) {
+        init(_ parent: PlacesAutoComplete, geocoding : Geocoding) {
             self.parent = parent
-            self._ACCount = ACCount
             self.geocoding = geocoding
             
         }
@@ -65,13 +63,21 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
             
             DispatchQueue.main.async { [self] in
                 print(place.description.description as Any)
-                if self.ACCount == true{
+                if geocoding.count == true{
+                    
+                    geocoding.count = true
+                    print("in AC below true")
+                    print(geocoding.count)
                     
                     geocoding.placeIDThing  = place.placeID!
                     self.parent.address1 =  place.name!
                     
                 }
-                if self.ACCount == false {
+                if geocoding.count == false {
+                    
+                    geocoding.count = false
+                    print("in AC below false")
+                    print(geocoding.count)
                     
                     geocoding.placeIDThing  = place.placeID!
                     self.parent.address2 =  place.name!

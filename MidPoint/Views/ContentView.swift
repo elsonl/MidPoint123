@@ -13,8 +13,9 @@ struct ContentView: View {
     @EnvironmentObject var geocoding : Geocoding
     @State var address1 : String
     @State var address2: String
-    @State private var showsheet = false
-    @State var ACCount : Bool
+    @State private var showsheet1 = false
+    @State private var showsheet2 = false
+    
     
     var body: some View {
         
@@ -26,26 +27,21 @@ struct ContentView: View {
                 Text(address2 + "2")
                 
                 
-                TextField("Search ...", text: $address1,onEditingChanged: { _ in
+                TextField("Location 1 ...", text: $address1,onEditingChanged: { _ in
                     geocoding.count = true
-                    ACCount = geocoding.count
-                    print("1, count false")
+                    print("1, count true")
                     if (address1 == "") {
-                        showsheet = true
+                        showsheet1 = true
                         print("Address1 change, showsheet true")
                     }
                 }, onCommit: {
-                    showsheet = false
+                    showsheet1 = false
                     print("address1 committed")
-                    geocoding.coordinates.0 = geocoding.responses.results.first?.geometry.location.lat ?? 0
-                    geocoding.coordinates.1 = geocoding.responses.results.first?.geometry.location.lng ?? 0
-                
-                    print(geocoding.coordinates.0,  geocoding.coordinates.1 )
                 }).foregroundColor(Color.black).background(Color(.systemGray4))
-                .sheet(isPresented : $showsheet, onDismiss: {
+                .sheet(isPresented : $showsheet1, onDismiss: {
                     if(address1 == ""){
                         print("address 1 empty, showsheet true")
-                        showsheet = true
+                        showsheet1 = true
                     } else {
                         geocoding.count = true
                         
@@ -53,7 +49,7 @@ struct ContentView: View {
                         print("in else")
                         
                         print("showsheet1false")
-                        showsheet = false
+                        showsheet1 = false
                         geocoding.getData()
                         
                     }
@@ -61,42 +57,36 @@ struct ContentView: View {
                     .environmentObject(geocoding) }
                 
    
-                
-                TextField("Search ...", text: $address2,onEditingChanged: { _ in
+                TextField("Location 2 ...", text: $address2,onEditingChanged: { _ in
                     geocoding.count = false
-                    ACCount = geocoding.count
                     print("2, count false")
                     if (address2 == "") {
-                        showsheet = true
+                        showsheet2 = true
                         print("Address2 change, showsheet true")
                     }
                 }, onCommit: {
-                    showsheet = false
-                    geocoding.coordinates.2 = geocoding.responses.results.first?.geometry.location.lat ?? 0
-                    geocoding.coordinates.3 = geocoding.responses.results.first?.geometry.location.lng ?? 0
-                    
-
-                    print(geocoding.coordinates.2,  geocoding.coordinates.3 )
+                    showsheet2 = false
                     print("address2 committed")
                 }).foregroundColor(Color.black).background(Color(.systemGray4))
-                .sheet(isPresented : $showsheet, onDismiss: {
+                .sheet(isPresented : $showsheet2, onDismiss: {
                     if(address2 == ""){
                         print("address 2 empty, showsheet true")
-                        showsheet = true
+                        showsheet2 = true
                     } else {
-                        print("showsheet2 false")
-                        showsheet = false
                         geocoding.count = false
                         
                         print(geocoding.count)
                         print("in else")
-                        
+                    
+                        print("showsheet2false")
+                        showsheet2 = false
                         geocoding.getData()
                         
                     }
                 }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2)
                     .environmentObject(geocoding) }
                 
+
                 NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
             }
         }
@@ -106,6 +96,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(address1: "", address2: "", ACCount: true)
+        ContentView(address1: "", address2: "")
     }
 }

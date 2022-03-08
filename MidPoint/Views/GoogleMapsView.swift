@@ -19,7 +19,7 @@ struct GoogleMapsView: UIViewRepresentable{
     func makeUIView(context: Self.Context) -> GMSMapView {
         
         
-        var camera = GMSCameraPosition.camera(withLatitude:  (geocoding.coordinates.0! + geocoding.coordinates.2!)/2, longitude:  (geocoding.coordinates.1! + geocoding.coordinates.3!)/2, zoom: 10.0)
+        var camera = GMSCameraPosition.camera(withLatitude:  (geocoding.coordinates.0! + geocoding.coordinates.2!)/2, longitude:  (geocoding.coordinates.1! + geocoding.coordinates.3!)/2, zoom: 1)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.settings.scrollGestures = true
         mapView.settings.zoomGestures = true

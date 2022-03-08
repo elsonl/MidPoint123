@@ -32,7 +32,7 @@ struct MidPointApp: App {
         
         WindowGroup {
             
-            ContentView(address1: "", address2: "" ,ACCount : (geocoding.count))
+            ContentView(address1: "", address2: "")
                 .environmentObject(geocoding)
             
         }
