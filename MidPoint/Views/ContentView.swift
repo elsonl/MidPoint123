@@ -18,7 +18,8 @@ struct ContentView: View {
     
     
     var body: some View {
-        
+        FavoritesView(address1: $address1)
+        /*
         NavigationView{
             
             VStack{
@@ -90,6 +91,7 @@ struct ContentView: View {
                 NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
             }
         }
+ */
     }
 }
 

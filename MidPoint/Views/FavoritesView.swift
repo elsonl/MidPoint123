@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @Binding var address1 : String
+    @State var favorites : [String] = [""] //make this a binding later
     var body: some View {
-        Text("Favorites View")
-    }
-}
-
-struct FavoritesView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoritesView()
+        VStack{
+            TextField("Address", text: $address1)
+            Button("Add Favorite", action: {favorites.append(address1)})
+        }
+        
+        
+        
+        
+        
     }
 }
