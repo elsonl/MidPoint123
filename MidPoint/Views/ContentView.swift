@@ -26,7 +26,7 @@ struct ContentView: View {
                 Text(address1 + "1")
                 Text(address2 + "2")
                 
-                
+               HStack{ Image(systemName: "magnifyingglass")
                 TextField("Location 1 ...", text: $address1,onEditingChanged: { _ in
                     geocoding.count = true
                     print("1, count true")
@@ -37,7 +37,7 @@ struct ContentView: View {
                 }, onCommit: {
                     showsheet1 = false
                     print("address1 committed")
-                }).foregroundColor(Color.black).background(Color(.systemGray4))
+                }).foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
                 .sheet(isPresented : $showsheet1, onDismiss: {
                     if(address1 == ""){
                         print("address 1 empty, showsheet true")
@@ -55,9 +55,11 @@ struct ContentView: View {
                     }
                 }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2)
                     .environmentObject(geocoding) }
-                
+                }
    
-                TextField("Location 2 ...", text: $address2,onEditingChanged: { _ in
+               HStack {
+                    Image(systemName: "magnifyingglass")
+                    TextField("Location 2 ...", text: $address2,onEditingChanged: { _ in
                     geocoding.count = false
                     print("2, count false")
                     if (address2 == "") {
@@ -67,7 +69,7 @@ struct ContentView: View {
                 }, onCommit: {
                     showsheet2 = false
                     print("address2 committed")
-                }).foregroundColor(Color.black).background(Color(.systemGray4))
+                }).foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
                 .sheet(isPresented : $showsheet2, onDismiss: {
                     if(address2 == ""){
                         print("address 2 empty, showsheet true")
@@ -84,7 +86,7 @@ struct ContentView: View {
                         
                     }
                 }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2)
-                    .environmentObject(geocoding) }
+                    .environmentObject(geocoding) }}
                 
 
                 NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
@@ -96,6 +98,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(address1: "", address2: "")
+        Group {
+            ContentView(address1: "", address2: "")
+            ContentView(address1: "", address2: "")
+        }
     }
 }
