@@ -19,10 +19,10 @@ struct ContentView: View {
     
     var body: some View {
         
-        NavigationView{
-            
+    NavigationView{
+        ZStack{
+            Color.blue
             VStack{
-                
                 Text(address1 + "1")
                 Text(address2 + "2")
                 
@@ -88,9 +88,25 @@ struct ContentView: View {
                 }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2)
                     .environmentObject(geocoding) }}
                 
+                Button(action : {
+                    print("button thingyyhing")
+                }, label: {
+                    NavigationLink(destination : GMapsView()){
+                        Text("Search")
+                    }
+                }).padding().background(Color.black).clipShape(Capsule()).foregroundColor(.white)
 
-                NavigationLink("click me for Maps View", destination: GoogleMapsView().edgesIgnoringSafeArea(.all))
+                
+                ScrollView(.horizontal){
+                    HStack(spacing: 20){
+                        ForEach(0..<5){
+                            Text("Item \($0)").padding()
+                        }
+                    }
+                }
+                
             }
+        }.ignoresSafeArea()
         }
     }
 }
@@ -99,7 +115,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView(address1: "", address2: "")
             ContentView(address1: "", address2: "")
         }
     }

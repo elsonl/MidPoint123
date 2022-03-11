@@ -18,6 +18,8 @@
 		F0422FF727BF1CD600D90247 /* MidPointUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FF627BF1CD600D90247 /* MidPointUITests.swift */; };
 		F042304D27C6AECD00D90247 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042304C27C6AECD00D90247 /* GoogleMapsView.swift */; };
 		F042304F27C730C600D90247 /* Geocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042304E27C730C600D90247 /* Geocoding.swift */; };
+		F066726027DA6A4800AE3790 /* DistanceMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */; };
+		F066726227DA6F0F00AE3790 /* GMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F066726127DA6F0F00AE3790 /* GMapsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		F0422FF827BF1CD600D90247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F042304C27C6AECD00D90247 /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		F042304E27C730C600D90247 /* Geocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoding.swift; sourceTree = "<group>"; };
+		F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMatrix.swift; sourceTree = "<group>"; };
+		F066726127DA6F0F00AE3790 /* GMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMapsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				F042304E27C730C600D90247 /* Geocoding.swift */,
+				F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */,
 				F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */,
 			);
 			path = "Features Implementation";
@@ -176,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				F0422FDB27BF1CD300D90247 /* ContentView.swift */,
+				F066726127DA6F0F00AE3790 /* GMapsView.swift */,
 				F042304C27C6AECD00D90247 /* GoogleMapsView.swift */,
 				F0352DBB27CD315400DD091D /* FavoritesView.swift */,
 			);
@@ -355,10 +361,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F066726027DA6A4800AE3790 /* DistanceMatrix.swift in Sources */,
 				F0352DBC27CD315400DD091D /* FavoritesView.swift in Sources */,
 				F042304D27C6AECD00D90247 /* GoogleMapsView.swift in Sources */,
 				F042304F27C730C600D90247 /* Geocoding.swift in Sources */,
 				F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */,
+				F066726227DA6F0F00AE3790 /* GMapsView.swift in Sources */,
 				F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */,
 				F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */,
 			);

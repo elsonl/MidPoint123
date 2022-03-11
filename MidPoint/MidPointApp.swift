@@ -34,6 +34,7 @@ struct MidPointApp: App {
             
             ContentView(address1: "", address2: "")
                 .environmentObject(geocoding)
+               
             
         }
     }

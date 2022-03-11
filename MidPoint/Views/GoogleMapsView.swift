@@ -38,14 +38,14 @@ struct GoogleMapsView: UIViewRepresentable{
         
         
         marker.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
-        marker.title = "Marker 1"
+        marker.title = "Location 1"
         marker.snippet = "Marker 1"
         marker.map = mapView
         
         
-        
+        marker2.icon = GMSMarker.markerImage(with : UIColor.green)
         marker2.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
-        marker2.title = "Marker 2"
+        marker2.title = "Location 2"
         marker2.snippet = "Marker 2"
         marker2.map = mapView
         
