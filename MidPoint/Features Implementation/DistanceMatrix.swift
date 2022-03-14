@@ -14,18 +14,17 @@ import GoogleMaps
 
 class DistanceMatrix : ObservableObject{
     
-    @EnvironmentObject var geocoding : Geocoding
+ 
     @Published var responses2 = Response2()
+    @Published var PlaceIDs : [String] = ["1","2"]
     
-    
-    func getData(){
-       3
-        var destination = geocoding.responses.results.first?.formatted_address
-        
-        var origin = geocoding.responses.results.first?.formatted_address
+   
+    func getData2(){
+     
         print("getting data")
-        
-        guard let url = URL(string: "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=New%20York%20City%2C%20NY&origins=Washington%2C%20DC&units=imperial&key=AIzaSyDDpQWqq6MbFXIhYhgbG3MILxZjx66z5SU") else {
+        print("PLACE IF 1 AND 2 DISTANCE MATRIX")
+        print(PlaceIDs)
+        guard let url = URL(string: "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=place_id:\(PlaceIDs[0])&origins=place_id:\(PlaceIDs[1])&units=imperial&key=AIzaSyDDpQWqq6MbFXIhYhgbG3MILxZjx66z5SU") else {
             
             print("error creating url")
             return
@@ -84,6 +83,9 @@ struct durationItem: Codable{
 }
 
 extension distanceItem: Identifiable{
+    var id: String {return text!}
+}
+extension durationItem: Identifiable{
     var id: String {return text!}
 }
 

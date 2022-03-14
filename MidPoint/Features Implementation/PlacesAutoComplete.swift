@@ -14,6 +14,7 @@ import GooglePlaces
 struct PlacesAutoComplete: UIViewControllerRepresentable {
     
     @EnvironmentObject var geocoding : Geocoding
+    @EnvironmentObject var dMatrix : DistanceMatrix
     @Environment(\.presentationMode) var presentationMode
     @Binding var address1 : String
     @Binding var address2 : String
@@ -21,7 +22,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, geocoding : geocoding)
+        Coordinator(self, geocoding : geocoding, dMatrix: dMatrix)
         
     }
     
@@ -48,13 +49,15 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     
     class Coordinator: NSObject, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate, ObservableObject {
         var geocoding : Geocoding
+        var dMatrix : DistanceMatrix
         
         
         var parent: PlacesAutoComplete
         
-        init(_ parent: PlacesAutoComplete, geocoding : Geocoding) {
+        init(_ parent: PlacesAutoComplete, geocoding : Geocoding, dMatrix : DistanceMatrix) {
             self.parent = parent
             self.geocoding = geocoding
+            self.dMatrix = dMatrix
             
         }
         
@@ -71,6 +74,11 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
                     
                     geocoding.placeIDThing  = place.placeID!
                     self.parent.address1 =  place.name!
+                    dMatrix.PlaceIDs[0] = place.placeID!
+                    if dMatrix.PlaceIDs[1] != "2"{
+                        dMatrix.getData2()
+                    }
+         
                     
                 }
                 if geocoding.count == false {
@@ -81,6 +89,12 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
                     
                     geocoding.placeIDThing  = place.placeID!
                     self.parent.address2 =  place.name!
+                    dMatrix.PlaceIDs[1] = place.placeID!
+                    
+                    if dMatrix.PlaceIDs[0] != "1"{
+                        dMatrix.getData2()
+                    }
+           
                     
                 }
                 self.parent.presentationMode.wrappedValue.dismiss()

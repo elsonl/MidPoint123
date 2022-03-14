@@ -12,6 +12,7 @@ import GoogleMaps
 
 struct GoogleMapsView: UIViewRepresentable{
     @EnvironmentObject var geocoding : Geocoding
+    @Binding var zoom : Zoom
     let marker : GMSMarker = GMSMarker()
     let marker2 : GMSMarker = GMSMarker()
     
@@ -22,7 +23,7 @@ struct GoogleMapsView: UIViewRepresentable{
     func makeUIView(context: Self.Context) -> GMSMapView {
         
         
-        var camera = GMSCameraPosition.camera(withLatitude:  (geocoding.coordinates.0! + geocoding.coordinates.2!)/2, longitude:  (geocoding.coordinates.1! + geocoding.coordinates.3!)/2, zoom: 5)
+        var camera = GMSCameraPosition.camera(withLatitude:  (geocoding.coordinates.0! + geocoding.coordinates.2!)/2, longitude:  (geocoding.coordinates.1! + geocoding.coordinates.3!)/2, zoom: zoom.currentZoom)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.settings.scrollGestures = true
         mapView.settings.zoomGestures = true

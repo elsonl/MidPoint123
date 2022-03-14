@@ -27,13 +27,15 @@ struct MidPointApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate : AppDelegate
     
     @StateObject var geocoding = Geocoding(placeIDThing: "", count: false)
+    @StateObject var dMatrix = DistanceMatrix()
     
     var body: some Scene {
         
         WindowGroup {
             
-            ContentView(address1: "", address2: "")
+            ContentView(address1: "", address2: "", zoom: .constant(Zoom()))
                 .environmentObject(geocoding)
+                .environmentObject(dMatrix)
                
             
         }
