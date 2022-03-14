@@ -19,7 +19,7 @@ struct ContentView: View {
     @Binding var zoom : Zoom
     
     var body: some View {
-        FavoritesView(address1: $address1)
+        FavoritesView()
         /*
         NavigationView{
             ZStack{
