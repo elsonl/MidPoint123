@@ -33,7 +33,7 @@ struct MidPointApp: App {
         
         WindowGroup {
             
-            ContentView(address1: "", address2: "", zoom: .constant(Zoom()))
+            ContentView(address1: "", address2: "")
                 .environmentObject(geocoding)
                 .environmentObject(dMatrix)
                

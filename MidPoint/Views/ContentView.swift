@@ -16,7 +16,6 @@ struct ContentView: View {
     @State var address2: String
     @State private var showsheet1 = false
     @State private var showsheet2 = false
-    @Binding var zoom : Zoom
     
     var body: some View {
         
@@ -96,10 +95,9 @@ struct ContentView: View {
                     Spacer().frame(height: 15)
                     
                     Button(action : {
-                        print("button thingyyhing")
-                        dMatrix.getData2() 
+                      
                     }, label: {
-                        NavigationLink(destination : GMapsView( zoom: .constant(Zoom()))){
+                        NavigationLink(destination : GMapsView()){
                             
                             Text("Search")
                         
@@ -109,10 +107,6 @@ struct ContentView: View {
                     Spacer().frame(height: 25)
                     
                     FavoritesView()
-                    
-                    Slider(value: $zoom.currentZoom, in: 1...10).background(Color.orange)
-                    
-                    
                     
                 }
             }.ignoresSafeArea()
@@ -124,7 +118,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView(address1: "", address2: "", zoom: .constant(Zoom()))
+            ContentView(address1: "", address2: "")
         }
     }
 }

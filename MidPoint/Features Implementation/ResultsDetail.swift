@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Zoom : Identifiable{
-    var currentZoom : Float = 5.0
+class Zoom : ObservableObject{
+    @Published var currentZoom : Float = 1.0
     
     let id = UUID()
 }

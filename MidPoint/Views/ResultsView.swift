@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ResultsView: View {
     @EnvironmentObject var dMatrix : DistanceMatrix
-    @Binding var zoom : Zoom
     var body: some View {
         
         var distance = dMatrix.responses2.rows.first?.elements.first?.distance 
@@ -37,7 +36,7 @@ struct ResultsView: View {
 
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsView(zoom: .constant(Zoom()))
+        ResultsView()
     }
 }
 
