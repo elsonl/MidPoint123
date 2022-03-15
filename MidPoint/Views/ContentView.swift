@@ -40,6 +40,7 @@ struct ContentView: View {
                             print("address1 committed")
                         }).foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
                             .sheet(isPresented : $showsheet1, onDismiss: {
+                                
                                 if(address1 == ""){
                                     print("address 1 empty, showsheet true")
                                     showsheet1 = true
