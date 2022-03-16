@@ -28,6 +28,7 @@ struct MidPointApp: App {
     
     @StateObject var geocoding = Geocoding(placeIDThing: "", count: false)
     @StateObject var dMatrix = DistanceMatrix()
+    @StateObject var placeDetail = PlaceDetail()
     
     var body: some Scene {
         
@@ -36,7 +37,7 @@ struct MidPointApp: App {
             ContentView(address1: "", address2: "")
                 .environmentObject(geocoding)
                 .environmentObject(dMatrix)
-               
+                .environmentObject(placeDetail)
             
         }
     }
