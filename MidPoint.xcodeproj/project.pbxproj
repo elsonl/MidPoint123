@@ -22,6 +22,7 @@
 		F042304F27C730C600D90247 /* Geocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042304E27C730C600D90247 /* Geocoding.swift */; };
 		F066726027DA6A4800AE3790 /* DistanceMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */; };
 		F066726227DA6F0F00AE3790 /* GMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F066726127DA6F0F00AE3790 /* GMapsView.swift */; };
+		F09632D427E398A900931CAF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09632D327E398A900931CAF /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		F042304E27C730C600D90247 /* Geocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoding.swift; sourceTree = "<group>"; };
 		F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMatrix.swift; sourceTree = "<group>"; };
 		F066726127DA6F0F00AE3790 /* GMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMapsView.swift; sourceTree = "<group>"; };
+		F09632D327E398A900931CAF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */,
 				F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */,
 				8659D2FF27DD52F2006F99B2 /* ResultsDetail.swift */,
+				F09632D327E398A900931CAF /* LocationManager.swift */,
 			);
 			path = "Features Implementation";
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				F066726027DA6A4800AE3790 /* DistanceMatrix.swift in Sources */,
 				8659D2C427DBEF55006F99B2 /* ResultsView.swift in Sources */,
 				F0352DBC27CD315400DD091D /* FavoritesView.swift in Sources */,
+				F09632D427E398A900931CAF /* LocationManager.swift in Sources */,
 				F042304D27C6AECD00D90247 /* GoogleMapsView.swift in Sources */,
 				F042304F27C730C600D90247 /* Geocoding.swift in Sources */,
 				F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */,

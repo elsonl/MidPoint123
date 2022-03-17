@@ -17,12 +17,32 @@ struct ContentView: View {
     @State private var showsheet1 = false
     @State private var showsheet2 = false
     
+    
+    @StateObject var locationManager = LocationManager()
+       
+       var userLatitude: String {
+           return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+       }
+       
+       var userLongitude: String {
+           return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+       }
+    
     var body: some View {
         
         NavigationView{
             ZStack{
                 Color.blue
                 VStack{
+                    
+                    VStack {
+                               Text("location status: \(locationManager.statusString)")
+                               HStack {
+                                   Text("latitude: \(userLatitude)")
+                                   Text("longitude: \(userLongitude)")
+                               }
+                           }
+                    
                     Text("Enter Locations Below")
                     
                     
