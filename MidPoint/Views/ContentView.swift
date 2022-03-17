@@ -16,7 +16,6 @@ struct ContentView: View {
     @State var address2: String
     @State private var showsheet1 = false
     @State private var showsheet2 = false
-    @Binding var zoom : Zoom
     
     var body: some View {
         
