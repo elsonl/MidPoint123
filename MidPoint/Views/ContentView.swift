@@ -17,12 +17,32 @@ struct ContentView: View {
     @State private var showsheet1 = false
     @State private var showsheet2 = false
     
+    
+    @StateObject var locationManager = LocationManager()
+       
+       var userLatitude: String {
+           return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+       }
+       
+       var userLongitude: String {
+           return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+       }
+    
     var body: some View {
         
         NavigationView{
             ZStack{
                 Color.BackgroundColor
                 VStack{
+                    
+                    VStack {
+                               Text("location status: \(locationManager.statusString)")
+                               HStack {
+                                   Text("latitude: \(userLatitude)")
+                                   Text("longitude: \(userLongitude)")
+                               }
+                           }
+                    
                     Text("Enter Locations Below")
                         .foregroundColor(Color.TextFieldText)
                     
@@ -43,6 +63,7 @@ struct ContentView: View {
                         })
                             .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
                             .sheet(isPresented : $showsheet1, onDismiss: {
+                                
                                 if(address1 == ""){
                                     print("address 1 empty, showsheet true")
                                     showsheet1 = true
@@ -98,10 +119,9 @@ struct ContentView: View {
                     Spacer().frame(height: 15)
                     
                     Button(action : {
-                        print("button thingyyhing")
-                        dMatrix.getData2() 
+                      
                     }, label: {
-                        NavigationLink(destination : GMapsView( zoom: .constant(Zoom()))){
+                        NavigationLink(destination : GMapsView()){
                             
                             Text("Search")
                         
@@ -125,7 +145,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView(address1: "", address2: "", zoom: .constant(Zoom()))
+            ContentView(address1: "", address2: "")
         }
     }
 }

@@ -97,8 +97,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
                     
            
 //                    placeDetail.Rating = place.rating
-                   
-                    
+
                     oneArray[0] = place.formattedAddress!
                     oneArray[1] = place.name!
                     oneArray[2] = place.placeID!
