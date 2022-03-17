@@ -10,39 +10,52 @@ import SwiftUI
 struct GMapsView: View {
     
     @EnvironmentObject var dMatrix : DistanceMatrix
-    @Binding var zoom : Zoom
-        var body: some View {
-            ZStack{
-               
-                GoogleMapsView(zoom: .constant(Zoom())).edgesIgnoringSafeArea(.all)
+    @EnvironmentObject var placeDetail : PlaceDetail
+    @State var visible = false
+    @State var visibleSlider = false
+    
+    var body: some View {
+        ZStack{
+            
+            GoogleMapsView().edgesIgnoringSafeArea(.all)
+            VStack{
+                Spacer()
                 VStack{
-                    Spacer()
-                    ResultsView(zoom: .constant(Zoom()))
                     
-                    Button("+") {
-                        print("button1")
-                        zoom.currentZoom += 1
+                    
+                   VStack {
+                        Toggle("", isOn: $visible)
+                            .labelsHidden()
+                        
+                        if visible {
+                            ResultsView()
+                        } else {
+                            Text("")
+                        }
+                        
+                        Toggle("", isOn: $visibleSlider)
+                            .labelsHidden()
+                        
+                        if visibleSlider {
+                            VStack{
+                                Slider(value: $placeDetail.miles, in: 0...10)
+                                
+                                Text("\(placeDetail.miles, specifier: "%.2f") Mile Radius")
+                            }
+                        } else {
+                            Text("")
+                        }
                     }
-                    Button("-") {
-                        print("button2")
-                        zoom.currentZoom -= 1
-                    }
-                    
-                    Slider(value: $zoom.currentZoom, in: 1...10)
-                    
-//                    Slider(value: $zoom.currentZoom, in: 1...10)
-//                    Text("Slider Above")
-                    
-                  
-                   
+
                 }
-             
+                
             }
+        }
     }
     
     struct GMapsView_Previews: PreviewProvider {
         static var previews: some View {
-            GMapsView( zoom: .constant(Zoom()))
+            GMapsView()
         }
     }
 }
