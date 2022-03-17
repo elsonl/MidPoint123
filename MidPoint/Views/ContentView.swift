@@ -22,13 +22,15 @@ struct ContentView: View {
         
         NavigationView{
             ZStack{
-                Color.blue
+                Color.BackgroundColor
                 VStack{
                     Text("Enter Locations Below")
+                        .foregroundColor(Color.TextFieldText)
                     
                     
                     HStack{
                         Image(systemName: "magnifyingglass")
+                            
                         TextField("Location 1 ...", text: $address1,onEditingChanged: { _ in
                             geocoding.count = true
                             print("1, count true")
@@ -39,7 +41,8 @@ struct ContentView: View {
                         }, onCommit: {
                             showsheet1 = false
                             print("address1 committed")
-                        }).foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
+                        })
+                            .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
                             .sheet(isPresented : $showsheet1, onDismiss: {
                                 if(address1 == ""){
                                     print("address 1 empty, showsheet true")
@@ -104,13 +107,12 @@ struct ContentView: View {
                             Text("Search")
                         
                         }
-                    }).padding().background(Color.black).clipShape(Capsule()).foregroundColor(.white)
+                    }).padding().background(Color.FavoritesBackground).clipShape(Capsule()).foregroundColor(.black)
                     
                     Spacer().frame(height: 25)
                     
                     FavoritesView()
                     
-                    Slider(value: $zoom.currentZoom, in: 1...10).background(Color.orange)
                     
                     
                     

@@ -15,7 +15,7 @@ struct FavoritesView: View {
         ScrollView(.horizontal){
             HStack(spacing : 15){
         ForEach(0..<10){
-            Text("Item \($0)").frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
+            Text("Item \($0)").frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.FavoritesBackground))
         }
             }
         }.frame(width: 360, height: 100, alignment: .center)
