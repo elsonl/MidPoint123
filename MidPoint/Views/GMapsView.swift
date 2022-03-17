@@ -10,7 +10,9 @@ import SwiftUI
 struct GMapsView: View {
     
     @EnvironmentObject var dMatrix : DistanceMatrix
+    @EnvironmentObject var placeDetail : PlaceDetail
     @State var visible = false
+    @State var visibleSlider = false
     
     var body: some View {
         ZStack{
@@ -21,15 +23,30 @@ struct GMapsView: View {
                 VStack{
                     
                     
-                    Toggle("", isOn: $visible)
-                        .labelsHidden()
-                    
-                    if visible {
-                        ResultsView()
-                    } else {
-                        Text("")
+                   VStack {
+                        Toggle("", isOn: $visible)
+                            .labelsHidden()
+                        
+                        if visible {
+                            ResultsView()
+                        } else {
+                            Text("")
+                        }
+                        
+                        Toggle("", isOn: $visibleSlider)
+                            .labelsHidden()
+                        
+                        if visibleSlider {
+                            VStack{
+                                Slider(value: $placeDetail.miles, in: 0...10)
+                                
+                                Text("\(placeDetail.miles, specifier: "%.2f") Mile Radius")
+                            }
+                        } else {
+                            Text("")
+                        }
                     }
-                    
+
                 }
                 
             }

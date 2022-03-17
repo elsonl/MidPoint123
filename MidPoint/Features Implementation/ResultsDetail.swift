@@ -8,14 +8,11 @@
 import Foundation
 import GooglePlaces
 class PlaceDetail : ObservableObject{
-    @Published var Name : String = "error"
-    @Published var PlaceID : String = "error"
-    @Published var PhoneNumber : String = "error"
-    @Published var FormattedAddress : String = "error"
+
     @Published var Rating : Float = 0.0
     @Published var PlaceDetailDictionary = [0 : [], 1 : []]
  
-    
+    @Published var miles : Double = 1
 
     let id = UUID()
 }

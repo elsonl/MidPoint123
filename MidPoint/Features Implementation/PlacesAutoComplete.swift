@@ -95,16 +95,17 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
                     self.parent.address1 =  place.name!
                     dMatrix.PlaceIDs[0] = place.placeID!
                     
-                    placeDetail.FormattedAddress = place.formattedAddress!
-                    placeDetail.Name = place.name!
-                    placeDetail.PlaceID = place.placeID!
+           
 //                    placeDetail.Rating = place.rating
-                    //                    placeDetail.PhoneNumber = place.phoneNumber!
+                   
                     
                     oneArray[0] = place.formattedAddress!
                     oneArray[1] = place.name!
                     oneArray[2] = place.placeID!
+                    if place.phoneNumber != nil{
                     oneArray[3] = place.phoneNumber!
+                    }
+                   
 
                     placeDetail.PlaceDetailDictionary[0] = oneArray
                     
@@ -123,16 +124,16 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
                     print("in AC below false")
                     print(geocoding.count)
                     
-                    placeDetail.FormattedAddress = place.formattedAddress!
-                    placeDetail.Name = place.name!
-                    placeDetail.PlaceID = place.placeID!
+      
 //                    placeDetail.Rating = place.rating
-                    //                    placeDetail.PhoneNumber = place.phoneNumber!
+
                     
                    twoArray[0] = place.formattedAddress!
                     twoArray[1] = place.name!
                     twoArray[2] = place.placeID!
+                    if place.phoneNumber != nil{
                     twoArray[3] = place.phoneNumber!
+                    }
                     
                     placeDetail.PlaceDetailDictionary[1] = twoArray
                     

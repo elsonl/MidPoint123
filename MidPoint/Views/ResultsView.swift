@@ -12,9 +12,9 @@ struct ResultsView: View {
     @EnvironmentObject var dMatrix : DistanceMatrix
     @EnvironmentObject var placeDetail : PlaceDetail
     var body: some View {
-        
-        var distance = dMatrix.responses2.rows.first?.elements.first?.distance.text!
-        var duration = dMatrix.responses2.rows.first?.elements.first?.duration.text!
+        let empty : [String] = ["nothing here!"]
+        var distance = dMatrix.responses2.rows.first?.elements.first?.distance.text! ?? "error"
+        var duration = dMatrix.responses2.rows.first?.elements.first?.duration.text! ?? "error"
         ZStack{
             Rectangle().foregroundColor(Color.gray).frame(width: 400, height: 225, alignment: .center).cornerRadius(35)
             ScrollView(.horizontal){
@@ -23,18 +23,14 @@ struct ResultsView: View {
                     ForEach(0..<10){i in
                         VStack{
                             
-                            Text(verbatim: "\(distance!)")
-                            Text(verbatim: "\(duration!)")
-                            Text(verbatim: "\(placeDetail.PlaceDetailDictionary[i]!)")
- 
+                            Text(verbatim: "\(distance)")
+                            Text(verbatim: "\(duration)")
+                            Text(verbatim: "\(placeDetail.PlaceDetailDictionary[i] ?? empty)")
+                            
                             
                         }.frame(width: 375, height: 200, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
-                        
-                        
-                        
-                        
+   
                     }
-                    
                 }
             }.frame(width: 375, height: 225, alignment: .center)
             
