@@ -121,8 +121,12 @@ struct ContentView: View {
                                     
                                     NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites)){
                                         Text("+Add")
-                                    }
-                                    .onDisappear(perform: {favorites.updateValue($favoritesAddress.wrappedValue, forKey: $favoritesName.wrappedValue)})
+                                    }.onDisappear(perform: {favorites.updateValue($favoritesAddress.wrappedValue, forKey: $favoritesName.wrappedValue)})
+                                    
+                                    
+                                    NavigationLink(destination: EmptyView(), label: {})
+                                    
+                                    
                                     
                                     
                                     
