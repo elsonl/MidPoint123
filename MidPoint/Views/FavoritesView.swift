@@ -8,23 +8,22 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @Binding var favoritesName : String
+    @Binding var favoritesAddress : String
+    @Binding var favorites : [String : String]
     var body: some View {
+        TextField("Name...", text: $favoritesName).foregroundColor(.black)
+        TextField("Location", text: $favoritesAddress).foregroundColor(.black)
+            
+            
+            
         
-        ZStack{
-            Rectangle().foregroundColor(Color.gray).frame(width: 400, height: 125, alignment: .center).cornerRadius(35)
-        ScrollView(.horizontal){
-            HStack(spacing : 15){
-        ForEach(0..<10){
-            Text("Item \($0)").frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.FavoritesBackground))
-        }
-            }
-        }.frame(width: 360, height: 100, alignment: .center)
+        
     }
-    }
+    
+    
 }
 
-struct FavoritesView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoritesView()
-    }
-}
+
+
+

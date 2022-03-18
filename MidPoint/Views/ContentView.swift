@@ -16,9 +16,14 @@ struct ContentView: View {
     @State var address2: String
     @State private var showsheet1 = false
     @State private var showsheet2 = false
+    @State var favorites : [String: String] = ["Test" : "", "Test2": "", "Test3": "" ] //name:address
+    @State var favoritesName : String = ""
+    @State var favoritesAddress : String = ""
+    @Binding var zoom : Zoom
     
 
     var body: some View {
+        
         
         NavigationView{
             ZStack{
@@ -78,24 +83,24 @@ struct ContentView: View {
                             showsheet2 = false
                             print("address2 committed")
                         }).foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
-                            .sheet(isPresented : $showsheet2, onDismiss: {
-                                if(address2 == ""){
-                                    print("address 2 empty, showsheet true")
-                                    showsheet2 = true
-                                } else {
-                                    geocoding.count = false
-                                    
-                                    print(geocoding.count)
-                                    print("in else")
-                                    
-                                    print("showsheet2false")
-                                    showsheet2 = false
-                                    geocoding.getData()
-                                   
-                                    
-                                }
-                            }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2)
-                                .environmentObject(geocoding) }}.frame(width: 375, alignment: .trailing)
+                        .sheet(isPresented : $showsheet2, onDismiss: {
+                            if(address2 == ""){
+                                print("address 2 empty, showsheet true")
+                                showsheet2 = true
+                            } else {
+                                geocoding.count = false
+                                
+                                print(geocoding.count)
+                                print("in else")
+                                
+                                print("showsheet2false")
+                                showsheet2 = false
+                                geocoding.getData()
+                                
+                                
+                            }
+                        }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2)
+                            .environmentObject(geocoding) }}.frame(width: 375, alignment: .trailing)
                     
                     Spacer().frame(height: 15)
                     
@@ -105,28 +110,47 @@ struct ContentView: View {
                         NavigationLink(destination : GMapsView()){
                             
                             Text("Search")
-                        
+                            
                         }
                     }).padding().background(Color.FavoritesBackground).clipShape(Capsule()).foregroundColor(.black)
                     
                     Spacer().frame(height: 25)
                     
-                    FavoritesView()
-                    
-                    
-                    
-                    
+                    ZStack{
+                        Rectangle().foregroundColor(Color.gray).frame(width: 400, height: 125, alignment: .center).cornerRadius(35)
+                        ScrollView(.horizontal){
+                            HStack(spacing : 15){
+                                Button(action: {print("button pressed")}, label: {
+                                    
+                                    
+                                    NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites)){
+                                        Text("+Add")
+                                    }
+                                    .onDisappear(perform: {favorites.updateValue($favoritesAddress.wrappedValue, forKey: $favoritesName.wrappedValue)})
+                                    
+                                    
+                                    
+                                })
+                                .background(Color.black)
+                                .clipShape(Capsule())
+                                .foregroundColor(.white)
+                                ForEach(favorites.keys.sorted(), id: \.self){
+                                    Text($0).frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
+                                }
+                                
+                                
+                                
+                                
+                                
+                            }
+                        }.ignoresSafeArea()
+                    }
+                    Slider(value: $zoom.currentZoom, in: 1...10).background(Color.orange)
                 }
-            }.ignoresSafeArea()
+            }
+            
         }
+        
     }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContentView(address1: "", address2: "")
-        }
-    }
-}
