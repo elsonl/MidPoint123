@@ -148,7 +148,7 @@ struct ContentView: View {
                                             }
                                             
                                             }, label: {
-                                        Text(String(key ?? "error"))
+                                                Text(String(key))
                                         
                                     }).frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
                                 }
