@@ -14,7 +14,10 @@ struct FavoritesView: View {
     var body: some View {
         TextField("Name...", text: $favoritesName).foregroundColor(.black)
         TextField("Location", text: $favoritesAddress).foregroundColor(.black)
+        Button(action: {favorites.updateValue(favoritesAddress, forKey: favoritesName)}, label: {Text("Add Favorite")})
+        Button(action: {print(favorites)}, label: {Text("print")})
             
+        
             
             
         

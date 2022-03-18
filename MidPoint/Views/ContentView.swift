@@ -19,8 +19,6 @@ struct ContentView: View {
     @State var favorites : [String: String] = [:] //name:address
     @State var favoritesName : String = ""
     @State var favoritesAddress : String = ""
-    @Binding var zoom : Zoom
-    
 
     var body: some View {
         
@@ -125,7 +123,7 @@ struct ContentView: View {
                                     
                                     NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites)){
                                         Text("+Add")
-                                    }.onDisappear(perform: {favorites.updateValue($favoritesAddress.wrappedValue, forKey: $favoritesName.wrappedValue)})
+                                    }.onDisappear(perform: {favorites.updateValue(favoritesAddress, forKey: favoritesName)})
                                     
                                     
                                     NavigationLink(destination: EmptyView()){
@@ -151,7 +149,7 @@ struct ContentView: View {
                             }
                         }.ignoresSafeArea()
                     }
-                    Slider(value: $zoom.currentZoom, in: 1...10).background(Color.orange)
+                    
                 }
             }
             
