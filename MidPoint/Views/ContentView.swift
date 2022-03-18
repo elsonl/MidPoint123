@@ -19,7 +19,6 @@ struct ContentView: View {
     @State var favorites : [String: String] = ["Test" : "", "Test2": "", "Test3": "" ] //name:address
     @State var favoritesName : String = ""
     @State var favoritesAddress : String = ""
-    @State private var showFavoriteSheet = false
     @Binding var zoom : Zoom
     
     var body: some View {
@@ -117,15 +116,14 @@ struct ContentView: View {
                         Rectangle().foregroundColor(Color.gray).frame(width: 400, height: 125, alignment: .center).cornerRadius(35)
                         ScrollView(.horizontal){
                             HStack(spacing : 15){
-                                Button(action: {}, label: {
+                                Button(action: {print("button pressed")}, label: {
                                     
-                                    Text("+Add")
-                                    NavigationView{
-                                        NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites)){
-                                            
-                                        }
-                                        .onDisappear(perform: {favorites.updateValue($favoritesAddress.wrappedValue, forKey: $favoritesName.wrappedValue)})
-                                    }.navigationViewStyle(StackNavigationViewStyle())
+                                    
+                                    NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites)){
+                                        Text("+Add")
+                                    }
+                                    .onDisappear(perform: {favorites.updateValue($favoritesAddress.wrappedValue, forKey: $favoritesName.wrappedValue)})
+                                    
                                     
                                     
                                 })
