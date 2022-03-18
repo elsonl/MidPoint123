@@ -16,7 +16,7 @@ struct ContentView: View {
     @State var address2: String
     @State private var showsheet1 = false
     @State private var showsheet2 = false
-    @State var favorites : [String: String] = ["Test" : "", "Test2": "", "Test3": "" ] //name:address
+    @State var favorites : [String: String] = [:] //name:address
     @State var favoritesName : String = ""
     @State var favoritesAddress : String = ""
     @Binding var zoom : Zoom
@@ -128,7 +128,9 @@ struct ContentView: View {
                                     }.onDisappear(perform: {favorites.updateValue($favoritesAddress.wrappedValue, forKey: $favoritesName.wrappedValue)})
                                     
                                     
-                                    NavigationLink(destination: EmptyView(), label: {})
+                                    NavigationLink(destination: EmptyView()){
+                                        EmptyView()
+                                    }
                                     
                                     
                                     
