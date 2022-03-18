@@ -139,7 +139,18 @@ struct ContentView: View {
                                 .clipShape(Capsule())
                                 .foregroundColor(.white)
                                 ForEach(favorites.keys.sorted(), id: \.self){
-                                    Text($0).frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
+                                    key in
+                                    Button(action: {
+                                        if(address1 == ""){
+                                            address1=String(favorites[key] ?? "error")
+                                            }else{
+                                                address2=String(favorites[key] ?? "error")
+                                            }
+                                            
+                                            }, label: {
+                                        Text(String(key ?? "error"))
+                                        
+                                    }).frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
                                 }
                                 
                                 
