@@ -17,6 +17,7 @@ class Geocoding : ObservableObject{
     @Published var responses = Response()
     @Published var placeIDThing : String
     @Published var count : Bool
+    @Published var favoritesCount = false
     @Published var coordinates : (Double?, Double?, Double?, Double?) = (0,0,0.5,0.5)
     var placeId = "ChIJeRpOeF67j4AR9ydy_PIzPuM"
     

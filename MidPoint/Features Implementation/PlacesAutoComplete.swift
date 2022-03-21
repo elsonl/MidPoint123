@@ -19,10 +19,13 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     @Binding var address1 : String
     @Binding var address2 : String
+    @Binding var favoritesAddress : String
+
+    
     
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, geocoding : geocoding, dMatrix: dMatrix, address1: $address1, address2: $address2, placeDetail: placeDetail, oneArray : ["","","",""], twoArray: ["","","",""])
+        Coordinator(self, geocoding : geocoding, dMatrix: dMatrix, address1: $address1, address2: $address2, placeDetail: placeDetail, oneArray : ["","","",""], twoArray: ["","","",""], favoritesAddress: $favoritesAddress)
         
     }
     
@@ -60,6 +63,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     class Coordinator: NSObject, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate, ObservableObject {
         @Binding var address1 : String
         @Binding var address2 : String
+        @Binding var favoritesAddress : String
         var geocoding : Geocoding
         var dMatrix : DistanceMatrix
         var parent: PlacesAutoComplete
@@ -67,7 +71,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
         var oneArray : [String]
         var twoArray : [String]
         
-        init(_ parent: PlacesAutoComplete, geocoding : Geocoding, dMatrix : DistanceMatrix, address1 : Binding<String>, address2 : Binding<String>, placeDetail : PlaceDetail, oneArray : [String] , twoArray : [String] ){
+        init(_ parent: PlacesAutoComplete, geocoding : Geocoding, dMatrix : DistanceMatrix, address1 : Binding<String>, address2 : Binding<String>, placeDetail : PlaceDetail, oneArray : [String] , twoArray : [String], favoritesAddress: Binding<String> ){
             self.parent = parent
             self.geocoding = geocoding
             self.dMatrix = dMatrix
@@ -76,6 +80,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
             self.placeDetail = placeDetail
             self.oneArray = oneArray
             self.twoArray = twoArray
+            self._favoritesAddress = favoritesAddress
             
         }
         
@@ -85,6 +90,9 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
             DispatchQueue.main.async { [self] in
                 
                 print(place.description.description as Any)
+                if geocoding.favoritesCount == true{
+                    self.parent.favoritesAddress =  place.formattedAddress!
+                }
                 if geocoding.count == true{
                     
                     geocoding.count = true

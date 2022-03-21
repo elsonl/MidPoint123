@@ -62,7 +62,7 @@ struct ContentView: View {
                                     geocoding.getData()
                                     
                                 }
-                            }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2)
+                            }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
                                 .environmentObject(geocoding) }
                     }.frame(width: 375, alignment: .trailing)
                     
@@ -97,7 +97,7 @@ struct ContentView: View {
                                 
                                 
                             }
-                        }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2)
+                        }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
                             .environmentObject(geocoding) }}.frame(width: 375, alignment: .trailing)
                     
                     Spacer().frame(height: 15)
@@ -121,7 +121,7 @@ struct ContentView: View {
                                 Button(action: {print("button pressed")}, label: {
                                     
                                     
-                                    NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites)){
+                                    NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2)){
                                         Text("+Add")
                                     }.onDisappear(perform: {favorites.updateValue(favoritesAddress, forKey: favoritesName)})
                                     
@@ -158,11 +158,11 @@ struct ContentView: View {
                                 
                                 
                             }
-                        }.ignoresSafeArea()
+                        }
                     }
                     
                 }
-            }
+            }.ignoresSafeArea()
             
         }
         
