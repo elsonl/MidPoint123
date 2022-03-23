@@ -16,6 +16,7 @@ struct FavoritesView: View {
     @Binding var favorites : [String : String]
     @Binding var address1 : String
     @Binding var address2 : String
+    @Binding var favoritesOpen : Bool
     var body: some View {
         TextField("Name...", text: $favoritesName).foregroundColor(.black)
         
@@ -44,19 +45,19 @@ struct FavoritesView: View {
                     .environmentObject(geocoding) }
         }.frame(width: 375, alignment: .trailing)
         
-        Button(action: {favorites.updateValue(favoritesAddress, forKey: favoritesName)}, label: {Text("Add Favorite")})
+        Button(action: {favorites.updateValue(favoritesAddress, forKey: favoritesName); favoritesOpen.toggle()}, label: {Text("Add Favorite")})
         Button(action: {print(favorites)}, label: {Text("print")})
 
 
             
             
         
-        
+        .navigationBarBackButtonHidden(true)
     }
+
     
     
 }
-
 
 
 

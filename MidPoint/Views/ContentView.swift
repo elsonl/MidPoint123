@@ -19,7 +19,8 @@ struct ContentView: View {
     @State var favorites : [String: String] = [:] //name:address
     @State var favoritesName : String = ""
     @State var favoritesAddress : String = ""
-
+    @State var favoritesOpen : Bool = false
+    
     var body: some View {
         
         
@@ -33,7 +34,7 @@ struct ContentView: View {
                     
                     HStack{
                         Image(systemName: "magnifyingglass")
-                            
+                        
                         TextField("Location 1 ...", text: $address1,onEditingChanged: { _ in
                             geocoding.count = true
                             print("1, count true")
@@ -45,25 +46,25 @@ struct ContentView: View {
                             showsheet1 = false
                             print("address1 committed")
                         })
-                            .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
-                            .sheet(isPresented : $showsheet1, onDismiss: {
+                        .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
+                        .sheet(isPresented : $showsheet1, onDismiss: {
+                            
+                            if(address1 == ""){
+                                print("address 1 empty, showsheet true")
+                                showsheet1 = true
+                            } else {
+                                geocoding.count = true
                                 
-                                if(address1 == ""){
-                                    print("address 1 empty, showsheet true")
-                                    showsheet1 = true
-                                } else {
-                                    geocoding.count = true
-                                    
-                                    print(geocoding.count)
-                                    print("in else")
-                                    
-                                    print("showsheet1false")
-                                    showsheet1 = false
-                                    geocoding.getData()
-                                    
-                                }
-                            }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
-                                .environmentObject(geocoding) }
+                                print(geocoding.count)
+                                print("in else")
+                                
+                                print("showsheet1false")
+                                showsheet1 = false
+                                geocoding.getData()
+                                
+                            }
+                        }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
+                            .environmentObject(geocoding) }
                     }.frame(width: 375, alignment: .trailing)
                     
                     Spacer().frame(height: 25)
@@ -103,7 +104,7 @@ struct ContentView: View {
                     Spacer().frame(height: 15)
                     
                     Button(action : {
-                      
+                        
                     }, label: {
                         NavigationLink(destination : GMapsView()){
                             
@@ -121,9 +122,20 @@ struct ContentView: View {
                                 Button(action: {print("button pressed")}, label: {
                                     
                                     
-                                    NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2)){
-                                        Text("+Add")
-                                    }.onDisappear(perform: {favorites.updateValue(favoritesAddress, forKey: favoritesName)})
+                                    
+                                    
+                                    
+                                    NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2, favoritesOpen: $favoritesOpen), isActive: $favoritesOpen, label: {
+                                        
+                                        Button(action: {favoritesOpen=true}, label: {Text("Add/Edit Favorites")})
+                                        
+                                        
+                                        
+                                    }).onDisappear(perform: {favorites.updateValue(favoritesAddress, forKey: favoritesName)})
+                                    
+                                    
+                                    
+                                    
                                     
                                     
                                     NavigationLink(destination: EmptyView()){
@@ -143,12 +155,12 @@ struct ContentView: View {
                                     Button(action: {
                                         if(address1 == ""){
                                             address1=String(favorites[key] ?? "error")
-                                            }else{
-                                                address2=String(favorites[key] ?? "error")
-                                            }
-                                            
-                                            }, label: {
-                                                Text(String(key))
+                                        }else{
+                                            address2=String(favorites[key] ?? "error")
+                                        }
+                                        
+                                    }, label: {
+                                        Text(String(key))
                                         
                                     }).frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
                                 }
