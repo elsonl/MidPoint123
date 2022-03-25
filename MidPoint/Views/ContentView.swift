@@ -30,8 +30,7 @@ struct ContentView: View {
                 VStack{
                     Text("Enter Locations Below")
                         .foregroundColor(Color.TextFieldText)
-                    
-                    
+                    //Address1
                     HStack{
                         Image(systemName: "magnifyingglass")
                         
@@ -68,7 +67,8 @@ struct ContentView: View {
                     }.frame(width: 375, alignment: .trailing)
                     
                     Spacer().frame(height: 25)
-                    
+                   
+                    //Address 2
                     HStack {
                         Image(systemName: "magnifyingglass")
                         TextField("Location 2 ...", text: $address2,onEditingChanged: { _ in
@@ -103,6 +103,8 @@ struct ContentView: View {
                     
                     Spacer().frame(height: 15)
                     
+                    //Search Button
+                    
                     Button(action : {
                         
                     }, label: {
@@ -115,69 +117,39 @@ struct ContentView: View {
                     
                     Spacer().frame(height: 25)
                     
+                    //
+                    //Favorites
+                    
                     ZStack{
                         Rectangle().foregroundColor(Color.gray).frame(width: 400, height: 125, alignment: .center).cornerRadius(35)
                         ScrollView(.horizontal){
                             HStack(spacing : 15){
                                 Button(action: {print("button pressed")}, label: {
                                     
-                                    
-                                    
-                                    
-                                    
                                     NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2, favoritesOpen: $favoritesOpen), isActive: $favoritesOpen, label: {
                                         
                                         Button(action: {favoritesOpen=true}, label: {Text("Add/Edit Favorites")})
                                         
-                                        
-                                        
                                     }).onDisappear(perform: {favorites.updateValue(favoritesAddress, forKey: favoritesName)})
-                                    
-                                    
-                                    
-                                    
-                                    
                                     
                                     NavigationLink(destination: EmptyView()){
                                         EmptyView()
                                     }
-                                    
-                                    
-                                    
-                                    
-                                    
                                 })
                                 .background(Color.black)
                                 .clipShape(Capsule())
                                 .foregroundColor(.white)
                                 ForEach(favorites.keys.sorted(), id: \.self){
-                                    key in
-                                    Button(action: {
-                                        if(address1 == ""){
-                                            address1=String(favorites[key] ?? "error")
-                                        }else{
-                                            address2=String(favorites[key] ?? "error")
-                                        }
-                                        
-                                    }, label: {
-                                        Text(String(key))
-                                        
-                                    }).frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
-                                }
-                                
-                                
-                                
-                                
+                                    Text($0)
+                                }.frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
                                 
                             }
                         }
                     }
-                    
+                    //
                 }
             }.ignoresSafeArea()
-            
         }
-        
     }
 }
 

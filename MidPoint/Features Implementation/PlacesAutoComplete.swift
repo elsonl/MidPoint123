@@ -93,7 +93,8 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
                 if geocoding.favoritesCount == true{
                     self.parent.favoritesAddress =  place.formattedAddress!
                 }
-                if geocoding.count == true{
+                if (geocoding.favoritesCount == false) {
+                    if geocoding.count == true{
                     
                     geocoding.count = true
                     print("in AC below true")
@@ -155,7 +156,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
                         dMatrix.getData2()
                         
                     }
-                    
+                    }
                     
                 }
                 self.parent.presentationMode.wrappedValue.dismiss()
