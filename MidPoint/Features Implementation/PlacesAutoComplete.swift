@@ -10,7 +10,6 @@ import UIKit
 import SwiftUI
 import GooglePlaces
 
-
 struct PlacesAutoComplete: UIViewControllerRepresentable {
     
     @EnvironmentObject var geocoding : Geocoding
@@ -25,7 +24,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, geocoding : geocoding, dMatrix: dMatrix, address1: $address1, address2: $address2, placeDetail: placeDetail, oneArray : ["","","",""], twoArray: ["","","",""], favoritesAddress: $favoritesAddress)
+        Coordinator(self, geocoding : geocoding, dMatrix: dMatrix, address1: $address1, address2: $address2, placeDetail: placeDetail, oneArray : ["","","","","","","","","",""], twoArray: ["","","","","","","","","",""], favoritesAddress: $favoritesAddress)
         
     }
     
@@ -49,6 +48,8 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
         autocompleteController.placeFields = fields
         
         let filter = GMSAutocompleteFilter()
+        
+        print(autocompleteController)
         
         autocompleteController.autocompleteFilter = filter
         return autocompleteController
@@ -170,7 +171,9 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
         
         func wasCancelled(_ viewController: GMSAutocompleteViewController) {
             parent.presentationMode.wrappedValue.dismiss()
+            
         }
         
     }
 }
+

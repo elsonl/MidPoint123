@@ -13,7 +13,8 @@ class PlaceDetail : ObservableObject{
     @Published var PlaceDetailDictionary = [0 : [], 1 : []]
  
     @Published var miles : Double = 1
-
+    @Published var mile : Double = 1
+    
     let id = UUID()
 }
 

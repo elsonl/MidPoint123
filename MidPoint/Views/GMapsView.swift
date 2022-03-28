@@ -38,9 +38,15 @@ struct GMapsView: View {
                         
                         if visibleSlider {
                             VStack{
-                                Slider(value: $placeDetail.miles, in: 0...10)
+                                Slider(value: $placeDetail.mile, in: 0...10)
                                 
-                                Text("\(placeDetail.miles, specifier: "%.2f") Mile Radius")
+                                
+                                Text("\(placeDetail.mile, specifier: "%.2f") Mile Radius")
+                                
+                                Button("Confirm") {
+                                    placeDetail.miles = placeDetail.mile
+
+                                }
                             }
                         } else {
                             Text("")

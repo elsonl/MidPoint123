@@ -5,6 +5,7 @@
 //  Created by Elson Lin (student LM) on 2/23/22.
 //
 
+
 import MapKit
 import SwiftUI
 import UIKit
@@ -28,7 +29,7 @@ struct GoogleMapsView: UIViewRepresentable{
         mapView.settings.scrollGestures = true
         mapView.settings.zoomGestures = true
         mapView.settings.myLocationButton = true
-        
+    
         return mapView
     }
     
@@ -66,6 +67,7 @@ struct GoogleMapsView: UIViewRepresentable{
         circ.fillColor = UIColor(red: 0.0, green: 0.7, blue: 0, alpha: 0.1)
         circ.strokeColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 0.5)
         circ.strokeWidth = 2.5
+        
         circ.map = mapView
         
         // updates the view so that both markers are always visible at the same time
