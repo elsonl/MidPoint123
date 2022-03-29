@@ -23,6 +23,7 @@
 		F042304F27C730C600D90247 /* Geocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042304E27C730C600D90247 /* Geocoding.swift */; };
 		F066726027DA6A4800AE3790 /* DistanceMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */; };
 		F066726227DA6F0F00AE3790 /* GMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F066726127DA6F0F00AE3790 /* GMapsView.swift */; };
+		F0F6F1C827F363BE00E3F465 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6F1C727F363BE00E3F465 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		F042304E27C730C600D90247 /* Geocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoding.swift; sourceTree = "<group>"; };
 		F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMatrix.swift; sourceTree = "<group>"; };
 		F066726127DA6F0F00AE3790 /* GMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMapsView.swift; sourceTree = "<group>"; };
+		F0F6F1C727F363BE00E3F465 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				F042304C27C6AECD00D90247 /* GoogleMapsView.swift */,
+				F0F6F1C727F363BE00E3F465 /* LocationManager.swift */,
 				F042304E27C730C600D90247 /* Geocoding.swift */,
 				F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */,
 				F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */,
@@ -386,6 +389,7 @@
 				F042304F27C730C600D90247 /* Geocoding.swift in Sources */,
 				F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */,
 				F066726227DA6F0F00AE3790 /* GMapsView.swift in Sources */,
+				F0F6F1C827F363BE00E3F465 /* LocationManager.swift in Sources */,
 				8659D30027DD52F2006F99B2 /* ResultsDetail.swift in Sources */,
 				F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */,
 				F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */,
