@@ -28,6 +28,7 @@ struct ContentView: View {
             ZStack{
                 Color.BackgroundColor
                 VStack{
+                   
                     Text("Enter Locations Below")
                         .foregroundColor(Color.TextFieldText)
                     //Address1
@@ -46,6 +47,7 @@ struct ContentView: View {
                             print("address1 committed")
                         })
                         .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
+                        
                         .sheet(isPresented : $showsheet1, onDismiss: {
                             
                             if(address1 == ""){
@@ -66,8 +68,7 @@ struct ContentView: View {
                             .environmentObject(geocoding) }
                     }.frame(width: 375, alignment: .trailing)
                     
-                    Spacer().frame(height: 25)
-                   
+                    
                     //Address 2
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -115,34 +116,47 @@ struct ContentView: View {
                         }
                     }).padding().background(Color.FavoritesBackground).clipShape(Capsule()).foregroundColor(.black)
                     
-                    Spacer().frame(height: 25)
+                    Spacer().frame(height: 35)
                     
                     //
                     //Favorites
                     
                     ZStack{
                         Rectangle().foregroundColor(Color.gray).frame(width: 400, height: 125, alignment: .center).cornerRadius(35)
-                        ScrollView(.horizontal){
-                            HStack(spacing : 15){
-                                Button(action: {print("button pressed")}, label: {
-                                    
-                                    NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2, favoritesOpen: $favoritesOpen), isActive: $favoritesOpen, label: {
+                        VStack{
+                            Text("Favorites")
+                            Spacer().frame(height: 25)
+                            ScrollView(.horizontal){
+                                HStack(spacing : 15){
+                                    Button(action: {print("button pressed")}, label: {
                                         
-                                        Button(action: {favoritesOpen=true}, label: {Text("Add/Edit Favorites")})
+                                        NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2, favoritesOpen: $favoritesOpen), isActive: $favoritesOpen, label: {
+                                            
+                                            Button(action: {favoritesOpen=true}, label: {
+                                                VStack{
+                                                    Text("Add/Edit")
+                                                    Text("Favorites")
+                                                }
+                                                
+                                            })
+                                            
+                                        }).onDisappear(perform: {favorites.updateValue(favoritesAddress, forKey: favoritesName)})
                                         
-                                    }).onDisappear(perform: {favorites.updateValue(favoritesAddress, forKey: favoritesName)})
+                                        NavigationLink(destination: EmptyView()){
+                                            EmptyView()
+                                        }
+                                    })
+                                    .background(Color.black)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .frame(width: 150, height: 150, alignment: .center)
                                     
-                                    NavigationLink(destination: EmptyView()){
-                                        EmptyView()
-                                    }
-                                })
-                                .background(Color.black)
-                                .clipShape(Capsule())
-                                .foregroundColor(.white)
-                                ForEach(favorites.keys.sorted(), id: \.self){
-                                    Text($0)
-                                }.frame(width: 110, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
-                                
+                                    ForEach(favorites.keys.sorted(), id: \.self){
+                                        Text($0)
+                                    }.frame(width: 100, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
+                                    
+                                }
                             }
                         }
                     }
