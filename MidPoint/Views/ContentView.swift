@@ -46,26 +46,26 @@ struct ContentView: View {
                             showsheet1 = false
                             print("address1 committed")
                         })
-                        .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
+                            .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
                         
-                        .sheet(isPresented : $showsheet1, onDismiss: {
-                            
-                            if(address1 == ""){
-                                print("address 1 empty, showsheet true")
-                                showsheet1 = true
-                            } else {
-                                geocoding.count = true
+                            .sheet(isPresented : $showsheet1, onDismiss: {
                                 
-                                print(geocoding.count)
-                                print("in else")
-                                
-                                print("showsheet1false")
-                                showsheet1 = false
-                                geocoding.getData()
-                                
-                            }
-                        }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
-                            .environmentObject(geocoding) }
+                                if(address1 == ""){
+                                    print("address 1 empty, showsheet true")
+                                    showsheet1 = true
+                                } else {
+                                    geocoding.count = true
+                                    
+                                    print(geocoding.count)
+                                    print("in else")
+                                    
+                                    print("showsheet1false")
+                                    showsheet1 = false
+                                    geocoding.getData()
+                                    
+                                }
+                            }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
+                                .environmentObject(geocoding) }
                     }.frame(width: 375, alignment: .trailing)
                     
                     
@@ -83,24 +83,24 @@ struct ContentView: View {
                             showsheet2 = false
                             print("address2 committed")
                         }).foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
-                        .sheet(isPresented : $showsheet2, onDismiss: {
-                            if(address2 == ""){
-                                print("address 2 empty, showsheet true")
-                                showsheet2 = true
-                            } else {
-                                geocoding.count = false
-                                
-                                print(geocoding.count)
-                                print("in else")
-                                
-                                print("showsheet2false")
-                                showsheet2 = false
-                                geocoding.getData()
-                                
-                                
-                            }
-                        }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
-                            .environmentObject(geocoding) }}.frame(width: 375, alignment: .trailing)
+                            .sheet(isPresented : $showsheet2, onDismiss: {
+                                if(address2 == ""){
+                                    print("address 2 empty, showsheet true")
+                                    showsheet2 = true
+                                } else {
+                                    geocoding.count = false
+                                    
+                                    print(geocoding.count)
+                                    print("in else")
+                                    
+                                    print("showsheet2false")
+                                    showsheet2 = false
+                                    geocoding.getData()
+                                    
+                                    
+                                }
+                            }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
+                                .environmentObject(geocoding) }}.frame(width: 375, alignment: .trailing)
                     
                     Spacer().frame(height: 15)
                     
@@ -120,25 +120,28 @@ struct ContentView: View {
                     
                     //
                     //Favorites
-                    
+                    Text("Favorites")
                     ZStack{
-                        Rectangle().foregroundColor(Color.gray).frame(width: 400, height: 125, alignment: .center).cornerRadius(35)
+                        //Grey Background
+                        Rectangle().foregroundColor(Color.gray).frame(width: 350, height: 125, alignment: .center).cornerRadius(35).padding()
                         VStack{
-                            Text("Favorites")
-                            Spacer().frame(height: 25)
+    
                             ScrollView(.horizontal){
+                                
                                 HStack(spacing : 15){
+                                    //Add/Edit Favorites
                                     Button(action: {print("button pressed")}, label: {
                                         
                                         NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2, favoritesOpen: $favoritesOpen), isActive: $favoritesOpen, label: {
                                             
                                             Button(action: {favoritesOpen=true}, label: {
                                                 VStack{
-                                                    Text("Add/Edit")
-                                                    Text("Favorites")
+                                                    //Text Inside
+                                                    Text("Add/Edit").padding([.top, .horizontal])
+                                                    Text("Favorites").padding([.bottom, .horizontal])
                                                 }
                                                 
-                                            })
+                                            }).frame(width: 120, height: 100, alignment: .center)
                                             
                                         }).onDisappear(perform: {favorites.updateValue(favoritesAddress, forKey: favoritesName)})
                                         
@@ -146,18 +149,19 @@ struct ContentView: View {
                                             EmptyView()
                                         }
                                     })
-                                    .background(Color.black)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(width: 150, height: 150, alignment: .center)
+                                        .background(Color.black)
+                                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                                        .foregroundColor(.white)
                                     
+                                        .frame(width: 150, height: 150, alignment: .center)
+                                    
+                                    //Red Favorites
                                     ForEach(favorites.keys.sorted(), id: \.self){
                                         Text($0)
-                                    }.frame(width: 100, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.red))
+                                    }.frame(width: 100, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.FavoritesItems)).padding()
                                     
                                 }
-                            }
+                            }.padding().frame(width: 350, height: 125, alignment: .center)
                         }
                     }
                     //
