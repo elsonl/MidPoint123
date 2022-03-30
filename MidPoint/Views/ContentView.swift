@@ -28,7 +28,7 @@ struct ContentView: View {
             ZStack{
                 Color.BackgroundColor
                 VStack{
-                   
+                    
                     Text("Enter Locations Below")
                         .foregroundColor(Color.TextFieldText)
                     //Address1
@@ -163,6 +163,11 @@ struct ContentView: View {
                     //
                 }
             }.ignoresSafeArea()
+        }
+    }
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView(address1: "", address2: "")
         }
     }
 }
