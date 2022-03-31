@@ -16,7 +16,7 @@ struct ContentView: View {
     @State var address2: String
     @State private var showsheet1 = false
     @State private var showsheet2 = false
-    @State var favorites : [String: String] = [:] //name:address
+    @State var favorites : [String: String] = ["325231552135":"" , "123512351235":""] //name:address
     @State var favoritesName : String = ""
     @State var favoritesAddress : String = ""
     @State var favoritesOpen : Bool = false
@@ -28,9 +28,13 @@ struct ContentView: View {
             ZStack{
                 Color.BackgroundColor
                 VStack{
-                    
-                    Text("Enter Locations Below")
+                    Image("InAppIcon")
+                    Text("MidPoint")
+                    //No Space Here, no time to fix
+                    Text("Enter Locations Below")//.font(<#T##font: Font?##Font?#>)
                         .foregroundColor(Color.TextFieldText)
+                        .padding()
+                    
                     //Address1
                     HStack{
                         Image(systemName: "magnifyingglass")
@@ -123,9 +127,9 @@ struct ContentView: View {
                     Text("Favorites")
                     ZStack{
                         //Grey Background
-                        Rectangle().foregroundColor(Color.gray).frame(width: 350, height: 125, alignment: .center).cornerRadius(35).padding()
+                        Rectangle().foregroundColor(Color.gray).frame(width: 350, height: 140, alignment: .center).cornerRadius(35).padding()
                         VStack{
-    
+                            
                             ScrollView(.horizontal){
                                 
                                 HStack(spacing : 15){
@@ -143,7 +147,14 @@ struct ContentView: View {
                                                 
                                             }).frame(width: 120, height: 100, alignment: .center)
                                             
-                                        }).onDisappear(perform: {favorites.updateValue(favoritesAddress, forKey: favoritesName)})
+                                        }).onDisappear(perform:{
+                                            
+                                            favorites.updateValue(favoritesAddress, forKey: favoritesName)
+                                            
+                                            
+                                            
+                                            
+                                        })
                                         
                                         NavigationLink(destination: EmptyView()){
                                             EmptyView()
@@ -152,16 +163,18 @@ struct ContentView: View {
                                         .background(Color.black)
                                         .clipShape(RoundedRectangle(cornerRadius: 20))
                                         .foregroundColor(.white)
-                                    
-                                        .frame(width: 150, height: 150, alignment: .center)
-                                    
+                                        .frame(width: 100, height: 100, alignment: .center)
+                                        .padding(.trailing, 9)
+                                        .padding(.leading, 15)
                                     //Red Favorites
                                     ForEach(favorites.keys.sorted(), id: \.self){
                                         Text($0)
-                                    }.frame(width: 100, height: 100, alignment: .center).background(RoundedRectangle(cornerRadius: 20).foregroundColor(.FavoritesItems)).padding()
+                                    }.frame(width: 100, height: 100, alignment: .center)
+                                        .background(RoundedRectangle(cornerRadius: 20).foregroundColor(.FavoritesItems))
+                                       
                                     
                                 }
-                            }.padding().frame(width: 350, height: 125, alignment: .center)
+                            }.padding().frame(width: 381, height: 125, alignment: .center)
                         }
                     }
                     //

@@ -45,7 +45,7 @@ struct FavoritesView: View {
                     .environmentObject(geocoding) }
         }.frame(width: 375, alignment: .trailing)
         
-        Button(action: {favorites.updateValue(favoritesAddress, forKey: favoritesName); favoritesOpen.toggle()}, label: {Text("Add Favorite")})
+        Button(action: {favorites.updateValue(favoritesAddress, forKey: favoritesName); favoritesOpen.toggle(); favorites.removeValue(forKey: ""); favoritesAddress=""; favoritesName=""}, label: {Text("Add Favorite")})
         Button(action: {print(favorites)}, label: {Text("print")})
 
 
