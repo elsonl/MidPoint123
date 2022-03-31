@@ -15,6 +15,9 @@ import GooglePlaces
 struct GoogleMapsView: UIViewRepresentable{
     @EnvironmentObject var geocoding : Geocoding
     @EnvironmentObject var placeDetail : PlaceDetail
+    @EnvironmentObject var nearbySearch : NearbySearch
+//    @ObservedObject var placesManager = PlacesManager(Latitudes: [], Longitudes: [], Names: [], PlaceIDs: [])
+    @EnvironmentObject var placesManager : PlacesManager
     let marker : GMSMarker = GMSMarker()
     let marker2 : GMSMarker = GMSMarker()
     let midpointMarker : GMSMarker = GMSMarker()
@@ -29,7 +32,54 @@ struct GoogleMapsView: UIViewRepresentable{
         mapView.settings.scrollGestures = true
         mapView.settings.zoomGestures = true
         mapView.settings.myLocationButton = true
-    
+        
+        
+//        place.currentPlacesList(completion: { placeLikelihoodList in
+//                if let placeLikelihoodList = placeLikelihoodList {
+//                    print("total places: \(placeLikelihoodList.count)")
+//
+//                    for likelihood in placeLikelihoodList {
+//                        let place = likelihood.place
+//                        let position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+//                        let marker = GMSMarker(position: position)
+//                        marker.title = place.name
+//                        marker.map = mapView
+//                    }
+//                }
+//            })
+       
+        
+
+        nearbySearch.coordinatesNS.0 = geocoding.coordinates.0
+        nearbySearch.coordinatesNS.1 = geocoding.coordinates.1
+        nearbySearch.coordinatesNS.2 = geocoding.coordinates.2
+        nearbySearch.coordinatesNS.3 = geocoding.coordinates.3
+//        nearbySearch.getData()
+        
+        
+       
+        
+        
+        print(nearbySearch.responses3.results)
+        
+        
+//        nearbySearch.responses3.results.first?.name != nil
+        
+        if true{
+        placesManager.getCoords()
+        for count in placesManager.Names.indices{
+            let placeName = placesManager.Names[count]
+            let placeID = placesManager.PlaceIDs[count]
+            let position = CLLocationCoordinate2D(latitude: placesManager.Latitudes[count], longitude: placesManager.Longitudes[count])
+       let loopMarkers = GMSMarker(position: position)
+            loopMarkers.title = placeName
+            loopMarkers.userData = placeID
+            loopMarkers.map = mapView
+           
+        }
+        }else {
+            print("invalid 111")
+        }
         return mapView
     }
     
@@ -45,6 +95,8 @@ struct GoogleMapsView: UIViewRepresentable{
         marker.title = "Location 1"
         marker.snippet = "Marker 1"
         marker.map = mapView
+        
+        
         
         // makes second marker taht displays second location in green
         marker2.icon = GMSMarker.markerImage(with : UIColor.green)
@@ -70,6 +122,10 @@ struct GoogleMapsView: UIViewRepresentable{
         
         circ.map = mapView
         
+        
+        
+        
+        
         // updates the view so that both markers are always visible at the same time
         let marker1 = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
         let marker2 = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
@@ -79,4 +135,16 @@ struct GoogleMapsView: UIViewRepresentable{
         mapView.moveCamera(update)
         
     }
+}
+class GoogleMapsDelegate : NSObject, ObservableObject, GMSMapViewDelegate{
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+        if marker.userData == nil {
+            return false
+        }
+        
+        return true
+    }
+    
 }

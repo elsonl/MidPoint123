@@ -20,7 +20,7 @@ struct ContentView: View {
     @State var favoritesName : String = ""
     @State var favoritesAddress : String = ""
     
-    @EnvironmentObject var locationManager : LocationManager
+//    @EnvironmentObject var locationManager : LocationManager
 
     var body: some View {
         
@@ -29,20 +29,7 @@ struct ContentView: View {
             ZStack{
                 Color.BackgroundColor
                 VStack{
-                 
-                              if let location = locationManager.location {
-                                  Text("Your location: \(location.latitude), \(location.longitude)")
-                              }
-
-                             Button(" BUTTON"){
-                                  locationManager.requestLocation()
-                              }
-                              .frame(height: 44)
-                              .padding()
-                          
-                    
-                    
-                    Text("Enter Locations Below")
+     Text("Enter Locations Below")
                         .foregroundColor(Color.TextFieldText)
                     
                     
@@ -126,6 +113,8 @@ struct ContentView: View {
                             
                         }
                     }).padding().background(Color.FavoritesBackground).clipShape(Capsule()).foregroundColor(.black)
+                    
+                    
                     
                     Spacer().frame(height: 25)
                     
