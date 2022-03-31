@@ -114,8 +114,6 @@ struct ContentView: View {
                         }
                     }).padding().background(Color.FavoritesBackground).clipShape(Capsule()).foregroundColor(.black)
                     
-                    
-                    
                     Spacer().frame(height: 25)
                     
                     ZStack{

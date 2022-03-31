@@ -16,8 +16,8 @@ struct GoogleMapsView: UIViewRepresentable{
     @EnvironmentObject var geocoding : Geocoding
     @EnvironmentObject var placeDetail : PlaceDetail
     @EnvironmentObject var nearbySearch : NearbySearch
-//    @ObservedObject var placesManager = PlacesManager(Latitudes: [], Longitudes: [], Names: [], PlaceIDs: [])
     @EnvironmentObject var placesManager : PlacesManager
+    
     let marker : GMSMarker = GMSMarker()
     let marker2 : GMSMarker = GMSMarker()
     let midpointMarker : GMSMarker = GMSMarker()
@@ -49,14 +49,17 @@ struct GoogleMapsView: UIViewRepresentable{
 //            })
        
         
-
+        
         nearbySearch.coordinatesNS.0 = geocoding.coordinates.0
         nearbySearch.coordinatesNS.1 = geocoding.coordinates.1
         nearbySearch.coordinatesNS.2 = geocoding.coordinates.2
         nearbySearch.coordinatesNS.3 = geocoding.coordinates.3
-//        nearbySearch.getData()
+        
+        placesManager.nearbySearch = nearbySearch
+        nearbySearch.getData()
         
         
+        placesManager.nearbySearch = nearbySearch
        
         
         
@@ -66,6 +69,7 @@ struct GoogleMapsView: UIViewRepresentable{
 //        nearbySearch.responses3.results.first?.name != nil
         
         if true{
+            placesManager.nearbySearch = nearbySearch
         placesManager.getCoords()
         for count in placesManager.Names.indices{
             let placeName = placesManager.Names[count]
@@ -143,7 +147,7 @@ class GoogleMapsDelegate : NSObject, ObservableObject, GMSMapViewDelegate{
         if marker.userData == nil {
             return false
         }
-        
+        print(marker.userData)
         return true
     }
     

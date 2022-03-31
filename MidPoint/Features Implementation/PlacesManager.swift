@@ -16,32 +16,28 @@ class PlacesManager: ObservableObject {
     @Published var Longitudes : [Double]
     @Published var Names : [String]
     @Published var PlaceIDs : [String]
-    @ObservedObject var nearbySearch = NearbySearch(geocoding: Geocoding(placeIDThing: "", count: true), placeDetail: PlaceDetail())
+    var nearbySearch : NearbySearch
     
-    init(Latitudes : [Double], Longitudes : [Double], Names : [String], PlaceIDs : [String]){
+    init(Latitudes : [Double], Longitudes : [Double], Names : [String], PlaceIDs : [String], nearbySearch : NearbySearch){
         self.Latitudes = Latitudes
         self.Longitudes = Longitudes
         self.Names = Names
         self.PlaceIDs = PlaceIDs
+        self.nearbySearch = nearbySearch
     }
     
     func getCoords() {
         print("woah")
-        nearbySearch.getData { [self] (responses3: Response3) in
-            print(responses3.results)
-            let number : Int = responses3.results.count
-            print("this is the count \(number)")
-            for count in 0..<0{
-                
-                Latitudes[count] = responses3.results[count].geometry.location.lat!
-                print("1 thinythingthing")
-                Longitudes[count] = responses3.results[count].geometry.location.lng!
-                Names[count] = responses3.results[count].name!
-                print("2")
-                PlaceIDs[count] = responses3.results[count].place_id!
-                
-                print("3")
-            }
+        print("029384u390rhuitefindv bfwnviuwebfeiwub")
+        print(nearbySearch.responses3.results)
+        let number : Int = nearbySearch.responses3.results.count
+        print("this is the count \(number)")
+        for count in 0..<number{
+            
+            Latitudes.append(nearbySearch.responses3.results[count].geometry.location.lat!)
+            Longitudes.append(nearbySearch.responses3.results[count].geometry.location.lng!)
+            Names.append(nearbySearch.responses3.results[count].name!)
+            PlaceIDs.append(nearbySearch.responses3.results[count].place_id!)
         }
     }
     
