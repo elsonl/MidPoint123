@@ -10,6 +10,7 @@ import SwiftUI
 struct ResultsDetailsView: View {
     @EnvironmentObject var nearbySearch : NearbySearch
     @Binding var listCount : Int
+    @EnvironmentObject var placeDetails : PlaceDetails
     var body: some View {
         let name = nearbySearch.responses3.results[listCount].name!
         let placeID = nearbySearch.responses3.results[listCount].place_id!
@@ -17,9 +18,8 @@ struct ResultsDetailsView: View {
 
         let long = nearbySearch.responses3.results[listCount].geometry.location.lng!
 
-        
         List(){
-            
+          
             Text(name)
             Text(placeID)
             Text("\(lat)")

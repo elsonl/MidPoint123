@@ -12,18 +12,17 @@ import GoogleMaps
 import GooglePlaces
 //https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4&location=35.2251519,-80.8393911&radius=5000
 class NearbySearch : ObservableObject{
-    @ObservedObject var geocoding = Geocoding(placeIDThing: "", count: true)
     @ObservedObject var placeDetail = PlaceDetail()
-  
+    
     @Published var responses3 = Response3()
     @Published var coordinatesNS : (Double?, Double?, Double?, Double?) = (0,0,0.5,0.5)
-    func getData(){
+    func getData(callback: @escaping () -> Void){
         
         let midLat = (coordinatesNS.0! + coordinatesNS.2!)/2
         let midLong = (coordinatesNS.1! + coordinatesNS.3!)/2
         var meters : Double = 1609.34
         print("getting data")
-
+        
         meters = 1609.34 * placeDetail.miles
         
         print("mid lat : \(midLat)")
@@ -52,6 +51,7 @@ class NearbySearch : ObservableObject{
                 DispatchQueue.main.async{
                     self.responses3 = response3
                     print(self.responses3.results)
+                    callback()
                     
                 }
                 

@@ -11,6 +11,7 @@ struct ListView: View {
     @State var listCount : Int = 0
     @EnvironmentObject var nearbySearch : NearbySearch
     @EnvironmentObject var placesManager : PlacesManager
+    
     var body: some View {
         
         
@@ -20,7 +21,7 @@ label: {
   Text(verbatim: "\((counts)+1). \(nearbySearch.responses3.results[counts].name ?? "something went wrong :(") ")
 })
                                                     
-        }.navigationBarTitle("idekwhatthisis") .navigationViewStyle(StackNavigationViewStyle())
+        }.navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

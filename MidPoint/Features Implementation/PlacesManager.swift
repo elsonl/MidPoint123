@@ -27,9 +27,7 @@ class PlacesManager: ObservableObject {
     }
     
     func getCoords() {
-        print("woah")
-        print("029384u390rhuitefindv bfwnviuwebfeiwub")
-        print(nearbySearch.responses3.results)
+
         let number : Int = nearbySearch.responses3.results.count
         print("this is the count \(number)")
         for count in 0..<number{
