@@ -12,18 +12,33 @@ struct ResultsDetailsView: View {
     @Binding var listCount : Int
     @EnvironmentObject var placeDetails : PlaceDetails
     var body: some View {
-        let name = nearbySearch.responses3.results[listCount].name!
-        let placeID = nearbySearch.responses3.results[listCount].place_id!
-        let lat = nearbySearch.responses3.results[listCount].geometry.location.lat!
-
-        let long = nearbySearch.responses3.results[listCount].geometry.location.lng!
+        
+        
+        let name = placeDetails.responses4.result!.name!
+        
+        let formattedAddress = placeDetails.responses4.result!.formatted_address!
+        let formattedPhoneNumber = placeDetails.responses4.result!.formatted_phone_number!
+        let openNow = placeDetails.responses4.result!.opening_hours.open_now!
+        let openHours = placeDetails.responses4.result!.opening_hours.weekday_text
+        let rating = placeDetails.responses4.result!.rating!
+        let numUserRating = placeDetails.responses4.result!.user_ratings_total!
+        var website = placeDetails.responses4.result!.website!
+        var priceLevel = placeDetails.responses4.result!.price_level!
+        
 
         List(){
           
             Text(name)
-            Text(placeID)
-            Text("\(lat)")
-            Text("\(long)")
+            Text(formattedAddress)
+            Text(formattedPhoneNumber)
+            Text(openNow)
+            Text(openHours)
+            Text(rating)
+            Text(numUserRating)
+            Text(website)
+            Text(priceLevel)
+            
+
         }
     }
 }

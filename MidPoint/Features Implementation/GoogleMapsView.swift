@@ -37,9 +37,9 @@ struct GoogleMapsView: UIViewRepresentable{
         nearbySearch.coordinatesNS.2 = geocoding.coordinates.2
         nearbySearch.coordinatesNS.3 = geocoding.coordinates.3
         
-        placeDetails.getData(){
-        print(placeDetails.responses4.result!)
-        }
+//        placeDetails.getData(){
+//        print(placeDetails.responses4.result!)
+//        }
         
         nearbySearch.getData(){
             placesManager.nearbySearch = nearbySearch
@@ -59,6 +59,16 @@ struct GoogleMapsView: UIViewRepresentable{
                 }
             }else {
                 print("invalid 111")
+            }
+            
+            for count in placesManager.Names.indices
+            {placeDetails.PlaceIDs.append(placesManager.PlaceIDs[count])
+              
+                placeDetails.count = count
+                placeDetails.getData(){
+                    
+                print(placeDetails.responses4.result!)
+                }
             }
         }
         return mapView
@@ -121,7 +131,8 @@ class GoogleMapsDelegate : NSObject, ObservableObject, GMSMapViewDelegate{
         if marker.userData == nil {
             return false
         }
-        print(marker.userData)
+        var markerData = marker.userData
+        print(markerData)
         return true
     }
     

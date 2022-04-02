@@ -31,7 +31,7 @@ struct MidPointApp: App {
     @StateObject var placeDetail = PlaceDetail()
     @StateObject var nearbySearch = NearbySearch()
     @StateObject var placesManager = PlacesManager(Latitudes: [], Longitudes: [], Names: [], PlaceIDs: [], nearbySearch: NearbySearch())
-    @StateObject var placeDetails = PlaceDetails()
+    @StateObject var placeDetails = PlaceDetails(PlaceIDs: [])
     var body: some Scene {
         
         WindowGroup {

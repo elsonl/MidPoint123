@@ -11,6 +11,7 @@ struct ListView: View {
     @State var listCount : Int = 0
     @EnvironmentObject var nearbySearch : NearbySearch
     @EnvironmentObject var placesManager : PlacesManager
+    @EnvironmentObject var placeDetails : PlaceDetails
     
     var body: some View {
         
@@ -19,9 +20,13 @@ struct ListView: View {
     NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts)),
 label: {
   Text(verbatim: "\((counts)+1). \(nearbySearch.responses3.results[counts].name ?? "something went wrong :(") ")
+  
+    
 })
                                                     
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }.navigationViewStyle(StackNavigationViewStyle()).onAppear{ placeDetails.getData(){
+            print(placeDetails.responses4.result!)
+        }}
         
     }
 }
