@@ -127,58 +127,58 @@ struct ContentView: View {
                     //
                     //Favorites
                     Text("Favorites")
-                    ZStack{
-                        //Grey Background
-                        Rectangle().foregroundColor(Color.yellow).frame(width: 350, height: 140, alignment: .center).cornerRadius(35).padding()
-                        VStack{
-                            
-                            ScrollView(.horizontal){
-                                
-                                HStack(spacing : 15){
-                                    //Add/Edit Favorites
-                                    Button(action: {print("button pressed")}, label: {
-                                        
-                                        NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2, favoritesOpen: $favoritesOpen), isActive: $favoritesOpen, label: {
-                                            
-                                            Button(action: {favoritesOpen=true}, label: {
-                                                VStack{
-                                                    //Text Inside
-                                                    Text("Add/Edit").padding([.top, .horizontal])
-                                                    Text("Favorites").padding([.bottom, .horizontal])
-                                                }
-                                                
-                                            }).frame(width: 120, height: 100, alignment: .center)
-                                            
-                                        }).onDisappear(perform:{
-                                            
-                                            favorites.updateValue(favoritesAddress, forKey: favoritesName)
-                                            
-                                            
-                                            
-                                            
-                                        })
-                                        
-                                        NavigationLink(destination: EmptyView()){
-                                            EmptyView()
-                                        }
-                                    })
-                                        .background(Color.black)
-                                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                                        .foregroundColor(.white)
-                                        .frame(width: 100, height: 100, alignment: .center)
-                                        .padding(.trailing, 9)
-                                        .padding(.leading, 15)
-                                    //Red Favorites
-                                    ForEach(favorites.keys.sorted(), id: \.self){
-                                        Text($0)
-                                    }.frame(width: 100, height: 100, alignment: .center)
-                                        .background(RoundedRectangle(cornerRadius: 20).foregroundColor(.gray))
-                                       
-                                    
-                                }
-                            }.padding().frame(width: 381, height: 125, alignment: .center)
-                        }
-                    }
+//                    ZStack{
+//                        //Grey Background
+//                        Rectangle().foregroundColor(Color.yellow).frame(width: 350, height: 140, alignment: .center).cornerRadius(35).padding()
+//                        VStack{
+//                            
+//                            ScrollView(.horizontal){
+//                                
+//                                HStack(spacing : 15){
+//                                    //Add/Edit Favorites
+//                                    Button(action: {print("button pressed")}, label: {
+//                                        
+//                                        NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2, favoritesOpen: $favoritesOpen), isActive: $favoritesOpen, label: {
+//                                            
+//                                            Button(action: {favoritesOpen=true}, label: {
+//                                                VStack{
+//                                                    //Text Inside
+//                                                    Text("Add/Edit").padding([.top, .horizontal])
+//                                                    Text("Favorites").padding([.bottom, .horizontal])
+//                                                }
+//                                                
+//                                            }).frame(width: 120, height: 100, alignment: .center)
+//                                            
+//                                        }).onDisappear(perform:{
+//                                            
+//                                            favorites.updateValue(favoritesAddress, forKey: favoritesName)
+//                                            
+//                                            
+//                                            
+//                                            
+//                                        })
+//                                        
+//                                        NavigationLink(destination: EmptyView()){
+//                                            EmptyView()
+//                                        }
+//                                    })
+//                                        .background(Color.black)
+//                                        .clipShape(RoundedRectangle(cornerRadius: 20))
+//                                        .foregroundColor(.white)
+//                                        .frame(width: 100, height: 100, alignment: .center)
+//                                        .padding(.trailing, 9)
+//                                        .padding(.leading, 15)
+//                                    //Red Favorites
+//                                    ForEach(favorites.keys.sorted(), id: \.self){
+//                                        Text($0)
+//                                    }.frame(width: 100, height: 100, alignment: .center)
+//                                        .background(RoundedRectangle(cornerRadius: 20).foregroundColor(.gray))
+//                                       
+//                                    
+//                                }
+//                            }.padding().frame(width: 381, height: 125, alignment: .center)
+//                        }
+//                    }
                     //
                 }
             }.ignoresSafeArea()
