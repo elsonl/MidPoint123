@@ -61,15 +61,15 @@ struct GoogleMapsView: UIViewRepresentable{
                 print("invalid 111")
             }
             
-            for count in placesManager.Names.indices
-            {placeDetails.PlaceIDs.append(placesManager.PlaceIDs[count])
-              
-                placeDetails.count = count
-                placeDetails.getData(){
-                    
-                print(placeDetails.responses4.result!)
-                }
-            }
+//            for count in placesManager.Names.indices
+//            {placeDetails.PlaceIDs.append(placesManager.PlaceIDs[count])
+//              
+//                placeDetails.count = count
+//                placeDetails.getData(){
+//                    
+//                print(placeDetails.responses4.result!)
+//                }
+//            }
         }
         return mapView
     }

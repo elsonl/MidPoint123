@@ -17,16 +17,14 @@ struct ListView: View {
         
         
         List(nearbySearch.responses3.results.indices){ counts in
-    NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts)),
+            NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts)),
 label: {
   Text(verbatim: "\((counts)+1). \(nearbySearch.responses3.results[counts].name ?? "something went wrong :(") ")
   
     
-})
+            })
                                                     
-        }.navigationViewStyle(StackNavigationViewStyle()).onAppear{ placeDetails.getData(){
-            print(placeDetails.responses4.result!)
-        }}
+        }.navigationViewStyle(StackNavigationViewStyle()).onAppear{ }
         
     }
 }
