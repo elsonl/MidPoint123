@@ -16,7 +16,7 @@ struct ContentView: View {
     @State var address2: String
     @State private var showsheet1 = false
     @State private var showsheet2 = false
-    @State var favorites : [String: String] = ["325231552135":"" , "123512351235":""] //name:address
+    @State var favorites : [String: String] = [:] //name:address
     @State var favoritesName : String = ""
     @State var favoritesAddress : String = ""
     @State var favoritesOpen : Bool = false
@@ -53,7 +53,6 @@ struct ContentView: View {
                             print("address1 committed")
                         })
                             .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
-                        
                             .sheet(isPresented : $showsheet1, onDismiss: {
                                 
                                 if(address1 == ""){
@@ -74,6 +73,7 @@ struct ContentView: View {
                                 .environmentObject(geocoding) }
                     }.frame(width: 375, alignment: .trailing)
                     
+                    Spacer().frame(height: 25)
                     
                     //Address 2
                     HStack {
@@ -89,24 +89,24 @@ struct ContentView: View {
                             showsheet2 = false
                             print("address2 committed")
                         }).foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
-                            .sheet(isPresented : $showsheet2, onDismiss: {
-                                if(address2 == ""){
-                                    print("address 2 empty, showsheet true")
-                                    showsheet2 = true
-                                } else {
-                                    geocoding.count = false
-                                    
-                                    print(geocoding.count)
-                                    print("in else")
-                                    
-                                    print("showsheet2false")
-                                    showsheet2 = false
-                                    geocoding.getData()
-                                    
-                                    
-                                }
-                            }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
-                                .environmentObject(geocoding) }}.frame(width: 375, alignment: .trailing)
+                        .sheet(isPresented : $showsheet2, onDismiss: {
+                            if(address2 == ""){
+                                print("address 2 empty, showsheet true")
+                                showsheet2 = true
+                            } else {
+                                geocoding.count = false
+                                
+                                print(geocoding.count)
+                                print("in else")
+                                
+                                print("showsheet2false")
+                                showsheet2 = false
+                                geocoding.getData()
+                                
+                                
+                            }
+                        }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
+                            .environmentObject(geocoding) }}.frame(width: 375, alignment: .trailing)
                     
                     Spacer().frame(height: 15)
                     

@@ -11,14 +11,31 @@ struct GMapsView: View {
     
     @EnvironmentObject var dMatrix : DistanceMatrix
     @EnvironmentObject var placeDetail : PlaceDetail
+    @EnvironmentObject var nearbySearch : NearbySearch
+    @EnvironmentObject var placesManager : PlacesManager
     @State var visible = false
     @State var visibleSlider = false
     
+    
+    
     var body: some View {
         ZStack{
-            
-            GoogleMapsView().edgesIgnoringSafeArea(.all)
             VStack{
+
+                GoogleMapsView().edgesIgnoringSafeArea(.all)
+                
+    if nearbySearch.responses3.results.first?.name! != nil {
+                    
+            ListView()
+                   
+        } else {
+            Text("There is Nothing around the MidPoint :(")
+        }
+                
+              
+            }
+            VStack{
+               
                 Spacer()
                 VStack{
                     
@@ -38,9 +55,15 @@ struct GMapsView: View {
                         
                         if visibleSlider {
                             VStack{
-                                Slider(value: $placeDetail.miles, in: 0...10)
+                                Slider(value: $placeDetail.mile, in: 0...10)
                                 
-                                Text("\(placeDetail.miles, specifier: "%.2f") Mile Radius")
+                                
+                                Text("\(placeDetail.mile, specifier: "%.2f") Mile Radius")
+                                
+                                Button("Confirm") {
+                                    placeDetail.miles = placeDetail.mile
+
+                                }
                             }
                         } else {
                             Text("")

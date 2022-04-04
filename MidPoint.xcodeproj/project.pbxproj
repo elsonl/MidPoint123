@@ -10,6 +10,7 @@
 		40C35FEAD6EDCDBDD4BBAAE4 /* Pods_MidPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD69A1199CDBD0C8BB01AB6 /* Pods_MidPoint.framework */; };
 		8659D2C427DBEF55006F99B2 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659D2C327DBEF55006F99B2 /* ResultsView.swift */; };
 		8659D30027DD52F2006F99B2 /* ResultsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659D2FF27DD52F2006F99B2 /* ResultsDetail.swift */; };
+		869DFA1B27F685EA00597CFD /* PlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869DFA1A27F685EA00597CFD /* PlaceDetails.swift */; };
 		D089578227E10BB2003415FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089578127E10BB2003415FD /* Constants.swift */; };
 		F0352DBC27CD315400DD091D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0352DBB27CD315400DD091D /* FavoritesView.swift */; };
 		F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */; };
@@ -23,6 +24,10 @@
 		F042304F27C730C600D90247 /* Geocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F042304E27C730C600D90247 /* Geocoding.swift */; };
 		F066726027DA6A4800AE3790 /* DistanceMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */; };
 		F066726227DA6F0F00AE3790 /* GMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F066726127DA6F0F00AE3790 /* GMapsView.swift */; };
+		F0E0BB6227F4D84400064360 /* NearbySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E0BB6127F4D84400064360 /* NearbySearch.swift */; };
+		F0E0BB6527F5440200064360 /* ResultsDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E0BB6427F5440200064360 /* ResultsDetailsView.swift */; };
+		F0E0BB6727F5DEBD00064360 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E0BB6627F5DEBD00064360 /* ListView.swift */; };
+		F0F6F1CC27F4C72000E3F465 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6F1CB27F4C72000E3F465 /* PlacesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,7 @@
 		5B24DEA2966882741ECDE981 /* Pods-MidPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MidPoint.release.xcconfig"; path = "Target Support Files/Pods-MidPoint/Pods-MidPoint.release.xcconfig"; sourceTree = "<group>"; };
 		8659D2C327DBEF55006F99B2 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		8659D2FF27DD52F2006F99B2 /* ResultsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsDetail.swift; sourceTree = "<group>"; };
+		869DFA1A27F685EA00597CFD /* PlaceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetails.swift; sourceTree = "<group>"; };
 		8DD69A1199CDBD0C8BB01AB6 /* Pods_MidPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MidPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D089578127E10BB2003415FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F0352DBB27CD315400DD091D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -67,6 +73,10 @@
 		F042304E27C730C600D90247 /* Geocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoding.swift; sourceTree = "<group>"; };
 		F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMatrix.swift; sourceTree = "<group>"; };
 		F066726127DA6F0F00AE3790 /* GMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMapsView.swift; sourceTree = "<group>"; };
+		F0E0BB6127F4D84400064360 /* NearbySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbySearch.swift; sourceTree = "<group>"; };
+		F0E0BB6427F5440200064360 /* ResultsDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsDetailsView.swift; sourceTree = "<group>"; };
+		F0E0BB6627F5DEBD00064360 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		F0F6F1CB27F4C72000E3F465 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,10 +134,14 @@
 			isa = PBXGroup;
 			children = (
 				F042304C27C6AECD00D90247 /* GoogleMapsView.swift */,
-				F042304E27C730C600D90247 /* Geocoding.swift */,
-				F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */,
 				F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */,
 				8659D2FF27DD52F2006F99B2 /* ResultsDetail.swift */,
+				F0F6F1CB27F4C72000E3F465 /* PlacesManager.swift */,
+				F0E0BB6327F4D93700064360 /* Api */,
+				F0E0BB6127F4D84400064360 /* NearbySearch.swift */,
+				869DFA1A27F685EA00597CFD /* PlaceDetails.swift */,
+				F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */,
+				F042304E27C730C600D90247 /* Geocoding.swift */,
 			);
 			path = "Features Implementation";
 			sourceTree = "<group>";
@@ -199,10 +213,19 @@
 			children = (
 				F0422FDB27BF1CD300D90247 /* ContentView.swift */,
 				F066726127DA6F0F00AE3790 /* GMapsView.swift */,
-				F0352DBB27CD315400DD091D /* FavoritesView.swift */,
+				F0E0BB6627F5DEBD00064360 /* ListView.swift */,
+				F0E0BB6427F5440200064360 /* ResultsDetailsView.swift */,
 				8659D2C327DBEF55006F99B2 /* ResultsView.swift */,
+				F0352DBB27CD315400DD091D /* FavoritesView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F0E0BB6327F4D93700064360 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,17 +401,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0E0BB6527F5440200064360 /* ResultsDetailsView.swift in Sources */,
 				F066726027DA6A4800AE3790 /* DistanceMatrix.swift in Sources */,
+				F0E0BB6727F5DEBD00064360 /* ListView.swift in Sources */,
 				D089578227E10BB2003415FD /* Constants.swift in Sources */,
 				8659D2C427DBEF55006F99B2 /* ResultsView.swift in Sources */,
 				F0352DBC27CD315400DD091D /* FavoritesView.swift in Sources */,
 				F042304D27C6AECD00D90247 /* GoogleMapsView.swift in Sources */,
+				F0F6F1CC27F4C72000E3F465 /* PlacesManager.swift in Sources */,
+				869DFA1B27F685EA00597CFD /* PlaceDetails.swift in Sources */,
 				F042304F27C730C600D90247 /* Geocoding.swift in Sources */,
 				F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */,
 				F066726227DA6F0F00AE3790 /* GMapsView.swift in Sources */,
 				8659D30027DD52F2006F99B2 /* ResultsDetail.swift in Sources */,
 				F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */,
 				F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */,
+				F0E0BB6227F4D84400064360 /* NearbySearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

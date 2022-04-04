@@ -29,7 +29,9 @@ struct MidPointApp: App {
     @StateObject var geocoding = Geocoding(placeIDThing: "", count: false)
     @StateObject var dMatrix = DistanceMatrix()
     @StateObject var placeDetail = PlaceDetail()
-    
+    @StateObject var nearbySearch = NearbySearch()
+    @StateObject var placesManager = PlacesManager(Latitudes: [], Longitudes: [], Names: [], PlaceIDs: [], nearbySearch: NearbySearch())
+    @StateObject var placeDetails = PlaceDetails(PlaceIDs: "")
     var body: some Scene {
         
         WindowGroup {
@@ -38,7 +40,9 @@ struct MidPointApp: App {
                 .environmentObject(geocoding)
                 .environmentObject(dMatrix)
                 .environmentObject(placeDetail)
-            
+                .environmentObject(nearbySearch)
+                .environmentObject(placesManager)
+                .environmentObject(placeDetails)
         }
     }
 }

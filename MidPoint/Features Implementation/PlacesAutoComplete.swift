@@ -10,7 +10,6 @@ import UIKit
 import SwiftUI
 import GooglePlaces
 
-
 struct PlacesAutoComplete: UIViewControllerRepresentable {
     
     @EnvironmentObject var geocoding : Geocoding
@@ -25,7 +24,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, geocoding : geocoding, dMatrix: dMatrix, address1: $address1, address2: $address2, placeDetail: placeDetail, oneArray : ["","","",""], twoArray: ["","","",""], favoritesAddress: $favoritesAddress)
+        Coordinator(self, geocoding : geocoding, dMatrix: dMatrix, address1: $address1, address2: $address2, placeDetail: placeDetail, favoritesAddress: $favoritesAddress)
         
     }
     
@@ -37,18 +36,12 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
         
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
                                                     UInt(GMSPlaceField.placeID.rawValue) |
-                                                    UInt(GMSPlaceField.phoneNumber.rawValue) |
-                                                    UInt(GMSPlaceField.formattedAddress.rawValue) |
-                                                    UInt(GMSPlaceField.rating.rawValue) |
-                                                    UInt(GMSPlaceField.openingHours.rawValue) |
-                                                    UInt(GMSPlaceField.priceLevel.rawValue) |
-                                                    UInt(GMSPlaceField.website.rawValue) |
-                                                    UInt(GMSPlaceField.userRatingsTotal.rawValue) |
-                                                    UInt(GMSPlaceField.photos.rawValue))
+                                                    UInt(GMSPlaceField.formattedAddress.rawValue))
         
         autocompleteController.placeFields = fields
         
         let filter = GMSAutocompleteFilter()
+        filter.country = "USA"
         
         autocompleteController.autocompleteFilter = filter
         return autocompleteController
@@ -68,18 +61,14 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
         var dMatrix : DistanceMatrix
         var parent: PlacesAutoComplete
         var placeDetail : PlaceDetail
-        var oneArray : [String]
-        var twoArray : [String]
         
-        init(_ parent: PlacesAutoComplete, geocoding : Geocoding, dMatrix : DistanceMatrix, address1 : Binding<String>, address2 : Binding<String>, placeDetail : PlaceDetail, oneArray : [String] , twoArray : [String], favoritesAddress: Binding<String> ){
+        init(_ parent: PlacesAutoComplete, geocoding : Geocoding, dMatrix : DistanceMatrix, address1 : Binding<String>, address2 : Binding<String>, placeDetail : PlaceDetail, favoritesAddress: Binding<String> ){
             self.parent = parent
             self.geocoding = geocoding
             self.dMatrix = dMatrix
             self._address1 = address1
             self._address2 = address2
             self.placeDetail = placeDetail
-            self.oneArray = oneArray
-            self.twoArray = twoArray
             self._favoritesAddress = favoritesAddress
             
         }
@@ -106,17 +95,6 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
                     
            
 //                    placeDetail.Rating = place.rating
-
-                    oneArray[0] = place.formattedAddress!
-                    oneArray[1] = place.name!
-                    oneArray[2] = place.placeID!
-                    if place.phoneNumber != nil{
-                    oneArray[3] = place.phoneNumber!
-                    }
-                   
-
-                    placeDetail.PlaceDetailDictionary[0] = oneArray
-                    
                     
                     address1 = place.formattedAddress!
                     if dMatrix.PlaceIDs[1] != "2"{
@@ -135,16 +113,6 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
       
 //                    placeDetail.Rating = place.rating
 
-                    
-                   twoArray[0] = place.formattedAddress!
-                    twoArray[1] = place.name!
-                    twoArray[2] = place.placeID!
-                    if place.phoneNumber != nil{
-                    twoArray[3] = place.phoneNumber!
-                    }
-                    
-                    placeDetail.PlaceDetailDictionary[1] = twoArray
-                    
                     
                     geocoding.placeIDThing  = place.placeID!
                     self.parent.address2 =  place.name!
@@ -171,7 +139,9 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
         
         func wasCancelled(_ viewController: GMSAutocompleteViewController) {
             parent.presentationMode.wrappedValue.dismiss()
+            
         }
         
     }
 }
+
