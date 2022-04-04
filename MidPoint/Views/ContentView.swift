@@ -26,9 +26,11 @@ struct ContentView: View {
         
         NavigationView{
             ZStack{
-                Color.BackgroundColor
+                //background here random cities
+                Color.white
+                //Image().aspectRatio image here resize
                 VStack{
-                    Image("InAppIcon")
+                    Image("InAppIcon").opacity(0.5)
                     Text("MidPoint")
                     //No Space Here, no time to fix
                     Text("Enter Locations Below")//.font(<#T##font: Font?##Font?#>)
@@ -127,7 +129,7 @@ struct ContentView: View {
                     Text("Favorites")
                     ZStack{
                         //Grey Background
-                        Rectangle().foregroundColor(Color.gray).frame(width: 350, height: 140, alignment: .center).cornerRadius(35).padding()
+                        Rectangle().foregroundColor(Color.yellow).frame(width: 350, height: 140, alignment: .center).cornerRadius(35).padding()
                         VStack{
                             
                             ScrollView(.horizontal){
@@ -170,7 +172,7 @@ struct ContentView: View {
                                     ForEach(favorites.keys.sorted(), id: \.self){
                                         Text($0)
                                     }.frame(width: 100, height: 100, alignment: .center)
-                                        .background(RoundedRectangle(cornerRadius: 20).foregroundColor(.FavoritesItems))
+                                        .background(RoundedRectangle(cornerRadius: 20).foregroundColor(.gray))
                                        
                                     
                                 }
