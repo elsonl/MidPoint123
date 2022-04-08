@@ -134,19 +134,19 @@ struct ContentView: View {
                             if(favoritesToggle){
                                 VStack{
                                     ZStack{
-                                        RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)).frame(width: 100, height: 50, alignment: .center).foregroundColor(.gray)
+                                        RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)).frame(width: 225, height: 50, alignment: .center).foregroundColor(.BackgroundColor)
                                         HStack{
                                             Spacer()
-                                            Text("Favorites")
+                                            Text("Favorites").foregroundColor(.FavoritesBackground)
                                             Spacer()
-                                            Image(systemName: "arrowtriangle.down.fill").foregroundColor(.gray)
+                                            Image(systemName: "arrowtriangle.down.fill").foregroundColor(.FavoritesBackground)
                                             Spacer()
                                         }
                                     }
                                     Group{
                                         ZStack {
                                             //Grey Background
-                                            Rectangle().foregroundColor(Color.yellow).frame(width: 350, height: 140, alignment: .center).cornerRadius(35).padding()
+                                            Rectangle().foregroundColor(Color.FavoritesBackground).frame(width: 350, height: 140, alignment: .center).cornerRadius(35).padding()
                                             VStack{
                                                 ScrollView(.horizontal){
                                                     
@@ -201,21 +201,29 @@ struct ContentView: View {
                                 }
                                 
                             }else{
+                                ZStack{
+                                    RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)).frame(width: 225, height: 50, alignment: .center).foregroundColor(.BackgroundColor)
+                                    HStack{
+                                        Spacer()
+                                        Text("Favorites").foregroundColor(.FavoritesBackground)
+                                        Spacer()
+                                        Image(systemName: "arrowtriangle.down.fill").rotationEffect(Angle(radians: -Double.pi/2.0)).foregroundColor(.FavoritesBackground)
+                                        Spacer()
+                                        
+                                    }
                                 
-                                HStack{
-                                    Spacer()
-                                    Text("Favorites")
-                                    Spacer()
-                                    Image(systemName: "arrowtriangle.down.fill").rotationEffect(Angle(radians: -Double.pi/2.0)).foregroundColor(.gray)
-                                    Spacer()
                                 }
+                                Spacer()
                             }
                         }
                         Spacer()
                         
                     }
                     
+                    
                 }
+                
+                
             }.ignoresSafeArea()
         }
     }
