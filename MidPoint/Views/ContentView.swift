@@ -33,7 +33,7 @@ struct ContentView: View {
                 VStack{
                     Group{
                         Image("InAppIcon").opacity(0.5)
-                        Text("MidPoint")
+                        Text("MidPoint") //(distance done easy)
                         //No Space Here, no time to fix
                         Text("Enter Locations Below")//.font(<#T##font: Font?##Font?#>)
                             .foregroundColor(Color.TextFieldText)
@@ -130,77 +130,91 @@ struct ContentView: View {
                     //Favorites
                     
                     HStack{
-                        Spacer()
-                        Spacer()
-                        Text("Favorites")
-                        Spacer()
-                        Spacer()
                         Button(action: {favoritesToggle.toggle()}){
                             if(favoritesToggle){
-                                Image(systemName: "arrowtriangle.down.fill")
+                                VStack{
+                                    ZStack{
+                                        RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)).frame(width: 100, height: 50, alignment: .center).foregroundColor(.gray)
+                                        HStack{
+                                            Spacer()
+                                            Text("Favorites")
+                                            Spacer()
+                                            Image(systemName: "arrowtriangle.down.fill").foregroundColor(.gray)
+                                            Spacer()
+                                        }
+                                    }
+                                    Group{
+                                        ZStack {
+                                            //Grey Background
+                                            Rectangle().foregroundColor(Color.yellow).frame(width: 350, height: 140, alignment: .center).cornerRadius(35).padding()
+                                            VStack{
+                                                ScrollView(.horizontal){
+                                                    
+                                                    HStack(spacing : 15){
+                                                        //Add/Edit Favorites
+                                                        
+                                                        Button(action: {print("button pressed")}, label: {
+                                                            
+                                                            NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2, favoritesOpen: $favoritesOpen), isActive: $favoritesOpen, label: {
+                                                                
+                                                                Button(action: {favoritesOpen=true}, label: {
+                                                                    VStack{
+                                                                        //Text Inside
+                                                                        Group{
+                                                                            Text("Add/Edit").padding([.top, .horizontal])
+                                                                            Text("Favorites").padding([.bottom, .horizontal])
+                                                                        }
+                                                                    }
+                                                                    
+                                                                }).frame(width: 120, height: 100, alignment: .center)
+                                                                
+                                                            }).onDisappear(perform:{
+                                                                
+                                                                favorites.updateValue(favoritesAddress, forKey: favoritesName)
+                                                                
+                                                            })
+                                                            
+                                                            NavigationLink(destination: EmptyView()){
+                                                                EmptyView()
+                                                            }
+                                                        })
+                                                            .background(Color.black)
+                                                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                                                            .foregroundColor(.white)
+                                                            .frame(width: 100, height: 100, alignment: .center)
+                                                            .padding(.trailing, 9)
+                                                            .padding(.leading, 15)
+                                                        
+                                                        //Red Favorites
+                                                        
+                                                        ForEach(favorites.keys.sorted(), id: \.self){
+                                                            Text($0)
+                                                        }.frame(width: 100, height: 100, alignment: .center)
+                                                            .background(RoundedRectangle(cornerRadius: 20).foregroundColor(.gray))
+                                                        
+                                                        
+                                                    }
+                                                }.padding().frame(width: 381, height: 125, alignment: .center)
+                                            }
+                                        } //VStack Close
+                                    } //ZStack Close
+                                }
+                                
                             }else{
-                                Image(systemName: "arrowtriangle.down.fill").rotationEffect(Angle(radians: -Double.pi/2.0))
+                                
+                                HStack{
+                                    Spacer()
+                                    Text("Favorites")
+                                    Spacer()
+                                    Image(systemName: "arrowtriangle.down.fill").rotationEffect(Angle(radians: -Double.pi/2.0)).foregroundColor(.gray)
+                                    Spacer()
+                                }
                             }
                         }
                         Spacer()
                         
                     }
                     
-                    Group{
-                        ZStack {
-                            //Grey Background
-                            Rectangle().foregroundColor(Color.yellow).frame(width: 350, height: 140, alignment: .center).cornerRadius(35).padding()
-                            VStack{
-                                ScrollView(.horizontal){
-                                    
-                                    HStack(spacing : 15){
-                                        //Add/Edit Favorites
-                                        
-                                        Button(action: {print("button pressed")}, label: {
-                                            
-                                            NavigationLink(destination: FavoritesView(favoritesName: $favoritesName, favoritesAddress: $favoritesAddress, favorites: $favorites, address1: $address1, address2: $address2, favoritesOpen: $favoritesOpen), isActive: $favoritesOpen, label: {
-                                                
-                                                Button(action: {favoritesOpen=true}, label: {
-                                                    VStack{
-                                                        //Text Inside
-                                                        Group{
-                                                            Text("Add/Edit").padding([.top, .horizontal])
-                                                            Text("Favorites").padding([.bottom, .horizontal])
-                                                        }
-                                                    }
-                                                    
-                                                }).frame(width: 120, height: 100, alignment: .center)
-                                                
-                                            }).onDisappear(perform:{
-                                                
-                                                favorites.updateValue(favoritesAddress, forKey: favoritesName)
-                                                
-                                            })
-                                            
-                                            NavigationLink(destination: EmptyView()){
-                                                EmptyView()
-                                            }
-                                        })
-                                            .background(Color.black)
-                                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                                            .foregroundColor(.white)
-                                            .frame(width: 100, height: 100, alignment: .center)
-                                            .padding(.trailing, 9)
-                                            .padding(.leading, 15)
-                                        
-                                        //Red Favorites
-                                        
-                                        ForEach(favorites.keys.sorted(), id: \.self){
-                                            Text($0)
-                                        }.frame(width: 100, height: 100, alignment: .center)
-                                            .background(RoundedRectangle(cornerRadius: 20).foregroundColor(.gray))
-                                        
-                                        
-                                    }
-                                }.padding().frame(width: 381, height: 125, alignment: .center)
-                            } //VStack Close
-                        } //ZStack Close
-                    }
                 }
             }.ignoresSafeArea()
         }
