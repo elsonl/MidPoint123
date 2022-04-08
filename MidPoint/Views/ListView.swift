@@ -13,18 +13,37 @@ struct ListView: View {
     @EnvironmentObject var placesManager : PlacesManager
     @EnvironmentObject var placeDetails : PlaceDetails
     
+    
     var body: some View {
         
         
         List(nearbySearch.responses3.results.indices){ counts in
-            NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts)),
+            NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts)).onAppear{
+                print("i have appeared")
+                placeDetails.PlaceIDs = nearbySearch.responses3.results[counts].place_id!
+                placeDetails.getData(){
+                    print(placeDetails.responses4.result!)
+                }
+            },
 label: {
-  Text(verbatim: "\((counts)+1). \(nearbySearch.responses3.results[counts].name ?? "something went wrong :(") ")
+    
+    
+    Button(action : {
+        print("I AM A BUTTOn")
+        
+       
+    }, label: {
+        Text(verbatim: "\((counts)+1). \(nearbySearch.responses3.results[counts].name ?? "something went wrong :(") ")
+    }).navigationViewStyle(StackNavigationViewStyle())
+       
+
   
     
-            })
+})
                                                     
-        }.navigationViewStyle(StackNavigationViewStyle()).onAppear{ }
+        }.navigationViewStyle(StackNavigationViewStyle())
+        
+        
         
     }
 }
