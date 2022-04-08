@@ -166,7 +166,7 @@ struct ContentView: View {
                                                                         }
                                                                     }
                                                                     
-                                                                }).frame(width: 120, height: 100, alignment: .center)
+                                                                }).frame(width: 120, height: 90, alignment: .center)
                                                                 
                                                             }).onDisappear(perform:{
                                                                 
@@ -179,9 +179,9 @@ struct ContentView: View {
                                                             }
                                                         })
                                                             .background(Color.black)
-                                                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                                                            .clipShape(RoundedRectangle(cornerRadius: 17))
                                                             .foregroundColor(.white)
-                                                            .frame(width: 100, height: 100, alignment: .center)
+                                                            .frame(width: 100, height: 110, alignment: .center)
                                                             .padding(.trailing, 9)
                                                             .padding(.leading, 15)
                                                         
@@ -194,7 +194,7 @@ struct ContentView: View {
                                                         
                                                         
                                                     }
-                                                }.padding().frame(width: 381, height: 125, alignment: .center)
+                                                }.padding().frame(width: 380, height: 125, alignment: .center)
                                             }
                                         } //VStack Close
                                     } //ZStack Close
