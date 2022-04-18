@@ -54,7 +54,10 @@ struct GoogleMapsView: UIViewRepresentable{
                     let loopMarkers = GMSMarker(position: position)
                     loopMarkers.title = placeName
                     loopMarkers.userData = placeID
+                    loopMarkers.isTappable = true
+                    print("UserData : \(String(describing: loopMarkers.userData ?? "empty userdata"))")
                     loopMarkers.map = mapView
+                    
                     
                 }
             }else {
@@ -74,7 +77,11 @@ struct GoogleMapsView: UIViewRepresentable{
         return mapView
     }
     
-    func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
+    func makeCoordinator() -> Coordinator {
+       Coordinator(owner: self)
+    }
+    
+    func updateUIView(_ mapView: GMSMapView, context: Context) {
         
         // variables for the coordinates of the midpoint
         let midLat = (geocoding.coordinates.0! + geocoding.coordinates.2!)/2
@@ -123,17 +130,31 @@ struct GoogleMapsView: UIViewRepresentable{
         mapView.moveCamera(update)
         
     }
-}
-class GoogleMapsDelegate : NSObject, ObservableObject, GMSMapViewDelegate{
+
+class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
+
+    let owner : GoogleMapsView
+    init(owner : GoogleMapsView){
+        self.owner = owner
+    }
     
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
+    deinit {
+           print("deinit: whatissiisisis")
+       }
+     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        print("delegate could possible be working!?!?!")
         if marker.userData == nil {
+            print("UserData Delegate Return False")
             return false
         }
-        var markerData = marker.userData
-        print(markerData)
+        let markerData = marker.userData
+        print("UserData Delegate : \(String(describing: markerData))")
+        print("UserData Delegate 2 : \(String(describing: marker.userData ?? "empty userdata"))")
         return true
     }
     
 }
+}
+
+//(BOOL) mapView:        (GMSMapView *)     mapView
+//didTapMarker:        (GMSMarker *)     marker

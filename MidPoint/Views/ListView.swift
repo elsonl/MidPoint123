@@ -9,38 +9,51 @@ import SwiftUI
 
 struct ListView: View {
     @State var listCount : Int = 0
+    @State var showDetail : Bool = false
     @EnvironmentObject var nearbySearch : NearbySearch
     @EnvironmentObject var placesManager : PlacesManager
     @EnvironmentObject var placeDetails : PlaceDetails
     
+    func SetDetail() -> Bool{
+        
+        self.showDetail = false
+        print("Detail Status : \(showDetail)")
+        return showDetail
+    }
     
     var body: some View {
         
+        if true {
+        var thingy = SetDetail()
+        }
+        
         
         List(nearbySearch.responses3.results.indices){ counts in
-            NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts)).onAppear{
+            NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts), showDetail: .constant(showDetail)).onAppear{
                 print("i have appeared")
                 placeDetails.PlaceIDs = nearbySearch.responses3.results[counts].place_id!
                 placeDetails.getData(){
                     print(placeDetails.responses4.result!)
+                    showDetail = true
                 }
             },
-label: {
-    
-    
-    Button(action : {
-        print("I AM A BUTTOn")
-        
-       
-    }, label: {
-        Text(verbatim: "\((counts)+1). \(nearbySearch.responses3.results[counts].name ?? "something went wrong :(") ")
-    }).navigationViewStyle(StackNavigationViewStyle())
-       
-
-  
-    
-})
-                                                    
+            label: {
+                
+     
+                
+                Button(action : {
+                    print("I AM A BUTTOn")
+                    print("does this even work")
+                }
+                , label: {
+                    Text(verbatim: "\((counts)+1). \(nearbySearch.responses3.results[counts].name ?? "something went wrong :(") ")
+                }).navigationViewStyle(StackNavigationViewStyle())
+                
+                
+                
+                
+            })
+            
         }.navigationViewStyle(StackNavigationViewStyle())
         
         

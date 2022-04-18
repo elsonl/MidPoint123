@@ -12,6 +12,7 @@
 		8659D30027DD52F2006F99B2 /* ResultsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659D2FF27DD52F2006F99B2 /* ResultsDetail.swift */; };
 		869DFA1B27F685EA00597CFD /* PlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869DFA1A27F685EA00597CFD /* PlaceDetails.swift */; };
 		D089578227E10BB2003415FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089578127E10BB2003415FD /* Constants.swift */; };
+		F01D5B332808BC8B008AC6D2 /* DetailInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01D5B322808BC8B008AC6D2 /* DetailInformationView.swift */; };
 		F0352DBC27CD315400DD091D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0352DBB27CD315400DD091D /* FavoritesView.swift */; };
 		F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */; };
 		F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FD927BF1CD300D90247 /* MidPointApp.swift */; };
@@ -55,6 +56,7 @@
 		869DFA1A27F685EA00597CFD /* PlaceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetails.swift; sourceTree = "<group>"; };
 		8DD69A1199CDBD0C8BB01AB6 /* Pods_MidPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MidPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D089578127E10BB2003415FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F01D5B322808BC8B008AC6D2 /* DetailInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInformationView.swift; sourceTree = "<group>"; };
 		F0352DBB27CD315400DD091D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesAutoComplete.swift; sourceTree = "<group>"; };
 		F0422FD627BF1CD300D90247 /* MidPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +219,7 @@
 				F0E0BB6427F5440200064360 /* ResultsDetailsView.swift */,
 				8659D2C327DBEF55006F99B2 /* ResultsView.swift */,
 				F0352DBB27CD315400DD091D /* FavoritesView.swift */,
+				F01D5B322808BC8B008AC6D2 /* DetailInformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				8659D30027DD52F2006F99B2 /* ResultsDetail.swift in Sources */,
 				F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */,
 				F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */,
+				F01D5B332808BC8B008AC6D2 /* DetailInformationView.swift in Sources */,
 				F0E0BB6227F4D84400064360 /* NearbySearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
