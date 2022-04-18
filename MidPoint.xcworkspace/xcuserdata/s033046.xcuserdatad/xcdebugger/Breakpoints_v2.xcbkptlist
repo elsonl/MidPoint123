@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "D9FCB2D6-08B8-4536-8ABC-5607D6E8A360"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A89A2C61-A841-4627-8A58-51A61C38E421"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MidPoint/Features Implementation/PlacesAutoComplete.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "A89A2C61-A841-4627-8A58-51A61C38E421 - d6d3dacf81d2cc7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.PlacesAutoComplete.Coordinator.__allocating_init() -&gt; MidPoint.PlacesAutoComplete.Coordinator"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Features%20Implementation/PlacesAutoComplete.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "A89A2C61-A841-4627-8A58-51A61C38E421 - 3903b082e2a08237"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.PlacesAutoComplete.Coordinator.init() -&gt; MidPoint.PlacesAutoComplete.Coordinator"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Features%20Implementation/PlacesAutoComplete.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  uuid = "A89A2C61-A841-4627-8A58-51A61C38E421 - 189e82131791d6bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.PlacesAutoComplete.Coordinator.__deallocating_deinit"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Features%20Implementation/PlacesAutoComplete.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6A6DC989-0375-4ACE-908B-40C9021415F6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MidPoint/Views/ListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "6A6DC989-0375-4ACE-908B-40C9021415F6 - 424d9f73854777af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.ListView.body.getter : some"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "735">
+               </Location>
+               <Location
+                  uuid = "6A6DC989-0375-4ACE-908B-40C9021415F6 - 6646c0f372a5c426"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; SwiftUI.NavigationLink&lt;SwiftUI.Text, MidPoint.ResultsDetailsView&gt; in MidPoint.ListView.body.getter : some"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "977">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MidPoint/Views/ListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E - 77b04b0bc8be7e52"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of MidPoint.ListView.listCount : Swift.Int"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E - 1ca5f5588ee8d608"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.ListView.listCount.getter : Swift.Int"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "151">
+               </Location>
+               <Location
+                  uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E - 6fd9923491848a04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.ListView.listCount.setter : Swift.Int"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "138">
+               </Location>
+               <Location
+                  uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E - 25c64004f85ef0e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.ListView.listCount.modify : Swift.Int"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "46">
+               </Location>
+               <Location
+                  uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E - e2bce14800b28b04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.ListView.listCount.modify : Swift.Int with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E - 4dc121e7acbe0345"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.ListView.$listCount.getter : SwiftUI.Binding&lt;Swift.Int&gt;"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E - 8b984772b1ba5756"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.ListView.init() -&gt; MidPoint.ListView"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4ABEA53A-6971-4B2A-8FA9-5EE7C13E1D8D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MidPoint/Features Implementation/PlacesManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "getCoords()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "497DF652-C652-4139-8F31-BDBF5F37EB1B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MidPoint/Features Implementation/GoogleMapsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

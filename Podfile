@@ -9,6 +9,7 @@ target 'MidPoint' do
 
 	  pod 'GoogleMaps', '6.0.1'
           pod 'GooglePlaces', '6.0.0'
+  pod 'Kingfisher/SwiftUI'
 
 
 

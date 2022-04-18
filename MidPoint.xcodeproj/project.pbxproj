@@ -243,6 +243,7 @@
 				F0422FD327BF1CD300D90247 /* Frameworks */,
 				F0422FD427BF1CD300D90247 /* Resources */,
 				165803A44EBD40BDB94278B0 /* [CP] Copy Pods Resources */,
+				8D8D16E3F7278D3A96A44AEC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -373,6 +374,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MidPoint/Pods-MidPoint-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D8D16E3F7278D3A96A44AEC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MidPoint/Pods-MidPoint-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MidPoint/Pods-MidPoint-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MidPoint/Pods-MidPoint-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AD902D7F8D9ED99601D88215 /* [CP] Check Pods Manifest.lock */ = {

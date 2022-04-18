@@ -5,20 +5,26 @@ PODS:
   - GoogleMaps/Maps (6.0.1):
     - GoogleMaps/Base
   - GooglePlaces (6.0.0)
+  - Kingfisher/Core (5.15.8)
+  - Kingfisher/SwiftUI (5.15.8):
+    - Kingfisher/Core
 
 DEPENDENCIES:
   - GoogleMaps (= 6.0.1)
   - GooglePlaces (= 6.0.0)
+  - Kingfisher/SwiftUI
 
 SPEC REPOS:
   trunk:
     - GoogleMaps
     - GooglePlaces
+    - Kingfisher
 
 SPEC CHECKSUMS:
   GoogleMaps: c213fc2334b7374144cede914da779b99be0ab74
   GooglePlaces: c97d96ae68594acb64035c9ca9f26fbfc1d23af1
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
 
-PODFILE CHECKSUM: 31dae6a714079eb4b5c4eb78804726d304711850
+PODFILE CHECKSUM: a8fa21a878d296e51a18b1108431ece6cb7eceb4
 
 COCOAPODS: 1.11.2

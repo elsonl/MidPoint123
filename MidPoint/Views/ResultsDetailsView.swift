@@ -56,8 +56,8 @@ struct ResultsDetailsView: View {
             Text(verbatim : "\(rating!)")
             Text(verbatim : "\(numUserRating!)")
             Text(verbatim : "\(website!)")
-            Text(verbatim : "\(photoHeight) Height ")
-            Text(verbatim : "\(photoHtmlAttribution) HTML Attribution")
+            Text(verbatim : "\(photoHeight!) Height \n \(photoWidth!) Width")
+            Text(verbatim : "\(photoHtmlAttribution!) HTML Attribution")
             Text(verbatim : "\(photoReference!) Photo Reference")
             
             
