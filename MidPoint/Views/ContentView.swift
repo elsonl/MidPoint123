@@ -23,16 +23,15 @@ struct ContentView: View {
     @State var favoritesOpen : Bool = false
     @State var favoritesToggle : Bool = false
     
+    
     var body: some View {
         
         
         NavigationView{
             ZStack{
                 //background here random cities
-                
-                
-                
                 KFImage(URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Aap_uEA7vb0DDYVJWEaX3O-AtYp77AaswQKSGtDaimt3gt7QCNpdjp1BkdM6acJ96xTec3tsV_ZJNL_JP-lqsVxydG3nh739RE_hepOOL05tfJh2_ranjMadb3VoBYFvF0ma6S24qZ6QJUuV6sSRrhCskSBP5C1myCzsebztMfGvm7ij3gZT&key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4")).resizable().aspectRatio(contentMode: .fit)
+          
 //                Color.white
                 //Image().aspectRatio image here resize
                 VStack{

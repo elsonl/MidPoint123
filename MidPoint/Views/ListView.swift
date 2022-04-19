@@ -31,23 +31,22 @@ struct ListView: View {
         List(nearbySearch.responses3.results.indices){ counts in
             NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts), showDetail: .constant(showDetail)).onAppear{
                 print("i have appeared")
+            
                 placeDetails.PlaceIDs = nearbySearch.responses3.results[counts].place_id!
+              
                 placeDetails.getData(){
                     print(placeDetails.responses4.result!)
-                    showDetail = true
+                    
+                                        showDetail = true
                 }
             },
             label: {
                 
      
                 
-                Button(action : {
-                    print("I AM A BUTTOn")
-                    print("does this even work")
-                }
-                , label: {
+                
                     Text(verbatim: "\((counts)+1). \(nearbySearch.responses3.results[counts].name ?? "something went wrong :(") ")
-                }).navigationViewStyle(StackNavigationViewStyle())
+                .navigationViewStyle(StackNavigationViewStyle())
                 
                 
                 

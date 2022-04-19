@@ -13,7 +13,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import Foundation
-//https://maps.googleapis.com/maps/api/place/details/json?fields=name%2Crating%2Cformatted_phone_number%2Cformatted_address%2Cwebsite%2Copening_hours%2Cprice_level%2Cuser_ratings_total%2Cphoto%2Creview&place_id=ChIJXwbcTpvAxokRpQBerYSgPqs&key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4
+ //https://maps.googleapis.com/maps/api/place/details/json?fields=name%2Crating%2Cformatted_phone_number%2Cformatted_address%2Cwebsite%2Copening_hours%2Cprice_level%2Cuser_ratings_total%2Cphoto%2Creview&place_id=ChIJXwbcTpvAxokRpQBerYSgPqs&key=hc
 
 //https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Aap_uEA7vb0DDYVJWEaX3O-AtYp77AaswQKSGtDaimt3gt7QCNpdjp1BkdM6acJ96xTec3tsV_ZJNL_JP-lqsVxydG3nh739RE_hepOOL05tfJh2_ranjMadb3VoBYFvF0ma6S24qZ6QJUuV6sSRrhCskSBP5C1myCzsebztMfGvm7ij3gZT&key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4
 class PlaceDetails : ObservableObject{
@@ -55,6 +55,7 @@ class PlaceDetails : ObservableObject{
                 DispatchQueue.main.async{
                     self.responses4 = response4
                     print(response4.result)
+
                     
                     callback()
                 }
@@ -89,7 +90,7 @@ struct resultItem: Codable{
 struct photosItem: Codable {
     var height : Int?
     var html_attributions : [String]
-    var photo_reference : String!
+    var photo_reference : String?
     var width : Int?
     
 }

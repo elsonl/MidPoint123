@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
             endingLineNumber = "60"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "Coordinator"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "A89A2C61-A841-4627-8A58-51A61C38E421 - d6d3dacf81d2cc7c"
@@ -70,54 +70,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6A6DC989-0375-4ACE-908B-40C9021415F6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MidPoint/Views/ListView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "6A6DC989-0375-4ACE-908B-40C9021415F6 - 424d9f73854777af"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MidPoint.ListView.body.getter : some"
-                  moduleName = "MidPoint"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "735">
-               </Location>
-               <Location
-                  uuid = "6A6DC989-0375-4ACE-908B-40C9021415F6 - 6646c0f372a5c426"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Int) -&gt; SwiftUI.NavigationLink&lt;SwiftUI.Text, MidPoint.ResultsDetailsView&gt; in MidPoint.ListView.body.getter : some"
-                  moduleName = "MidPoint"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Views/ListView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "977">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -127,8 +79,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11"
             endingLineNumber = "11"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "ListView"
+            landmarkType = "14">
             <Locations>
                <Location
                   uuid = "2F352AC7-747A-428B-9CA2-F81A5C428A3E - 77b04b0bc8be7e52"
@@ -266,8 +218,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
             endingLineNumber = "40"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "makeUIView(context:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

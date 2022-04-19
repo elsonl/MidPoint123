@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct ResultsDetailsView: View {
     @EnvironmentObject var nearbySearch : NearbySearch
@@ -15,50 +16,43 @@ struct ResultsDetailsView: View {
 
     var body: some View {
         
-//        var PlaceID  : String = returnPlaceID(var: "")
-        
-//        var name : String = ""
-//
-//        var formattedAddress : String = ""
-//        var formattedPhoneNumber  : String = ""
-//        var openNow : Bool = true
-//        var openHours : [String]  = [""]
-//        var rating : Double = -1.0
-//        var numUserRating : Int = -1
-//        var website : String = ""
-        
         if showDetail{
-            let   name = placeDetails.responses4.result?.name!
+            let   name = placeDetails.responses4.result?.name ?? "no name availible"
 
-            let    formattedAddress = placeDetails.responses4.result!.formatted_address
-            let      formattedPhoneNumber = placeDetails.responses4.result!.formatted_phone_number
+            let    formattedAddress = placeDetails.responses4.result!.formatted_address ?? "no address availible"
+            let      formattedPhoneNumber = placeDetails.responses4.result!.formatted_phone_number ?? "no phone number availible"
          //   let      openNow = placeDetails.responses4.result!.opening_hours.open_now
             let      openHours = placeDetails.responses4.result!.opening_hours.weekday_text
-            let      rating = placeDetails.responses4.result!.rating
-            let         numUserRating = placeDetails.responses4.result!.user_ratings_total
-            let         website = placeDetails.responses4.result!.website
+            let      rating = placeDetails.responses4.result!.rating ?? -1
+
+            let  website = placeDetails.responses4.result!.website ?? "no website availible"
             
             
-            let photoHeight =  placeDetails.responses4.result!.photos.first?.height
-            let photoWidth = placeDetails.responses4.result!.photos.first?.width
+            let photoHeight =  placeDetails.responses4.result!.photos.first?.height ?? 0
+            let photoWidth = placeDetails.responses4.result!.photos.first?.width ?? 0
             let photoHtmlAttribution = placeDetails.responses4.result!.photos.first?.html_attributions
-            let photoReference = placeDetails.responses4.result!.photos.first?.photo_reference
+            let photoReference = placeDetails.responses4.result!.photos.first?.photo_reference ?? "not availible"
 
         List(){
           
-            Text(verbatim : "\(name!)")
-            Text(verbatim : "\(formattedAddress!)")
-            Text(verbatim : "\(formattedPhoneNumber!)")
+            Text(verbatim : "\(name)")
+            Text(verbatim : "\(formattedAddress)")
+            Text(verbatim : "\(formattedPhoneNumber)")
 //            Text(openNow)
             Text(verbatim : "\(openHours[0])\n\(openHours[1])\n\(openHours[2])\n\(openHours[3])\n\(openHours[4])\n\(openHours[5])\n\(openHours[6])")
            
 
-            Text(verbatim : "\(rating!)")
-            Text(verbatim : "\(numUserRating!)")
-            Text(verbatim : "\(website!)")
-            Text(verbatim : "\(photoHeight!) Height \n \(photoWidth!) Width")
+            Text(verbatim : "\(rating)")
+            Text(verbatim : "\(website)")
+            Text(verbatim : "\(photoHeight) Height \n \(photoWidth) Width")
             Text(verbatim : "\(photoHtmlAttribution!) HTML Attribution")
-            Text(verbatim : "\(photoReference!) Photo Reference")
+            
+            if(photoReference == "not availible"){
+                Text("No Photos Availible")
+            } else {
+                
+                KFImage(URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=400&photo_reference=\(photoReference)&key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4")).resizable().aspectRatio(contentMode: .fit)
+            }
             
             
  //             Doesnt work :(

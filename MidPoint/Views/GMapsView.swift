@@ -15,7 +15,7 @@ struct GMapsView: View {
     @EnvironmentObject var placesManager : PlacesManager
     @State var visible = false
     @State var visibleSlider = false
-    
+
     
     
     var body: some View {
@@ -26,7 +26,7 @@ struct GMapsView: View {
                 
     if nearbySearch.responses3.results.first?.name! != nil {
                     
-            ListView()
+        ListView()
                    
         } else {
             Text("There is Nothing around the MidPoint :(")
