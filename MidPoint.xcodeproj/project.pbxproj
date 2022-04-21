@@ -151,7 +151,6 @@
 		F0422FCD27BF1CD300D90247 = {
 			isa = PBXGroup;
 			children = (
-				D089578027E10B91003415FD /* Model */,
 				F0422FD827BF1CD300D90247 /* MidPoint */,
 				F0422FEA27BF1CD600D90247 /* MidPointTests */,
 				F0422FF527BF1CD600D90247 /* MidPointUITests */,
@@ -175,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				F0422FD927BF1CD300D90247 /* MidPointApp.swift */,
+				D089578027E10B91003415FD /* Model */,
 				F042300F27BF1F0800D90247 /* Views */,
 				F0352DB627C94DB400DD091D /* Features Implementation */,
 				F0422FDD27BF1CD500D90247 /* Assets.xcassets */,

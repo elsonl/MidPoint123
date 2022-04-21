@@ -29,8 +29,11 @@ struct GoogleMapsView: UIViewRepresentable{
         var camera = GMSCameraPosition.camera(withLatitude:  (geocoding.coordinates.0! + geocoding.coordinates.2!)/2, longitude:  (geocoding.coordinates.1! + geocoding.coordinates.3!)/2, zoom: 1)
         
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.delegate = context.coordinator
         mapView.settings.scrollGestures = true
         mapView.settings.zoomGestures = true
+     
+        
         
         nearbySearch.coordinatesNS.0 = geocoding.coordinates.0
         nearbySearch.coordinatesNS.1 = geocoding.coordinates.1
@@ -137,19 +140,16 @@ class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
     init(owner : GoogleMapsView){
         self.owner = owner
     }
-    
-    deinit {
-           print("deinit: whatissiisisis")
-       }
+
      func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        print("delegate could possible be working!?!?!")
+        print("delegate Thing")
         if marker.userData == nil {
             print("UserData Delegate Return False")
             return false
         }
         let markerData = marker.userData
         print("UserData Delegate : \(String(describing: markerData))")
-        print("UserData Delegate 2 : \(String(describing: marker.userData ?? "empty userdata"))")
+        print("UserData Delegate 2 : \(String(describing: marker.userData))")
         return true
     }
     

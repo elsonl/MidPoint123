@@ -14,31 +14,36 @@ struct ListView: View {
     @EnvironmentObject var placesManager : PlacesManager
     @EnvironmentObject var placeDetails : PlaceDetails
     
-    func SetDetail() -> Bool{
-        
-        self.showDetail = false
-        print("Detail Status : \(showDetail)")
-        return showDetail
-    }
     
     var body: some View {
         
-        if true {
-        var thingy = SetDetail()
-        }
         
         
         List(nearbySearch.responses3.results.indices){ counts in
             NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts), showDetail: .constant(showDetail)).onAppear{
                 print("i have appeared")
             
+                var show : Bool = true
+                
                 placeDetails.PlaceIDs = nearbySearch.responses3.results[counts].place_id!
               
-                placeDetails.getData(){
-                    print(placeDetails.responses4.result!)
-                    
-                                        showDetail = true
+                if show {
+                showDetail = false
                 }
+                
+                placeDetails.getData(){
+                    
+                    print("\(placeDetails.responses4.result!) RESULTS" )
+                    print("\(placeDetails.responses4.result!.name ?? "nothing here") : name thingy")
+                    var name = placeDetails.responses4.result?.name ?? "nil"
+                    print("\(name) name")
+                    if name != "nil"{
+                        showDetail = true
+                        show = false
+                    }
+                    show = true
+                }
+            
             },
             label: {
                 

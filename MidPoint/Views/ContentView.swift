@@ -30,22 +30,24 @@ struct ContentView: View {
         NavigationView{
             ZStack{
                 //background here random cities
-                KFImage(URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Aap_uEA7vb0DDYVJWEaX3O-AtYp77AaswQKSGtDaimt3gt7QCNpdjp1BkdM6acJ96xTec3tsV_ZJNL_JP-lqsVxydG3nh739RE_hepOOL05tfJh2_ranjMadb3VoBYFvF0ma6S24qZ6QJUuV6sSRrhCskSBP5C1myCzsebztMfGvm7ij3gZT&key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4")).resizable().aspectRatio(contentMode: .fit)
-          
+//                KFImage(URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Aap_uEA7vb0DDYVJWEaX3O-AtYp77AaswQKSGtDaimt3gt7QCNpdjp1BkdM6acJ96xTec3tsV_ZJNL_JP-lqsVxydG3nh739RE_hepOOL05tfJh2_ranjMadb3VoBYFvF0ma6S24qZ6QJUuV6sSRrhCskSBP5C1myCzsebztMfGvm7ij3gZT&key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4")).resizable().aspectRatio(contentMode: .fit)
+//
+                Image("Map") .resizable().opacity(0.8).aspectRatio(contentMode: .fit)
+                
 //                Color.white
                 //Image().aspectRatio image here resize
                 VStack{
                     Group{
                         Image("InAppIcon").opacity(0.5)
-                        Text("MidPoint") //(distance done easy)
+                        Text("MidPoint").foregroundColor(Color.gray) //(distance done easy)
                         //No Space Here, no time to fix
-                        Text("Enter Locations Below")//.font(<#T##font: Font?##Font?#>)
-                            .foregroundColor(Color.TextFieldText)
+                        Text("Enter Locations Below")
+                            .foregroundColor(Color.gray)
                             .padding()
                         
                         //Address1
                         HStack{
-                            Image(systemName: "magnifyingglass")
+                            Image(systemName: "magnifyingglass").foregroundColor(Color.gray) .font(Font.system(size: 35, weight: .heavy))
                             
                             TextField("Location 1 ...", text: $address1,onEditingChanged: { _ in
                                 geocoding.count = true
@@ -61,10 +63,10 @@ struct ContentView: View {
                                 .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
                                 .sheet(isPresented : $showsheet1, onDismiss: {
                                     
-                                    if(address1 == ""){
-                                        print("address 1 empty, showsheet true")
-                                        showsheet1 = true
-                                    } else {
+//                                    if(address1 == ""){
+//                                        print("address 1 empty, showsheet true")
+//                                        showsheet1 = true
+//                                    } else {
                                         geocoding.count = true
                                         
                                         print(geocoding.count)
@@ -74,7 +76,7 @@ struct ContentView: View {
                                         showsheet1 = false
                                         geocoding.getData()
                                         
-                                    }
+//                                    }
                                 }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
                                     .environmentObject(geocoding) }
                         }.frame(width: 375, alignment: .trailing)
@@ -83,7 +85,7 @@ struct ContentView: View {
                         
                         //Address 2
                         HStack {
-                            Image(systemName: "magnifyingglass")
+                            Image(systemName: "magnifyingglass").foregroundColor(Color.gray).font(Font.system(size : 35, weight: .heavy))
                             TextField("Location 2 ...", text: $address2,onEditingChanged: { _ in
                                 geocoding.count = false
                                 print("2, count false")
@@ -96,10 +98,10 @@ struct ContentView: View {
                                 print("address2 committed")
                             }).foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
                                 .sheet(isPresented : $showsheet2, onDismiss: {
-                                    if(address2 == ""){
-                                        print("address 2 empty, showsheet true")
-                                        showsheet2 = true
-                                    } else {
+//                                    if(address2 == ""){
+//                                        print("address 2 empty, showsheet true")
+//                                        showsheet2 = true
+//                                    } else {
                                         geocoding.count = false
                                         
                                         print(geocoding.count)
@@ -110,7 +112,7 @@ struct ContentView: View {
                                         geocoding.getData()
                                         
                                         
-                                    }
+//                                    }
                                 }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
                                     .environmentObject(geocoding) }}.frame(width: 375, alignment: .trailing)
                         
