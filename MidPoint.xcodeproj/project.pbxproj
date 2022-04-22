@@ -132,6 +132,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F01C90AA2811BB46006F4F77 /* Unused Views */ = {
+			isa = PBXGroup;
+			children = (
+				8659D2C327DBEF55006F99B2 /* ResultsView.swift */,
+				F0352DBB27CD315400DD091D /* FavoritesView.swift */,
+			);
+			path = "Unused Views";
+			sourceTree = "<group>";
+		};
 		F0352DB627C94DB400DD091D /* Features Implementation */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +153,7 @@
 				869DFA1A27F685EA00597CFD /* PlaceDetails.swift */,
 				F066725F27DA6A4800AE3790 /* DistanceMatrix.swift */,
 				F042304E27C730C600D90247 /* Geocoding.swift */,
+				F01C90AA2811BB46006F4F77 /* Unused Views */,
 			);
 			path = "Features Implementation";
 			sourceTree = "<group>";
@@ -217,8 +227,6 @@
 				F066726127DA6F0F00AE3790 /* GMapsView.swift */,
 				F0E0BB6627F5DEBD00064360 /* ListView.swift */,
 				F0E0BB6427F5440200064360 /* ResultsDetailsView.swift */,
-				8659D2C327DBEF55006F99B2 /* ResultsView.swift */,
-				F0352DBB27CD315400DD091D /* FavoritesView.swift */,
 				F01D5B322808BC8B008AC6D2 /* DetailInformationView.swift */,
 			);
 			path = Views;

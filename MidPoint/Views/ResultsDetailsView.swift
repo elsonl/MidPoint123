@@ -43,7 +43,7 @@ struct ResultsDetailsView: View {
            
 
             Text(verbatim : "\(rating)")
-            Text(verbatim : "\(website)")
+            Link("\(website)", destination: URL(string: "\(website)")!)
             Text(verbatim : "\(photoHeight) Height \n \(photoWidth) Width")
             Text(verbatim : "\(photoHtmlAttribution!) HTML Attribution")
             

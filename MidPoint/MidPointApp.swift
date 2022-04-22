@@ -36,7 +36,7 @@ struct MidPointApp: App {
         
         WindowGroup {
             
-            ContentView(address1: "", address2: "")
+            ContentView(address1: "", address2: "", delegatePlaceID: "123")
                 .environmentObject(geocoding)
                 .environmentObject(dMatrix)
                 .environmentObject(placeDetail)

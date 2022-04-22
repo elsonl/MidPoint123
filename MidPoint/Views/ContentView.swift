@@ -22,6 +22,7 @@ struct ContentView: View {
     @State var favoritesAddress : String = ""
     @State var favoritesOpen : Bool = false
     @State var favoritesToggle : Bool = false
+    @State var delegatePlaceID : String
     
     
     var body: some View {
@@ -32,13 +33,13 @@ struct ContentView: View {
                 //background here random cities
 //                KFImage(URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=Aap_uEA7vb0DDYVJWEaX3O-AtYp77AaswQKSGtDaimt3gt7QCNpdjp1BkdM6acJ96xTec3tsV_ZJNL_JP-lqsVxydG3nh739RE_hepOOL05tfJh2_ranjMadb3VoBYFvF0ma6S24qZ6QJUuV6sSRrhCskSBP5C1myCzsebztMfGvm7ij3gZT&key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4")).resizable().aspectRatio(contentMode: .fit)
 //
-                Image("Map") .resizable().opacity(0.8).aspectRatio(contentMode: .fit)
+//                Image("Map") .resizable().opacity(0.8).aspectRatio(contentMode: .fit)
                 
 //                Color.white
                 //Image().aspectRatio image here resize
                 VStack{
                     Group{
-                        Image("InAppIcon").opacity(0.5)
+                        Image("InAppIcon")
                         Text("MidPoint").foregroundColor(Color.gray) //(distance done easy)
                         //No Space Here, no time to fix
                         Text("Enter Locations Below")
@@ -123,7 +124,7 @@ struct ContentView: View {
                         Button(action : {
                             
                         }, label: {
-                            NavigationLink(destination : GMapsView()){
+                            NavigationLink(destination : GMapsView( delegatePlaceID: $delegatePlaceID)){
                                 
                                 Text("Search")
                                 
@@ -227,7 +228,7 @@ struct ContentView: View {
     }
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
-            ContentView(address1: "", address2: "")
+            ContentView(address1: "", address2: "", delegatePlaceID: "")
         }
     }
 }

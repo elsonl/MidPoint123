@@ -18,6 +18,7 @@ struct GoogleMapsView: UIViewRepresentable{
     @EnvironmentObject var nearbySearch : NearbySearch
     @EnvironmentObject var placesManager : PlacesManager
     @EnvironmentObject var placeDetails : PlaceDetails
+    @Binding var delegatePlaceID : String
     
     let marker : GMSMarker = GMSMarker()
     let marker2 : GMSMarker = GMSMarker()
@@ -81,7 +82,7 @@ struct GoogleMapsView: UIViewRepresentable{
     }
     
     func makeCoordinator() -> Coordinator {
-       Coordinator(owner: self)
+        Coordinator(owner: self, delegatePlaceID: $delegatePlaceID)
     }
     
     func updateUIView(_ mapView: GMSMapView, context: Context) {
@@ -95,7 +96,9 @@ struct GoogleMapsView: UIViewRepresentable{
         marker.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
         marker.title = "Location 1"
         marker.snippet = "Marker 1"
+        marker.userData = "marker 1"
         marker.map = mapView
+    
         
         
         
@@ -104,24 +107,28 @@ struct GoogleMapsView: UIViewRepresentable{
         marker2.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
         marker2.title = "Location 2"
         marker2.snippet = "Marker 2"
+        marker2.userData = "marker 2"
         marker2.map = mapView
+  
         
         // makes third marker that displays midpoint in blue
         midpointMarker.icon = GMSMarker.markerImage(with : UIColor.blue)
         midpointMarker.position = CLLocationCoordinate2D(latitude:  midLat , longitude: midLong)
         midpointMarker.title = "Midpoint Marker"
         midpointMarker.snippet = "Middle"
+        marker.userData = "Midpoint Marker"
         midpointMarker.map = mapView
         
-        // makes a circle radius around the midpoint
-        var miles = placeDetail.miles
-        let circleCenter : CLLocationCoordinate2D  = CLLocationCoordinate2DMake(midLat, midLong)
-        let circ = GMSCircle(position: circleCenter, radius: 1609.34 * miles)
-        circ.fillColor = UIColor(red: 0.0, green: 0.7, blue: 0, alpha: 0.1)
-        circ.strokeColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 0.5)
-        circ.strokeWidth = 2.5
         
-        circ.map = mapView
+        // makes a circle radius around the midpoint
+//        var miles = placeDetail.miles
+//        let circleCenter : CLLocationCoordinate2D  = CLLocationCoordinate2DMake(midLat, midLong)
+//        let circ = GMSCircle(position: circleCenter, radius: 1609.34 * miles)
+//        circ.fillColor = UIColor(red: 0.0, green: 0.7, blue: 0, alpha: 0.1)
+//        circ.strokeColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 0.5)
+//        circ.strokeWidth = 2.5
+//        
+//        circ.map = mapView
         
         
         // updates the view so that both markers are always visible at the same time
@@ -136,12 +143,18 @@ struct GoogleMapsView: UIViewRepresentable{
 
 class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
 
+    @Binding var delegatePlaceID : String
     let owner : GoogleMapsView
-    init(owner : GoogleMapsView){
+    init(owner : GoogleMapsView, delegatePlaceID :  Binding<String>){
         self.owner = owner
+        self._delegatePlaceID = delegatePlaceID
     }
 
      func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+//        delegatePlaceID = marker.userData as! String
+//        print("DelegatePlaceID\(delegatePlaceID)")
+        
         print("delegate Thing")
         if marker.userData == nil {
             print("UserData Delegate Return False")
@@ -150,6 +163,10 @@ class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
         let markerData = marker.userData
         print("UserData Delegate : \(String(describing: markerData))")
         print("UserData Delegate 2 : \(String(describing: marker.userData))")
+        
+        delegatePlaceID = markerData as! String
+        print("DelegatePlaceID \(delegatePlaceID)")
+        
         return true
     }
     
