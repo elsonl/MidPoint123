@@ -137,6 +137,8 @@
 			children = (
 				8659D2C327DBEF55006F99B2 /* ResultsView.swift */,
 				F0352DBB27CD315400DD091D /* FavoritesView.swift */,
+				F0E0BB6627F5DEBD00064360 /* ListView.swift */,
+				F0E0BB6427F5440200064360 /* ResultsDetailsView.swift */,
 			);
 			path = "Unused Views";
 			sourceTree = "<group>";
@@ -225,8 +227,6 @@
 			children = (
 				F0422FDB27BF1CD300D90247 /* ContentView.swift */,
 				F066726127DA6F0F00AE3790 /* GMapsView.swift */,
-				F0E0BB6627F5DEBD00064360 /* ListView.swift */,
-				F0E0BB6427F5440200064360 /* ResultsDetailsView.swift */,
 				F01D5B322808BC8B008AC6D2 /* DetailInformationView.swift */,
 			);
 			path = Views;

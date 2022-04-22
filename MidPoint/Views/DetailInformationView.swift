@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct DetailInformationView: View {
+    @EnvironmentObject var placesManager : PlacesManager
     @Binding var delegatePlaceID : String
+    @Binding var showPlaceID : Bool
     var body: some View {
         ZStack{
             Rectangle().foregroundColor(Color.blue).frame(width: 375, height: 225, alignment: .center).cornerRadius(35).opacity(0.5)
@@ -33,6 +35,14 @@ struct DetailInformationView: View {
                         Text("4")
                         Text("5")
                         
+                        
+//                 if showPlaceID {      ForEach(placesManager.PlaceIDs, id: \.self){count in
+//                            Text(count)
+//                        }}
+//                        for count in 0..<placesManager.PlaceIDs.indices{
+//                            Text(placesManager.PlaceIDs[count])
+//                        }
+                        
                     }
                 }
                 
@@ -43,11 +53,4 @@ struct DetailInformationView: View {
         }
     }
 }
-
-struct DetailInformationView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailInformationView(delegatePlaceID: .constant("I AM CONSTANT"))
-    }
-}
-
 

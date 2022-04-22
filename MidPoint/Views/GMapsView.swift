@@ -16,16 +16,17 @@ struct GMapsView: View {
     @State var visible = false
     @State var visibleSlider = false
     @Binding var delegatePlaceID : String
+    @Binding var showPlaceID : Bool
     
     
     
     var body: some View {
         ZStack{
-            GoogleMapsView( delegatePlaceID: $delegatePlaceID).edgesIgnoringSafeArea(.all)
+            GoogleMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID).edgesIgnoringSafeArea(.all)
                 
             VStack(alignment: .trailing){
                 Spacer()
-                DetailInformationView(delegatePlaceID: $delegatePlaceID)
+                DetailInformationView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID)
                 
             }
             
@@ -83,10 +84,5 @@ struct GMapsView: View {
 //            }
         }
     }
-    
-    struct GMapsView_Previews: PreviewProvider {
-        static var previews: some View {
-            GMapsView( delegatePlaceID: .constant(""))
-        }
-    }
+
 }

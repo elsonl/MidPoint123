@@ -19,6 +19,7 @@ struct GoogleMapsView: UIViewRepresentable{
     @EnvironmentObject var placesManager : PlacesManager
     @EnvironmentObject var placeDetails : PlaceDetails
     @Binding var delegatePlaceID : String
+    @Binding var showPlaceID : Bool
     
     let marker : GMSMarker = GMSMarker()
     let marker2 : GMSMarker = GMSMarker()
@@ -67,7 +68,7 @@ struct GoogleMapsView: UIViewRepresentable{
             }else {
                 print("invalid 111")
             }
-            
+            showPlaceID = true
 //            for count in placesManager.Names.indices
 //            {placeDetails.PlaceIDs.append(placesManager.PlaceIDs[count])
 //              
