@@ -43,7 +43,23 @@ struct ResultsDetailsView: View {
            
 
             Text(verbatim : "\(rating)")
+            
+            
+            
+            
+            
             Link("\(website)", destination: URL(string: "\(website)")!)
+            
+//            Button(action: {   UIPasteboard.general.string = address1
+//                                            }) {
+//                                        Text("Copy to clipboard").foregroundColor(.white)
+//                                                    
+//                                                Image(systemName: "doc.on.doc")
+//                                            }
+//
+            
+            
+            
             Text(verbatim : "\(photoHeight) Height \n \(photoWidth) Width")
             Text(verbatim : "\(photoHtmlAttribution!) HTML Attribution")
             
