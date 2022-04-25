@@ -27,7 +27,7 @@ class NearbySearch : ObservableObject{
         
         print("mid lat : \(midLat)")
         print("mid long : \(midLong)")
-        guard let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4&location=\(midLat),\(midLong)&radius=50000&type=restaurant,park") else {
+        guard let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4&location=\(midLat),\(midLong)&radius=50000&type=restaurant") else {
             
             print("error creating url")
             return

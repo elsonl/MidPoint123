@@ -13,6 +13,7 @@ struct GMapsView: View {
     @EnvironmentObject var placeDetail : PlaceDetail
     @EnvironmentObject var nearbySearch : NearbySearch
     @EnvironmentObject var placesManager : PlacesManager
+
     @State var visible = false
     @State var visibleSlider = false
     @Binding var delegatePlaceID : String
