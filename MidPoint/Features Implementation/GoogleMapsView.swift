@@ -20,6 +20,7 @@ struct GoogleMapsView: UIViewRepresentable{
     @EnvironmentObject var placeDetails : PlaceDetails
     @Binding var delegatePlaceID : String
     @Binding var showPlaceID : Bool
+
     
     let marker : GMSMarker = GMSMarker()
     let marker2 : GMSMarker = GMSMarker()
@@ -35,7 +36,6 @@ struct GoogleMapsView: UIViewRepresentable{
         mapView.settings.scrollGestures = true
         mapView.settings.zoomGestures = true
      
-        
         
         nearbySearch.coordinatesNS.0 = geocoding.coordinates.0
         nearbySearch.coordinatesNS.1 = geocoding.coordinates.1
@@ -62,7 +62,7 @@ struct GoogleMapsView: UIViewRepresentable{
                     loopMarkers.isTappable = true
                     print("UserData : \(String(describing: loopMarkers.userData ?? "empty userdata"))")
                     loopMarkers.map = mapView
-                    
+                    delegatePlaceID = placesManager.PlaceIDs[0]
                     
                 }
             }else {
@@ -165,8 +165,11 @@ class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
         print("UserData Delegate : \(String(describing: markerData))")
         print("UserData Delegate 2 : \(String(describing: marker.userData))")
         
+//       var camera = GMSCameraPosition(latitude: marker.position.latitude, longitude: marker.position.longitude, zoom: 8.0)
+        
         delegatePlaceID = markerData as! String
         print("DelegatePlaceID \(delegatePlaceID)")
+        
         
         return true
     }

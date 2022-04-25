@@ -53,6 +53,9 @@ struct DetailInformationView: View {
         }
     }
     
+    
+    
+    
     var body: some View {
         
         
@@ -60,7 +63,8 @@ struct DetailInformationView: View {
         
         
         ZStack{
-            Rectangle().foregroundColor(Color.blue).frame(width: 375, height: 225, alignment: .center).cornerRadius(35).opacity(0.5)
+//            Rectangle().foregroundColor(Color.blue).frame(width: 375, height: 225, alignment: .center).cornerRadius(35).opacity(0.5)
+            Color.green.edgesIgnoringSafeArea( .all)
             ScrollView(.vertical){
                 
                 HStack(alignment : .center){
@@ -146,7 +150,7 @@ struct DetailInformationView: View {
                             Text(verbatim : "\(formattedAddress)")
                                 Button(action: {   UIPasteboard.general.string = formattedAddress
                                                                 }) {
-                                                            Text("Copy to clipboard").foregroundColor(.white)
+                                                           
                                                                         
                                                                     Image(systemName: "doc.on.doc")
                                                                 }
@@ -155,14 +159,14 @@ struct DetailInformationView: View {
                             Text(verbatim : "\(formattedPhoneNumber)")
                                 Button(action: {   UIPasteboard.general.string = formattedPhoneNumber
                                                                 }) {
-                                                            Text("Copy to clipboard").foregroundColor(.white)
+                                                        
                                                                         
                                                                     Image(systemName: "doc.on.doc")
                                                                 }
                             }
-                            Text(verbatim : "\(openHours[0])\n\(openHours[1])\n\(openHours[2])\n\(openHours[3])\n\(openHours[4])\n\(openHours[5])\n\(openHours[6])")
-                            Text(verbatim : "\(rating)")
-                            Link("\(website)", destination: (URL(string: "\(website)") ?? URL(string: "google.com"))!)
+//                            Text(verbatim : "\(openHours[0])\n\(openHours[1])\n\(openHours[2])\n\(openHours[3])\n\(openHours[4])\n\(openHours[5])\n\(openHours[6])")
+//                            Text(verbatim : "\(rating)")
+//                            Link("\(website)", destination: (URL(string: "\(website)") ?? URL(string: "google.com"))!)
                         } else {
                             Text("Loading")
                         }

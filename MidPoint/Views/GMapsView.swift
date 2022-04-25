@@ -13,6 +13,7 @@ struct GMapsView: View {
     @EnvironmentObject var placeDetail : PlaceDetail
     @EnvironmentObject var nearbySearch : NearbySearch
     @EnvironmentObject var placesManager : PlacesManager
+    @EnvironmentObject var placeDetails : PlaceDetails
 
     @State var visible = false
     @State var visibleSlider = false
@@ -22,13 +23,14 @@ struct GMapsView: View {
     
     
     var body: some View {
-        ZStack{
+        VStack{
             GoogleMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID).edgesIgnoringSafeArea(.all)
                 
-            VStack(alignment: .trailing){
-                Spacer()
+            Spacer(minLength: 1)
+    
                 DetailInformationView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID)
-                
+            Spacer(minLength: 1)
+
             }
             
             //show list
@@ -86,4 +88,4 @@ struct GMapsView: View {
         }
     }
 
-}
+
