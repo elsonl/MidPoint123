@@ -19,16 +19,17 @@ struct GMapsView: View {
     @State var visibleSlider = false
     @Binding var delegatePlaceID : String
     @Binding var showPlaceID : Bool
+    @Binding var showDetail : Bool
     
     
     
     var body: some View {
         VStack{
-            GoogleMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID).edgesIgnoringSafeArea(.all)
+            GoogleMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail).edgesIgnoringSafeArea(.all)
                 
             Spacer(minLength: 1)
     
-                DetailInformationView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID)
+            DetailInformationView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail)
             Spacer(minLength: 1)
 
             }

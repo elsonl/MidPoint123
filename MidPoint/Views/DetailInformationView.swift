@@ -7,6 +7,8 @@
 
 import SwiftUI
 import struct Kingfisher.KFImage
+import GoogleMaps
+import GooglePlaces
 
 
 struct DetailInformationView: View {
@@ -14,7 +16,7 @@ struct DetailInformationView: View {
     @Binding var delegatePlaceID : String
     @Binding var showPlaceID : Bool
 //    @State var currentIndexNumber : Int = 0
-    @State var showDetail : Bool = false
+    @Binding var showDetail : Bool
     @EnvironmentObject var placeDetails : PlaceDetails
     @EnvironmentObject var nearbySearch : NearbySearch
     
@@ -71,7 +73,7 @@ struct DetailInformationView: View {
                     // space for picture
                     ZStack{
                         if showDetail {
-                            let photoReference = placeDetails.responses4.result!.photos.first?.photo_reference ?? "not availible"
+                            let photoReference = placeDetails.responses4.result?.photos.first?.photo_reference ?? "not availible"
                             if(photoReference == "not availible"){
                                 Text("No Photos Availible")
                             } else {
@@ -119,6 +121,9 @@ struct DetailInformationView: View {
                                 
                                 currentIndexNumber = getIndexNumber(CurrentPlaceID: delegatePlaceID)
                                 getDetails(cIndexNumber: currentIndexNumber)
+                         
+                                    
+                                
                                 
                                 
                             } else {
@@ -138,13 +143,13 @@ struct DetailInformationView: View {
                             
                             let   name = placeDetails.responses4.result?.name ?? "no name availible"
 
-                            let    formattedAddress = placeDetails.responses4.result!.formatted_address ?? "no address availible"
-                            let      formattedPhoneNumber = placeDetails.responses4.result!.formatted_phone_number ?? "no phone number availible"
+                            let    formattedAddress = placeDetails.responses4.result?.formatted_address ?? "no address availible"
+                            let      formattedPhoneNumber = placeDetails.responses4.result?.formatted_phone_number ?? "no phone number availible"
    
-                            let      openHours = placeDetails.responses4.result!.opening_hours.weekday_text
-                            let      rating = placeDetails.responses4.result!.rating ?? -1
+                            let      openHours = placeDetails.responses4.result?.opening_hours.weekday_text
+                            let      rating = placeDetails.responses4.result?.rating ?? -1
 
-                            let  website = placeDetails.responses4.result!.website ?? "no website availible"
+                            let  website = placeDetails.responses4.result?.website ?? "no website availible"
                             Text(verbatim : "\(name)")
                             HStack{
                             Text(verbatim : "\(formattedAddress)")

@@ -20,6 +20,7 @@ struct GoogleMapsView: UIViewRepresentable{
     @EnvironmentObject var placeDetails : PlaceDetails
     @Binding var delegatePlaceID : String
     @Binding var showPlaceID : Bool
+    @Binding var showDetail : Bool
 
     
     let marker : GMSMarker = GMSMarker()
@@ -27,20 +28,34 @@ struct GoogleMapsView: UIViewRepresentable{
     let midpointMarker : GMSMarker = GMSMarker()
     
     
+    
+    
     func makeUIView(context: Self.Context) -> GMSMapView {
-        
-        var camera = GMSCameraPosition.camera(withLatitude:  (geocoding.coordinates.0! + geocoding.coordinates.2!)/2, longitude:  (geocoding.coordinates.1! + geocoding.coordinates.3!)/2, zoom: 1)
-        
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.delegate = context.coordinator
-        mapView.settings.scrollGestures = true
-        mapView.settings.zoomGestures = true
-     
         
         nearbySearch.coordinatesNS.0 = geocoding.coordinates.0
         nearbySearch.coordinatesNS.1 = geocoding.coordinates.1
         nearbySearch.coordinatesNS.2 = geocoding.coordinates.2
         nearbySearch.coordinatesNS.3 = geocoding.coordinates.3
+        
+        let marker1location = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
+        let marker2location = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
+        let bounds = GMSCoordinateBounds(coordinate: marker1location, coordinate: marker2location)
+        
+        
+       
+        
+        var camera = GMSCameraPosition.camera(withLatitude:  (geocoding.coordinates.0! + geocoding.coordinates.2!)/2, longitude:  (geocoding.coordinates.1! + geocoding.coordinates.3!)/2, zoom: 1)
+        
+        let update = GMSCameraUpdate.fit(bounds, withPadding:75)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.delegate = context.coordinator
+        mapView.moveCamera(update)
+        mapView.settings.scrollGestures = true
+        mapView.settings.zoomGestures = true
+     
+      
+    
+        
         
 //        placeDetails.getData(){
 //        print(placeDetails.responses4.result!)
@@ -69,6 +84,8 @@ struct GoogleMapsView: UIViewRepresentable{
                 print("invalid 111")
             }
             showPlaceID = true
+            
+            
 //            for count in placesManager.Names.indices
 //            {placeDetails.PlaceIDs.append(placesManager.PlaceIDs[count])
 //              
@@ -83,7 +100,7 @@ struct GoogleMapsView: UIViewRepresentable{
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(owner: self, delegatePlaceID: $delegatePlaceID)
+        Coordinator(owner: self, delegatePlaceID: $delegatePlaceID, showDetail: $showDetail, placeDetails: placeDetails)
     }
     
     func updateUIView(_ mapView: GMSMapView, context: Context) {
@@ -133,49 +150,102 @@ struct GoogleMapsView: UIViewRepresentable{
         
         
         // updates the view so that both markers are always visible at the same time
-        let marker1 = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
-        let marker2 = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
-        let bounds = GMSCoordinateBounds(coordinate: marker1, coordinate: marker2)
+//        let marker1 = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
+//        let marker2 = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
+//        let bounds = GMSCoordinateBounds(coordinate: marker1, coordinate: marker2)
+//
+//        let update = GMSCameraUpdate.fit(bounds, withPadding:75)
+//        mapView.moveCamera(update)
         
-        let update = GMSCameraUpdate.fit(bounds, withPadding: 50)
-        mapView.moveCamera(update)
+        
+        
+//        mapView.animate(to: GMSCameraPosition(target: midpointMarker.position, zoom: 10))
+        
         
     }
 
 class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
 
     @Binding var delegatePlaceID : String
+    @Binding var showDetail : Bool
     let owner : GoogleMapsView
-    init(owner : GoogleMapsView, delegatePlaceID :  Binding<String>){
+    var placeDetails : PlaceDetails
+    init(owner : GoogleMapsView, delegatePlaceID :  Binding<String>, showDetail : Binding<Bool>, placeDetails : PlaceDetails){
         self.owner = owner
         self._delegatePlaceID = delegatePlaceID
+        self._showDetail = showDetail
+        self.placeDetails = placeDetails
     }
 
-     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+     func mapView(_ mapView: GMSMapView, didTap markerDel: GMSMarker) -> Bool {
         
 //        delegatePlaceID = marker.userData as! String
 //        print("DelegatePlaceID\(delegatePlaceID)")
         
         print("delegate Thing")
-        if marker.userData == nil {
+        if markerDel.userData == nil {
             print("UserData Delegate Return False")
             return false
         }
-        let markerData = marker.userData
+        let markerData = markerDel.userData
         print("UserData Delegate : \(String(describing: markerData))")
-        print("UserData Delegate 2 : \(String(describing: marker.userData))")
+        print("UserData Delegate 2 : \(String(describing: markerDel.userData))")
         
-//       var camera = GMSCameraPosition(latitude: marker.position.latitude, longitude: marker.position.longitude, zoom: 8.0)
         
         delegatePlaceID = markerData as! String
         print("DelegatePlaceID \(delegatePlaceID)")
         
+        showDetail = true
+        
+        var show : Bool = true
+        placeDetails.PlaceIDs = delegatePlaceID
+        print("\(placeDetails.PlaceIDs) placeDetailPlaceID")
+      
+        if show {
+        showDetail = false
+        }
+        
+        placeDetails.getData(){ [self] in
+            
+            print("\(placeDetails.responses4.result!) RESULTS" )
+            print("\(placeDetails.responses4.result!.name ?? "nothing here") : name thingy")
+            var name = placeDetails.responses4.result?.name ?? "nil"
+            print("\(name) name")
+            if name != "nil"{
+                showDetail = true
+                show = false
+            }
+            show = true
+//            mapView.animate =  GMSCameraPosition.camera(withTarget: markerDel.position, zoom: 15)
+            DispatchQueue.main.async {
+                    mapView.animate(to: GMSCameraPosition.camera(withTarget: markerDel.position, zoom: 15))
+                }
+//            mapView.camera = GMSCameraPosition.camera(withTarget: markerDel.position, zoom: 15)
+        }
+
+//        let bounds = GMSCoordinateBounds(coordinate: markerDel.position, coordinate: markerDel.position)
+//        mapView.camera = GMSCameraPosition.camera(withTarget: markerDel.position, zoom: 15)
+//        mapView.animate(with: GMSCameraUpdate.fit(bounds))
         
         return true
     }
     
-}
-}
+    func mapView(_ mapView: GMSMapView, markerInfoWindow markerDel: GMSMarker) -> UIView? {
+        print("Marker Info Window")
+        let mInfoWindow = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+                mInfoWindow.backgroundColor = UIColor.lightGray
+                mInfoWindow.layer.cornerRadius = 6
 
-//(BOOL) mapView:        (GMSMapView *)     mapView
-//didTapMarker:        (GMSMarker *)     marker
+                let lbl1 = UILabel(frame: CGRect.init(x: 8, y: 8, width: 16, height: 15))
+                lbl1.text = "Hi there!"
+                mInfoWindow.addSubview(lbl1)
+        
+        
+
+
+                return mInfoWindow
+    }
+    
+    
+}
+}
