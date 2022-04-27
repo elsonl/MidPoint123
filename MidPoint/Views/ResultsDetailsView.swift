@@ -46,14 +46,15 @@ struct ResultsDetailsView: View {
                     }) {
   
                         Image(systemName: "doc.on.doc").foregroundColor(.blue)
-                    }
+                    }.frame(alignment: .trailing)
                 }
                 HStack{
                     Text(verbatim : "\(formattedPhoneNumber)")
                     Button(action: {   UIPasteboard.general.string = formattedPhoneNumber
                     }) {
                         Image(systemName: "doc.on.doc").foregroundColor(.blue)
-                    }
+                    }.frame(alignment: .trailing)
+                    
                 }
                 
                 Text(verbatim : "\(openHours[0])\n\(openHours[1])\n\(openHours[2])\n\(openHours[3])\n\(openHours[4])\n\(openHours[5])\n\(openHours[6])")
@@ -64,9 +65,12 @@ struct ResultsDetailsView: View {
                 
                 
                 
-                
-                Link("Website", destination: (URL(string: "\(website)") ?? URL(string: "google.com"))!).foregroundColor(.blue)
+                if(website == "no website availible"){
 
+                Text("Website Unavalible").foregroundColor(.black)
+               
+                } else{
+                    Link("Website", destination: (URL(string: "\(website)") ?? URL(string: "google.com"))!).foregroundColor(.blue)}
                 
                 Text(verbatim : "\(photoHeight) Height \n \(photoWidth) Width")
                 

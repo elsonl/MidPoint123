@@ -231,7 +231,7 @@ struct ContentView: View {
                     
                 }
             }.ignoresSafeArea()
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {

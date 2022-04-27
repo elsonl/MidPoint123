@@ -81,6 +81,6 @@ struct ListView: View {
             }
             
             
-        }.edgesIgnoringSafeArea(.all)}
+        }.navigationViewStyle(StackNavigationViewStyle()).edgesIgnoringSafeArea(.all)}
 }
 
