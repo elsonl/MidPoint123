@@ -30,10 +30,12 @@ struct ListView: View {
                     print("i have appeared")
                      cameraChange = true
                     print("caihoi")
-                    //                var show : Bool =  true
-//                    var view = GoogleMapsView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail)
-//                    var orange = GoogleMapsView.updateUIView(view)
-//                   print(orange)
+                                    var show : Bool =  true
+                    var view = GoogleMapsView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail, cameraChange: $cameraChange)
+                    var orange = GoogleMapsView.updateUIView(view)
+//                    GoogleMapsView.updateUIView(view){
+//
+//                    }
 //
                     placeDetails.PlaceIDs = nearbySearch.responses3.results[counts].place_id!
                     
@@ -70,3 +72,4 @@ struct ListView: View {
             
         }.edgesIgnoringSafeArea(.all)}
 }
+

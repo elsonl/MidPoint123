@@ -56,60 +56,15 @@ struct GoogleMapsView: UIViewRepresentable{
     
         
         
-//        placeDetails.getData(){
-//        print(placeDetails.responses4.result!)
-//        }
-//        var loopMarkers = GMSMarker()
-//        nearbySearch.getData(){
-//            placesManager.nearbySearch = nearbySearch
-//
-//            if  nearbySearch.responses3.results.first?.name != nil{
-//
-//                placesManager.getCoords()
-//                for count in placesManager.Names.indices{
-//                    let placeName = placesManager.Names[count]
-//                    let placeID = placesManager.PlaceIDs[count]
-//                    let position = CLLocationCoordinate2D(latitude: placesManager.Latitudes[count], longitude: placesManager.Longitudes[count])
-//                     loopMarkers = GMSMarker(position: position)
-//                    loopMarkers.title = placeName
-//                    loopMarkers.userData = placeID
-//                    loopMarkers.isTappable = true
-//                    print("UserData : \(String(describing: loopMarkers.userData ?? "empty userdata"))")
-//                    loopMarkers.map = mapView
-//                    delegatePlaceID = placesManager.PlaceIDs[0]
-//
-//                }
-//            }else {
-//                print("invalid 111")
-//            }
-//            showPlaceID = true
-//
-//
-//
-////            for count in placesManager.Names.indices
-////            {placeDetails.PlaceIDs.append(placesManager.PlaceIDs[count])
-////
-////                placeDetails.count = count
-////                placeDetails.getData(){
-////
-////                print(placeDetails.responses4.result!)
-////                }
-////            }
-//        }
-        return mapView
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(owner: self, delegatePlaceID: $delegatePlaceID, showDetail: $showDetail, placeDetails: placeDetails)
-    }
-    
-    func updateUIView(_ mapView: GMSMapView, context: Context) {
+        placeDetails.getData(){
+        print(placeDetails.responses4.result)
+        }
         var loopMarkers = GMSMarker()
         nearbySearch.getData(){
             placesManager.nearbySearch = nearbySearch
-     
+
             if  nearbySearch.responses3.results.first?.name != nil{
-                
+
                 placesManager.getCoords()
                 for count in placesManager.Names.indices{
                     let placeName = placesManager.Names[count]
@@ -122,15 +77,15 @@ struct GoogleMapsView: UIViewRepresentable{
                     print("UserData : \(String(describing: loopMarkers.userData ?? "empty userdata"))")
                     loopMarkers.map = mapView
                     delegatePlaceID = placesManager.PlaceIDs[0]
-                    
+
                 }
             }else {
                 print("invalid 111")
             }
             showPlaceID = true
-            
-           
-            
+
+
+
 //            for count in placesManager.Names.indices
 //            {placeDetails.PlaceIDs.append(placesManager.PlaceIDs[count])
 //
@@ -141,11 +96,17 @@ struct GoogleMapsView: UIViewRepresentable{
 //                }
 //            }
         }
-        if cameraChange{
-            mapView.animate(to: GMSCameraPosition.camera(withTarget: loopMarkers.position, zoom: 15))
-            print("caihoi")
-            cameraChange = false
-        }
+        return mapView
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(owner: self, delegatePlaceID: $delegatePlaceID, showDetail: $showDetail, placeDetails: placeDetails)
+    }
+    
+    func updateUIView(_ mapView: GMSMapView, context: Context) {
+      
+       
+
         
         
         // variables for the coordinates of the midpoint
