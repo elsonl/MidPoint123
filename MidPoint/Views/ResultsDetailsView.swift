@@ -14,6 +14,7 @@ struct ResultsDetailsView: View {
     @Binding var showDetail : Bool
     @EnvironmentObject var placeDetails : PlaceDetails
     @Binding var cameraChange : Bool
+    @Binding var adjustMarker : Bool
     
     
     var body: some View {
@@ -118,6 +119,6 @@ struct ResultsDetailsView: View {
 
 struct ResultsDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsDetailsView(listCount: .constant(0), showDetail: .constant(false), cameraChange: .constant(true))
+        ResultsDetailsView(listCount: .constant(0), showDetail: .constant(false), cameraChange: .constant(true), adjustMarker: .constant(true))
     }
 }

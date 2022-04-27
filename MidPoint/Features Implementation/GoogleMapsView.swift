@@ -22,6 +22,9 @@ struct GoogleMapsView: UIViewRepresentable{
     @Binding var showPlaceID : Bool
     @Binding var showDetail : Bool
     @Binding var cameraChange : Bool
+    @Binding var toLat : Double
+    @Binding var toLong : Double
+    @Binding var adjustMarker : Bool
     
     let marker : GMSMarker = GMSMarker()
     let marker2 : GMSMarker = GMSMarker()
@@ -74,6 +77,7 @@ struct GoogleMapsView: UIViewRepresentable{
                     loopMarkers.title = placeName
                     loopMarkers.userData = placeID
                     loopMarkers.isTappable = true
+                    loopMarkers.opacity = 0.9
                     print("UserData : \(String(describing: loopMarkers.userData ?? "empty userdata"))")
                     loopMarkers.map = mapView
                     delegatePlaceID = placesManager.PlaceIDs[0]
@@ -105,10 +109,30 @@ struct GoogleMapsView: UIViewRepresentable{
     
     func updateUIView(_ mapView: GMSMapView, context: Context) {
       
-       
-
+     
+        if cameraChange {
+            
+            
+            mapView.animate(to: GMSCameraPosition.camera(withLatitude: toLat, longitude: toLong, zoom: 17))
+          
+            
+            cameraChange = false
+        }
         
+        let tempMarker = GMSMarker()
         
+        tempMarker.position =  CLLocationCoordinate2D(latitude: toLat, longitude: toLong)
+        
+        if adjustMarker {
+        tempMarker.icon = GMSMarker.markerImage(with: UIColor.blue)
+        tempMarker.map = mapView
+            print("marker true!")
+        }
+        
+        if adjustMarker == false {
+            tempMarker.map = nil
+            print("marker false!")
+        }
         // variables for the coordinates of the midpoint
         let midLat = (geocoding.coordinates.0! + geocoding.coordinates.2!)/2
         let midLong = (geocoding.coordinates.1! + geocoding.coordinates.3!)/2
@@ -134,12 +158,12 @@ struct GoogleMapsView: UIViewRepresentable{
   
         
         // makes third marker that displays midpoint in blue
-        midpointMarker.icon = GMSMarker.markerImage(with : UIColor.blue)
-        midpointMarker.position = CLLocationCoordinate2D(latitude:  midLat , longitude: midLong)
-        midpointMarker.title = "Midpoint Marker"
-        midpointMarker.snippet = "Middle"
-        marker.userData = "Midpoint Marker"
-        midpointMarker.map = mapView
+//        midpointMarker.icon = GMSMarker.markerImage(with : UIColor.blue)
+//        midpointMarker.position = CLLocationCoordinate2D(latitude:  midLat , longitude: midLong)
+//        midpointMarker.title = "Midpoint Marker"
+//        midpointMarker.snippet = "Middle"
+//        marker.userData = "Midpoint Marker"
+//        midpointMarker.map = mapView
         
         
         // makes a circle radius around the midpoint
@@ -234,21 +258,6 @@ class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
         return true
     }
     
-    func mapView(_ mapView: GMSMapView, markerInfoWindow markerDel: GMSMarker) -> UIView? {
-        print("Marker Info Window")
-        let mInfoWindow = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-                mInfoWindow.backgroundColor = UIColor.lightGray
-                mInfoWindow.layer.cornerRadius = 6
-
-                let lbl1 = UILabel(frame: CGRect.init(x: 8, y: 8, width: 16, height: 15))
-                lbl1.text = "Hi there!"
-                mInfoWindow.addSubview(lbl1)
-        
-        
-
-
-                return mInfoWindow
-    }
     
     
 }
