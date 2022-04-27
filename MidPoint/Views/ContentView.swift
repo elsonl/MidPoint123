@@ -29,6 +29,8 @@ struct ContentView: View {
     @State var toLat : Double = 0.0
     @State var toLong : Double = 0.0
     @State var adjustMarker : Bool = true
+    @State var tutorialOpen : Bool = false
+    
     
     var body: some View {
         
@@ -44,6 +46,15 @@ struct ContentView: View {
                 //Image().aspectRatio image here resize
                 VStack{
                     Group{
+                        Button(action: {}){
+                            NavigationLink(destination: TutorialView(tutorialOpen: $tutorialOpen), isActive: $tutorialOpen, label:{
+                                Button(action: {tutorialOpen=true}){
+                                    Text("Tutorial")
+                                }
+                            })
+                            }
+                        
+                        
                         Image("InAppIcon").resizable().frame(width: 150, height: 150)
                         
 

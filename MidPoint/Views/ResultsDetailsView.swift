@@ -59,7 +59,17 @@ struct ResultsDetailsView: View {
                 Text(verbatim : "\(openHours[0])\n\(openHours[1])\n\(openHours[2])\n\(openHours[3])\n\(openHours[4])\n\(openHours[5])\n\(openHours[6])")
                 
                 
-                Text(verbatim : "\(rating)")
+                if(rating<=2){
+                    Image("star")
+                }else if(rating<=3){
+                    
+                }else if(rating<=4){
+                    
+                }else if(rating<=5){
+                    Image("star3")
+                }else{
+                    
+                }
                 
                 
                 
