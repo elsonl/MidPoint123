@@ -209,22 +209,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "497DF652-C652-4139-8F31-BDBF5F37EB1B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MidPoint/Features Implementation/GoogleMapsView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "makeUIView(context:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "10F75C9C-011E-45E8-94CD-A2D8B7C367C3"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -251,6 +235,70 @@
             startingLineNumber = "40"
             endingLineNumber = "40"
             landmarkName = "getDetails(cIndexNumber:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B5F2834A-60D7-4510-A5AB-562BCC938546"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MidPoint/Features Implementation/GoogleMapsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "makeUIView(context:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B5F2834A-60D7-4510-A5AB-562BCC938546 - 2d816b70e5b32a85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MidPoint.GoogleMapsView.makeUIView(context: SwiftUI.UIViewRepresentableContext&lt;MidPoint.GoogleMapsView&gt;) -&gt; __C.GMSMapView"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Features%20Implementation/GoogleMapsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "3953">
+               </Location>
+               <Location
+                  uuid = "B5F2834A-60D7-4510-A5AB-562BCC938546 - 5772e3ed7c03e876"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in MidPoint.GoogleMapsView.makeUIView(context: SwiftUI.UIViewRepresentableContext&lt;MidPoint.GoogleMapsView&gt;) -&gt; __C.GMSMapView"
+                  moduleName = "MidPoint"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s033046/Desktop/MidPoint/MidPoint/Features%20Implementation/GoogleMapsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "706D0D40-F844-4056-823D-62800431E6CF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MidPoint/Features Implementation/GoogleMapsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "updateUIView(_:context:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

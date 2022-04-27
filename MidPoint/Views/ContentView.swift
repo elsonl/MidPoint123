@@ -26,6 +26,9 @@ struct ContentView: View {
     @State var showPlaceID : Bool = false
     @State var showDetail : Bool = true
     @State var cameraChange : Bool = false
+    @State var toLat : Double = 0.0
+    @State var toLong : Double = 0.0
+    @State var adjustMarker : Bool = true
     
     var body: some View {
         
@@ -41,16 +44,18 @@ struct ContentView: View {
                 //Image().aspectRatio image here resize
                 VStack{
                     Group{
-                        Image("InAppIcon")
-                        Text("MidPoint").foregroundColor(Color.gray) //(distance done easy)
+                        Image("InAppIcon").resizable().frame(width: 150, height: 150)
+                        
+
+//                        Text("MidPoint").foregroundColor(Color.black) //(distance done easy)
                         //No Space Here, no time to fix
-                        Text("Enter Locations Below")
-                            .foregroundColor(Color.gray)
+                        Text("Enter Locations Below").font(Font.system(size: 24, weight: .bold))
+                            .foregroundColor(Color.black)
                             .padding()
                         
                         //Address1
                         HStack{
-                            Image(systemName: "magnifyingglass").foregroundColor(Color.gray) .font(Font.system(size: 35, weight: .heavy))
+                            Image(systemName: "magnifyingglass").foregroundColor(Color.gray) .font(Font.system(size: 30, weight: .semibold))
                             
                             TextField("Location 1 ...", text: $address1,onEditingChanged: { _ in
                                 geocoding.count = true
@@ -88,7 +93,7 @@ struct ContentView: View {
                         
                         //Address 2
                         HStack {
-                            Image(systemName: "magnifyingglass").foregroundColor(Color.gray).font(Font.system(size : 35, weight: .heavy))
+                            Image(systemName: "magnifyingglass").foregroundColor(Color.gray).font(Font.system(size : 30, weight: .semibold))
                             TextField("Location 2 ...", text: $address2,onEditingChanged: { _ in
                                 geocoding.count = false
                                 print("2, count false")
@@ -126,7 +131,7 @@ struct ContentView: View {
                         Button(action : {
                             
                         }, label: {
-                            NavigationLink(destination : GMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail, cameraChange: $cameraChange)){
+                            NavigationLink(destination : GMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail, cameraChange: $cameraChange, toLat: $toLat, toLong: $toLong, adjustMarker: $adjustMarker)){
                                 
                                 Text("Search")
                                 
