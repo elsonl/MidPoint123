@@ -24,7 +24,7 @@ struct ContentView: View {
     @State var favoritesToggle : Bool = false
     @State var delegatePlaceID : String
     @State var showPlaceID : Bool = false
-    @State var showDetail : Bool = false
+    @State var showDetail : Bool = true
     
     
     var body: some View {

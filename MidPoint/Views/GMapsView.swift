@@ -26,22 +26,19 @@ struct GMapsView: View {
     var body: some View {
         VStack{
             GoogleMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail).edgesIgnoringSafeArea(.all)
-                
-            Spacer(minLength: 1)
-    
-            DetailInformationView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail)
-            Spacer(minLength: 1)
+
+            if nearbySearch.responses3.results.first?.name! != nil {
+
+                ListView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID).edgesIgnoringSafeArea(.all)
+            } else {
+                Text("There is Nothing around the MidPoint :(")
+            }
+//            DetailInformationView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail
 
             }
             
             //show list
-//                if nearbySearch.responses3.results.first?.name! != nil {
-//
-//                    ListView()
-//
-//                } else {
-//                    Text("There is Nothing around the MidPoint :(")
-//                }
+               
                 
                 
             
@@ -51,37 +48,37 @@ struct GMapsView: View {
 //                VStack{
 //
 //
-////                    VStack {
-////                        Toggle("", isOn: $visible)
-////                            .labelsHidden()
-////
-////                        if visible {
-////                            ResultsView()
-////                        } else {
-////                            Text("")
-////                        }
-////
-////                        Toggle("", isOn: $visibleSlider)
-////                            .labelsHidden()
-////
-////
-////                        //slider
-//////                        if visibleSlider {
-//////                            VStack{
-//////                                Slider(value: $placeDetail.mile, in: 0...10)
-//////
-//////
-//////                                Text("\(placeDetail.mile, specifier: "%.2f") Mile Radius")
-//////
-//////                                Button("Confirm") {
-//////                                    placeDetail.miles = placeDetail.mile
-//////
-//////                                }
-//////                            }
-//////                        } else {
-//////                            Text("")
-//////                        }
-////                    }
+//                    VStack {
+//                        Toggle("", isOn: $visible)
+//                            .labelsHidden()
+//
+//                        if visible {
+//                            ResultsView()
+//                        } else {
+//                            Text("")
+//                        }
+//
+//                        Toggle("", isOn: $visibleSlider)
+//                            .labelsHidden()
+//
+//
+//                        //slider
+//                        if visibleSlider {
+//                            VStack{
+//                                Slider(value: $placeDetail.mile, in: 0...10)
+//
+//
+//                                Text("\(placeDetail.mile, specifier: "%.2f") Mile Radius")
+//
+//                                Button("Confirm") {
+//                                    placeDetail.miles = placeDetail.mile
+//
+//                                }
+//                            }
+//                        } else {
+//                            Text("")
+//                        }
+//                    }
 //
 //                }
 //
