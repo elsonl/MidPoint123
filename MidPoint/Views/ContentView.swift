@@ -25,7 +25,7 @@ struct ContentView: View {
     @State var delegatePlaceID : String
     @State var showPlaceID : Bool = false
     @State var showDetail : Bool = true
-    
+    @State var cameraChange : Bool = false
     
     var body: some View {
         
@@ -126,7 +126,7 @@ struct ContentView: View {
                         Button(action : {
                             
                         }, label: {
-                            NavigationLink(destination : GMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail)){
+                            NavigationLink(destination : GMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail, cameraChange: $cameraChange)){
                                 
                                 Text("Search")
                                 

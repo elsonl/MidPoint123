@@ -19,21 +19,22 @@ struct ListView: View {
     @EnvironmentObject var nearbySearch : NearbySearch
     @EnvironmentObject var placesManager : PlacesManager
     @EnvironmentObject var placeDetails : PlaceDetails
-    
+    @Binding var cameraChange : Bool
     
     var body: some View {
         
         NavigationView{
             
             List(nearbySearch.responses3.results.indices){ counts in
-                NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts), showDetail: .constant(showDetail)).onAppear{
+                NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts), showDetail: .constant(showDetail), cameraChange: $cameraChange).onAppear{
                     print("i have appeared")
-                    
+                     cameraChange = true
+                    print("caihoi")
                     //                var show : Bool =  true
 //                    var view = GoogleMapsView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail)
 //                    var orange = GoogleMapsView.updateUIView(view)
 //                   print(orange)
-//                    
+//
                     placeDetails.PlaceIDs = nearbySearch.responses3.results[counts].place_id!
                     
                     //                if show {

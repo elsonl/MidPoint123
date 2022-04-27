@@ -13,11 +13,12 @@ struct ResultsDetailsView: View {
     @Binding var listCount : Int
     @Binding var showDetail : Bool
     @EnvironmentObject var placeDetails : PlaceDetails
+    @Binding var cameraChange : Bool
+    
     
     var body: some View {
         
         if showDetail{
-            
             
             let   name = placeDetails.responses4.result?.name ?? "no name availible"
             
@@ -117,6 +118,6 @@ struct ResultsDetailsView: View {
 
 struct ResultsDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsDetailsView(listCount: .constant(0), showDetail: .constant(false))
+        ResultsDetailsView(listCount: .constant(0), showDetail: .constant(false), cameraChange: .constant(true))
     }
 }

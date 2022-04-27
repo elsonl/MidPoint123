@@ -20,16 +20,17 @@ struct GMapsView: View {
     @Binding var delegatePlaceID : String
     @Binding var showPlaceID : Bool
     @Binding var showDetail : Bool
+    @Binding var cameraChange : Bool
     
     
     
     var body: some View {
         VStack{
-            GoogleMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail).edgesIgnoringSafeArea(.all)
+            GoogleMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail, cameraChange: $cameraChange).edgesIgnoringSafeArea(.all)
 
             if nearbySearch.responses3.results.first?.name! != nil {
 
-                ListView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID).edgesIgnoringSafeArea(.all)
+                ListView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, cameraChange: $cameraChange).edgesIgnoringSafeArea(.all)
             } else {
                 Text("There is Nothing around the MidPoint :(")
             }
