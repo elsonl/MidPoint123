@@ -9,7 +9,26 @@ import SwiftUI
 import GoogleMaps
 import GooglePlaces
 import struct Kingfisher.KFImage
-
+struct customViewModifier: ViewModifier {
+    var roundedCornes: CGFloat
+    var startColor: Color
+    var endColor: Color
+    var textColor: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing))
+            .cornerRadius(roundedCornes)
+            .padding(3)
+            .foregroundColor(textColor)
+            .overlay(RoundedRectangle(cornerRadius: roundedCornes)
+                        .stroke(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.5))
+            .font(.custom("Open Sans", size: 20))
+            
+            .shadow(radius: 10)
+    }
+}
 struct ContentView: View {
     
     @EnvironmentObject var geocoding : Geocoding
@@ -59,7 +78,7 @@ struct ContentView: View {
 //                                                   })
 //                                                   }
                         
-                        Image("InAppIcon").resizable().frame(width: 150, height: 150)
+                        Image("InAppIcon").resizable().padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)).background(Color.BackgroundColor).clipShape(Circle()).shadow(color: Color.BackgroundColor, radius: 10).overlay(Circle().stroke(Color.gray,lineWidth: 3)).frame(width: 175, height: 175).aspectRatio(contentMode: .fit)
                         
 
 //                        Text("MidPoint").foregroundColor(Color.black) //(distance done easy)
@@ -70,7 +89,7 @@ struct ContentView: View {
                         
                         //Address1
                         HStack{
-                            Image(systemName: "magnifyingglass").foregroundColor(Color.gray) .font(Font.system(size: 30, weight: .semibold))
+                            Image(systemName: "magnifyingglass").foregroundColor(Color.black) .font(Font.system(size: 25, weight: .semibold))
                             
                             TextField("Location 1 ...", text: $address1,onEditingChanged: { _ in
                                 geocoding.count = true
@@ -83,7 +102,6 @@ struct ContentView: View {
                                 showsheet1 = false
                                 print("address1 committed")
                             })
-                                .foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
                                 .sheet(isPresented : $showsheet1, onDismiss: {
                                     
 //                                    if(address1 == ""){
@@ -102,13 +120,13 @@ struct ContentView: View {
 //                                    }
                                 }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
                                     .environmentObject(geocoding) }
-                        }.frame(width: 375, alignment: .trailing)
+                        }.modifier(customViewModifier(roundedCornes: 6, startColor: .gray, endColor: .BackgroundColor, textColor: .black)).frame(width: 375, alignment: .trailing)
                         
                         Spacer().frame(height: 25)
                         
                         //Address 2
                         HStack {
-                            Image(systemName: "magnifyingglass").foregroundColor(Color.gray).font(Font.system(size : 30, weight: .semibold))
+                            Image(systemName: "magnifyingglass").foregroundColor(Color.black).font(Font.system(size : 25, weight: .semibold))
                             TextField("Location 2 ...", text: $address2,onEditingChanged: { _ in
                                 geocoding.count = false
                                 print("2, count false")
@@ -119,7 +137,7 @@ struct ContentView: View {
                             }, onCommit: {
                                 showsheet2 = false
                                 print("address2 committed")
-                            }).foregroundColor(Color.black).background(Color(.systemGray4)).textFieldStyle(RoundedBorderTextFieldStyle())
+                            })
                                 .sheet(isPresented : $showsheet2, onDismiss: {
 //                                    if(address2 == ""){
 //                                        print("address 2 empty, showsheet true")
@@ -137,7 +155,7 @@ struct ContentView: View {
                                         
 //                                    }
                                 }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
-                                    .environmentObject(geocoding) }}.frame(width: 375, alignment: .trailing)
+                                    .environmentObject(geocoding) }}.modifier(customViewModifier(roundedCornes: 6, startColor: .gray, endColor: .BackgroundColor, textColor: .black)).frame(width: 375, alignment: .trailing)
                         
                         Spacer().frame(height: 15)
                         

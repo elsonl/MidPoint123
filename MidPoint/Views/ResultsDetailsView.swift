@@ -37,8 +37,17 @@ struct ResultsDetailsView: View {
             let photoHtmlAttribution = placeDetails.responses4.result!.photos.first?.html_attributions
             let photoReference = placeDetails.responses4.result!.photos.first?.photo_reference ?? "not availible"
             
-            List(){
+            
+            
+            
+//            List(){
+            if(photoReference == "not availible"){
+                Text("No Photos Availible")
+            } else {
                 
+                KFImage(URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=400&photo_reference=\(photoReference)&key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4")).resizable().aspectRatio(contentMode: .fit)
+            }
+
                 Text(verbatim : "\(name)")
                 HStack{
                     Text(verbatim : "\(formattedAddress)")
@@ -72,21 +81,13 @@ struct ResultsDetailsView: View {
                 } else{
                     Link("Website", destination: (URL(string: "\(website)") ?? URL(string: "google.com"))!).foregroundColor(.blue)}
                 
-                Text(verbatim : "\(photoHeight) Height \n \(photoWidth) Width")
-                
-                if(photoReference == "not availible"){
-                    Text("No Photos Availible")
-                } else {
-                    
-                    KFImage(URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=400&photo_reference=\(photoReference)&key=AIzaSyCO0auMyg79gTc2R0p1B4p4STTQsGcvJY4")).resizable().aspectRatio(contentMode: .fit)
-                }
-                
+                                
                 
                 //             Doesnt work :(
                 //            Link("Link to Website", destination: URL(string: "website!")!)
                 
                 
-            }.frame( height: 350, alignment: .bottom).ignoresSafeArea().navigationTitle("Details") .navigationBarTitleDisplayMode(.inline)
+//            }.frame( height: 350, alignment: .bottom).ignoresSafeArea().navigationTitle("Details") .navigationBarTitleDisplayMode(.inline)
             
             //        .toolbar{
             //            Button(action:{

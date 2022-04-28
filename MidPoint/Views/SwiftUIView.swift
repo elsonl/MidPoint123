@@ -24,8 +24,12 @@ struct SwiftUIView: View {
             } .tabItem{
                 Label("Info", systemImage: "info.circle")
             }
-        }.onAppear{
-            UITabBar.appearance().isHidden = true
+        }.accentColor(.red).onAppear{
+           print("tabview appear")
+     
+            UITabBar.appearance().backgroundColor = UIColor(Color.BackgroundColor)
+            UITabBar.appearance().unselectedItemTintColor = UIColor(Color.black)
+    
         }
     }
 }
