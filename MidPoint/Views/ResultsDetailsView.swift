@@ -44,7 +44,7 @@ struct ResultsDetailsView: View {
                     Text(verbatim : "\(formattedAddress)")
                     Button(action: {   UIPasteboard.general.string = formattedAddress
                     }) {
-  
+                        
                         Image(systemName: "doc.on.doc").foregroundColor(.blue)
                     }
                 }
@@ -59,16 +59,56 @@ struct ResultsDetailsView: View {
                 Text(verbatim : "\(openHours[0])\n\(openHours[1])\n\(openHours[2])\n\(openHours[3])\n\(openHours[4])\n\(openHours[5])\n\(openHours[6])")
                 
                 
-                if(rating<=2){
-                    Image("star")
+                if(rating<=0.5){
+                    HStack{
+                        Image("starhalf")
+                        Text(verbatim: "(\(rating))")
+                    }
+                }else if(rating<=1){
+                    HStack{
+                        Image("star")
+                        Text(verbatim: "(\(rating))")
+                    }
+                }else if(rating<=1.5){
+                    HStack{
+                        Image("starhalf1")
+                        Text(verbatim: "(\(rating))")
+                    }
+                }else if(rating<=2){
+                    HStack{
+                        Image("star1")
+                        Text(verbatim: "(\(rating))")
+                    }
+                }else if(rating<=2.5){
+                    HStack{
+                        Image("starhalf2")
+                        Text(verbatim: "(\(rating))")
+                    }
                 }else if(rating<=3){
-                    
+                    HStack{
+                        Image("star2")
+                        Text(verbatim: "(\(rating))")
+                    }
+                }else if(rating<=3.5){
+                    HStack{
+                        Image("starhalf3")
+                        Text(verbatim: "(\(rating))")
+                    }
                 }else if(rating<=4){
-                    
-                }else if(rating<=5){
-                    Image("star3")
+                    HStack{
+                        Image("star3")
+                        Text(verbatim: "(\(rating))")
+                    }
+                }else if(rating<=4.5){
+                    HStack{
+                        Image("starhalf4")
+                        Text(verbatim: "(\(rating))")
+                    }
                 }else{
-                    
+                    HStack{
+                        Image("star4")
+                        Text(verbatim: "(\(rating))")
+                    }
                 }
                 
                 
@@ -76,7 +116,7 @@ struct ResultsDetailsView: View {
                 
                 
                 Link("Website", destination: (URL(string: "\(website)") ?? URL(string: "google.com"))!).foregroundColor(.blue)
-
+                
                 
                 Text(verbatim : "\(photoHeight) Height \n \(photoWidth) Width")
                 
