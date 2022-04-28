@@ -15,7 +15,7 @@ struct MainView: View {
     @State var tutorialOpen : Bool = false
     @State var address1 : String
     @State var address2: String
-    @State var delegatePlaceID : String
+    @State var delegatePlaceID : String = "nothing yet"
     
     var body: some View {
         SwiftUIView(tutorialOpen: $tutorialOpen, address1: $address1, address2: $address2, delegatePlaceID: $delegatePlaceID)

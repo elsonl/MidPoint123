@@ -14,17 +14,23 @@ struct SwiftUIView: View {
     var body: some View {
   
         TabView{
-            ContentView(tutorialOpen: $tutorialOpen, address1: $address1, address2: $address2, delegatePlaceID: $delegatePlaceID) .tabItem{
+            ContentView(tutorialOpen: $tutorialOpen, address1: $address1, address2: $address2, delegatePlaceID: $delegatePlaceID).onAppear{
+                UITabBar.appearance().backgroundColor = UIColor(Color.BackgroundColor)
+                UITabBar.appearance().unselectedItemTintColor = UIColor(Color.black)
+
+            } .tabItem{
                 Label("Home", systemImage: "house")
             }
             
             
             TutorialView(tutorialOpen: $tutorialOpen).onAppear{
                 tutorialOpen = true
+                UITabBar.appearance().backgroundColor = UIColor(Color.BackgroundColor)
+                UITabBar.appearance().unselectedItemTintColor = UIColor(Color.black)
             } .tabItem{
                 Label("Info", systemImage: "info.circle")
             }
-        }.accentColor(.red).onAppear{
+        }.accentColor(.red).background(Color.BackgroundColor).onAppear{
            print("tabview appear")
      
             UITabBar.appearance().backgroundColor = UIColor(Color.BackgroundColor)

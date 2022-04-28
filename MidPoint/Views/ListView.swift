@@ -20,30 +20,43 @@ struct ListView: View {
     @EnvironmentObject var nearbySearch : NearbySearch
     @EnvironmentObject var placesManager : PlacesManager
     @EnvironmentObject var placeDetails : PlaceDetails
+    @EnvironmentObject var dMatrix : DistanceMatrix
     @Binding var cameraChange : Bool 
     @Binding var toLat : Double
     @Binding var toLong : Double
-    @Binding var adjustMarker : Bool 
+    @Binding var adjustMarker : Bool
+    @Binding var PlaceIDTracker : [String]
+    @State var PlaceIDResults : [String] = ["","","",""]
     var body: some View {
         
         NavigationView{
             
             List(nearbySearch.responses3.results.indices){ counts in
-                NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts), showDetail: .constant(showDetail), cameraChange: $cameraChange, adjustMarker: $adjustMarker).onAppear{
+                NavigationLink(destination : ResultsDetailsView(listCount : .constant(counts), showDetail: .constant(showDetail), cameraChange: $cameraChange, adjustMarker: $adjustMarker, PlaceIDResults: $PlaceIDResults).onAppear{
                     print("i have appeared")
                      cameraChange = true
                     print("caihoi")
                      adjustMarker = true
-                   toLat =  nearbySearch.responses3.results[counts].geometry.location.lat ?? 0
+                    PlaceIDTracker[2] = nearbySearch.responses3.results[counts].place_id ?? "unavailible"
+                    dMatrix.PlaceIDs[0] = PlaceIDTracker[2]
+                    dMatrix.PlaceIDs[1] = PlaceIDTracker[0]
+                    dMatrix.getData2(){
+                    PlaceIDResults[0] = dMatrix.responses2.rows.first?.elements.first?.distance.text ?? ""
+                    PlaceIDResults[1] = dMatrix.responses2.rows.first?.elements.first?.duration.text ?? ""
+                    }
+                    dMatrix.PlaceIDs[0] = PlaceIDTracker[2]
+                    dMatrix.PlaceIDs[1] = PlaceIDTracker[1]
+                    dMatrix.getData2(){
+                    
+                    PlaceIDResults[2] = dMatrix.responses2.rows.first?.elements.first?.distance.text ?? ""
+                    PlaceIDResults[3] = dMatrix.responses2.rows.first?.elements.first?.duration.text ?? ""
+                    }
+                        toLat =  nearbySearch.responses3.results[counts].geometry.location.lat ?? 0
                     toLong =  nearbySearch.responses3.results[counts].geometry.location.lng ?? 0
                     
                     
                     var show : Bool =  true
-//                    var view = GoogleMapsView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail, cameraChange: $cameraChange)
-//                    var orange = GoogleMapsView.updateUIView(view)
-////                    GoogleMapsView.updateUIView(view){
-//
-//                    }
+
 //
                     placeDetails.PlaceIDs = nearbySearch.responses3.results[counts].place_id!
                     
@@ -77,16 +90,14 @@ struct ListView: View {
                 
             }.onAppear{
                 adjustMarker = false
-//                print("marker false12")
-//                UITabBar.appearance().backgroundColor = UIColor(Color.BackgroundColor)
-//                UITabBar.appearance().unselectedItemTintColor = UIColor(Color.black)
+                print("marker false12")
+              
                 
             }.frame( height: 350, alignment: .bottom).ignoresSafeArea().navigationTitle("Results") .navigationBarTitleDisplayMode(.inline)
             //fullscreen?
             
             
-        }
-//        .navigationViewStyle(StackNavigationViewStyle())
+        }   .navigationViewStyle(StackNavigationViewStyle())
 }
 }
 

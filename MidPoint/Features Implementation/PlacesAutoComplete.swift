@@ -19,12 +19,12 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
     @Binding var address1 : String
     @Binding var address2 : String
     @Binding var favoritesAddress : String
-
+    @Binding var PlaceIDTracker : [String]
     
     
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, geocoding : geocoding, dMatrix: dMatrix, address1: $address1, address2: $address2, placeDetail: placeDetail, favoritesAddress: $favoritesAddress)
+        Coordinator(self, geocoding : geocoding, dMatrix: dMatrix, address1: $address1, address2: $address2, placeDetail: placeDetail, favoritesAddress: $favoritesAddress, PlaceIDTracker: $PlaceIDTracker)
         
     }
     
@@ -57,12 +57,13 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
         @Binding var address1 : String
         @Binding var address2 : String
         @Binding var favoritesAddress : String
+        @Binding var PlaceIDTracker : [String]
         var geocoding : Geocoding
         var dMatrix : DistanceMatrix
         var parent: PlacesAutoComplete
         var placeDetail : PlaceDetail
         
-        init(_ parent: PlacesAutoComplete, geocoding : Geocoding, dMatrix : DistanceMatrix, address1 : Binding<String>, address2 : Binding<String>, placeDetail : PlaceDetail, favoritesAddress: Binding<String> ){
+        init(_ parent: PlacesAutoComplete, geocoding : Geocoding, dMatrix : DistanceMatrix, address1 : Binding<String>, address2 : Binding<String>, placeDetail : PlaceDetail, favoritesAddress: Binding<String>, PlaceIDTracker: Binding<[String]>){
             self.parent = parent
             self.geocoding = geocoding
             self.dMatrix = dMatrix
@@ -70,6 +71,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
             self._address2 = address2
             self.placeDetail = placeDetail
             self._favoritesAddress = favoritesAddress
+            self._PlaceIDTracker = PlaceIDTracker
             
         }
         
@@ -89,6 +91,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
                     print("in AC below true")
                     print(geocoding.count)
                     
+                        PlaceIDTracker[0] = place.placeID!
                     geocoding.placeIDThing  = place.placeID!
                     self.parent.address1 =  place.name!
                     dMatrix.PlaceIDs[0] = place.placeID!
@@ -97,10 +100,7 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
 //                    placeDetail.Rating = place.rating
                     
                     address1 = place.formattedAddress!
-                    if dMatrix.PlaceIDs[1] != "2"{
-                        dMatrix.getData2()
-                        
-                    }
+                  
                     
                     
                 }
@@ -113,17 +113,14 @@ struct PlacesAutoComplete: UIViewControllerRepresentable {
       
 //                    placeDetail.Rating = place.rating
 
-                    
+                    PlaceIDTracker[1] = place.placeID!
                     geocoding.placeIDThing  = place.placeID!
                     self.parent.address2 =  place.name!
                     dMatrix.PlaceIDs[1] = place.placeID!
                     
                     address2 = place.formattedAddress!
                     
-                    if dMatrix.PlaceIDs[0] != "1"{
-                        dMatrix.getData2()
-                        
-                    }
+                 
                     }
                     
                 }

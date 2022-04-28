@@ -55,6 +55,8 @@ struct ContentView: View {
         @Binding var address1 : String
         @Binding var address2 : String
         @Binding var delegatePlaceID : String
+    
+    @State var PlaceIDTracker : [String] = ["1","2","3"]
     var body: some View {
         
        
@@ -118,7 +120,7 @@ struct ContentView: View {
                                         geocoding.getData()
                                         
 //                                    }
-                                }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
+                                }) { PlacesAutoComplete(geocoding: _geocoding, dMatrix: _dMatrix, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress, PlaceIDTracker: $PlaceIDTracker)
                                     .environmentObject(geocoding) }
                         }.modifier(customViewModifier(roundedCornes: 6, startColor: .gray, endColor: .BackgroundColor, textColor: .black)).frame(width: 375, alignment: .trailing)
                         
@@ -154,7 +156,7 @@ struct ContentView: View {
                                         
                                         
 //                                    }
-                                }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress)
+                                }) { PlacesAutoComplete(geocoding: _geocoding, address1: $address1, address2: $address2, favoritesAddress: $favoritesAddress, PlaceIDTracker: $PlaceIDTracker)
                                     .environmentObject(geocoding) }}.modifier(customViewModifier(roundedCornes: 6, startColor: .gray, endColor: .BackgroundColor, textColor: .black)).frame(width: 375, alignment: .trailing)
                         
                         Spacer().frame(height: 15)
@@ -164,7 +166,7 @@ struct ContentView: View {
                         Button(action : {
                             
                         }, label: {
-                            NavigationLink(destination : GMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail, cameraChange: $cameraChange, toLat: $toLat, toLong: $toLong, adjustMarker: $adjustMarker)){
+                            NavigationLink(destination : GMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail, cameraChange: $cameraChange, toLat: $toLat, toLong: $toLong, adjustMarker: $adjustMarker, PlaceIDTracker: $PlaceIDTracker)){
                                 
                                 Text("Search").font(Font.system(size: 18, weight: .bold))
                                 

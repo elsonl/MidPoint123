@@ -23,7 +23,8 @@ struct GMapsView: View {
     @Binding var cameraChange : Bool
     @Binding var toLat : Double
     @Binding var toLong : Double
-    @Binding var adjustMarker : Bool 
+    @Binding var adjustMarker : Bool
+    @Binding var PlaceIDTracker : [String]
 
     
     
@@ -33,7 +34,7 @@ struct GMapsView: View {
 
             if nearbySearch.responses3.results.first?.name! != nil {
 
-                ListView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, cameraChange: $cameraChange, toLat: $toLat, toLong: $toLong, adjustMarker: $adjustMarker).onAppear{
+                ListView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, cameraChange: $cameraChange, toLat: $toLat, toLong: $toLong, adjustMarker: $adjustMarker, PlaceIDTracker: $PlaceIDTracker).onAppear{
                     adjustMarker = false
                
 //                            UITabBar.appearance().backgroundColor = UIColor(Color.BackgroundColor)

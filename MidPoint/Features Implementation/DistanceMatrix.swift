@@ -19,7 +19,7 @@ class DistanceMatrix : ObservableObject{
     @Published var PlaceIDs : [String] = ["1","2"]
     
    
-    func getData2(){
+    func getData2(callback: @escaping () -> Void){
      
         print("getting data")
         print("PLACE IF 1 AND 2 DISTANCE MATRIX")
@@ -49,6 +49,7 @@ class DistanceMatrix : ObservableObject{
                     self.responses2 = response2
                     print(responses2.rows.first?.elements.first?.distance)
                     print(responses2.rows.first?.elements.first?.duration)
+                    callback()
                 }
                 
             }else {
