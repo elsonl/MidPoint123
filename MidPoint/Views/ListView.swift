@@ -78,9 +78,11 @@ struct ListView: View {
             }.frame( height: 350, alignment: .bottom).ignoresSafeArea().navigationTitle("Results") .navigationBarTitleDisplayMode(.inline).edgesIgnoringSafeArea(.all).onAppear{
                 adjustMarker = false
                 print("marker false12")
-            }
+            }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)).edgesIgnoringSafeArea(.bottom)
+            //fullscreen?
             
             
-        }.navigationViewStyle(StackNavigationViewStyle()).edgesIgnoringSafeArea(.all)}
+        }.navigationViewStyle(StackNavigationViewStyle()).edgesIgnoringSafeArea(.all).tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)).edgesIgnoringSafeArea(.bottom)
+}
 }
 

@@ -35,6 +35,7 @@ struct GMapsView: View {
 
                 ListView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, cameraChange: $cameraChange, toLat: $toLat, toLong: $toLong, adjustMarker: $adjustMarker).edgesIgnoringSafeArea(.all).onAppear{
                     adjustMarker = false
+                    
                 }
             } else {
                 Text("There is Nothing around the MidPoint :(")

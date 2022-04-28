@@ -120,10 +120,30 @@ struct GoogleMapsView: UIViewRepresentable{
     
     func updateUIView(_ mapView: GMSMapView, context: Context) {
 
-        
+        let midLat = (geocoding.coordinates.0! + geocoding.coordinates.2!)/2
+        let midLong = (geocoding.coordinates.1! + geocoding.coordinates.3!)/2
         
 
-      
+        
+        // makes first marker that displays first location in red
+        marker.icon = GMSMarker.markerImage(with : UIColor.white)
+        marker.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
+        marker.title = "Location 1"
+        marker.snippet = "Marker 1"
+        marker.userData = "marker 1"
+        marker.map = mapView
+    
+        
+        
+        
+        // makes second marker taht displays second location in green
+        marker2.icon = GMSMarker.markerImage(with : UIColor.green)
+        marker2.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
+        marker2.title = "Location 2"
+        marker2.snippet = "Marker 2"
+        marker2.userData = "marker 2"
+        marker2.map = mapView
+  
      
         if cameraChange {
             
@@ -148,6 +168,16 @@ struct GoogleMapsView: UIViewRepresentable{
         }
         
         if adjustMarker == false {
+            tempMarker.position =  CLLocationCoordinate2D(latitude: toLat, longitude: toLong)
+            tempMarker.icon = GMSMarker.markerImage(with: UIColor.red)
+ 
+            mapView.animate(to: GMSCameraPosition.camera(withLatitude: midLat, longitude: midLong, zoom: 11))
+
+//
+//            mapView.animate(toZoom: 10)
+//            mapView.animate(toLocation: CLLocationCoordinate2D(latitude: midLat, longitude: midLong))
+
+            tempMarker.map = mapView
 //            tempMarker.map = nil
           
 //            tempMarker.opacity = 0.0
@@ -159,28 +189,6 @@ struct GoogleMapsView: UIViewRepresentable{
             
         }
         // variables for the coordinates of the midpoint
-        let midLat = (geocoding.coordinates.0! + geocoding.coordinates.2!)/2
-        let midLong = (geocoding.coordinates.1! + geocoding.coordinates.3!)/2
-        
-        // makes first marker that displays first location in red
-        marker.icon = GMSMarker.markerImage(with : UIColor.white)
-        marker.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.0!, longitude: geocoding.coordinates.1!)
-        marker.title = "Location 1"
-        marker.snippet = "Marker 1"
-        marker.userData = "marker 1"
-        marker.map = mapView
-    
-        
-        
-        
-        // makes second marker taht displays second location in green
-        marker2.icon = GMSMarker.markerImage(with : UIColor.green)
-        marker2.position = CLLocationCoordinate2D(latitude:  geocoding.coordinates.2! , longitude: geocoding.coordinates.3!)
-        marker2.title = "Location 2"
-        marker2.snippet = "Marker 2"
-        marker2.userData = "marker 2"
-        marker2.map = mapView
-  
         
         // makes third marker that displays midpoint in blue
 //        midpointMarker.icon = GMSMarker.markerImage(with : UIColor.blue)
@@ -273,7 +281,9 @@ class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
             
 //            mapView.animate =  GMSCameraPosition.camera(withTarget: markerDel.position, zoom: 15)
             DispatchQueue.main.async {
-                    mapView.animate(to: GMSCameraPosition.camera(withTarget: markerDel.position, zoom: 15))
+                mapView.animate(to: GMSCameraPosition.camera(withLatitude: markerDel.position.latitude, longitude: markerDel.position.longitude , zoom: 15))
+                
+                
                 }
 //            mapView.camera = GMSCameraPosition.camera(withTarget: markerDel.position, zoom: 15)
         }

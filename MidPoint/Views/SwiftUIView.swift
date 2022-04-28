@@ -18,11 +18,14 @@ struct SwiftUIView: View {
                 Label("Home", systemImage: "house")
             }
             
+            
             TutorialView(tutorialOpen: $tutorialOpen).onAppear{
                 tutorialOpen = true
             } .tabItem{
-                Label("Info", systemImage: "gear")
+                Label("Info", systemImage: "info.circle")
             }
+        }.onAppear{
+            UITabBar.appearance().isHidden = true
         }
     }
 }
