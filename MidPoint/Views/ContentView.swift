@@ -11,10 +11,11 @@ import GooglePlaces
 import struct Kingfisher.KFImage
 
 struct ContentView: View {
+    
     @EnvironmentObject var geocoding : Geocoding
     @EnvironmentObject var dMatrix : DistanceMatrix
-    @State var address1 : String
-    @State var address2: String
+//    @State var address1 : String
+//    @State var address2: String
     @State private var showsheet1 = false
     @State private var showsheet2 = false
     @State var favorites : [String: String] = [:] //name:address
@@ -22,17 +23,22 @@ struct ContentView: View {
     @State var favoritesAddress : String = ""
     @State var favoritesOpen : Bool = false
     @State var favoritesToggle : Bool = false
-    @State var delegatePlaceID : String
+//    @State var delegatePlaceID : String
     @State var showPlaceID : Bool = false
     @State var showDetail : Bool = true
     @State var cameraChange : Bool = false
     @State var toLat : Double = 0.0
     @State var toLong : Double = 0.0
     @State var adjustMarker : Bool = true
+//    @State var tutorialOpen : Bool = false
     
+        @Binding var tutorialOpen : Bool
+        @Binding var address1 : String
+        @Binding var address2 : String
+        @Binding var delegatePlaceID : String
     var body: some View {
         
-        
+       
         NavigationView{
             ZStack{
                 //background here random cities
@@ -44,6 +50,15 @@ struct ContentView: View {
                 //Image().aspectRatio image here resize
                 VStack{
                     Group{
+                        
+//                        Button(action: {}){
+//                                                   NavigationLink(destination: TutorialView(tutorialOpen: $tutorialOpen), isActive: $tutorialOpen, label:{
+//                                                       Button(action: {tutorialOpen=true}){
+//                                                           Text("Tutorial")
+//                                                       }
+//                                                   })
+//                                                   }
+                        
                         Image("InAppIcon").resizable().frame(width: 150, height: 150)
                         
 
@@ -232,10 +247,11 @@ struct ContentView: View {
                 }
             }.ignoresSafeArea()
         }.navigationViewStyle(StackNavigationViewStyle())
+       
     }
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
-            ContentView(address1: "", address2: "", delegatePlaceID: "")
+            ContentView(tutorialOpen: .constant(true), address1: .constant(""), address2: .constant(""), delegatePlaceID: .constant(""))
         }
     }
 }

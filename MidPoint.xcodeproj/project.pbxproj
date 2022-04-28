@@ -15,6 +15,9 @@
 		F01D5B332808BC8B008AC6D2 /* DetailInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01D5B322808BC8B008AC6D2 /* DetailInformationView.swift */; };
 		F0352DBC27CD315400DD091D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0352DBB27CD315400DD091D /* FavoritesView.swift */; };
 		F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */; };
+		F0371A932819CA4A00972DBF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0371A922819CA4A00972DBF /* SwiftUIView.swift */; };
+		F0371A952819CA5700972DBF /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0371A942819CA5700972DBF /* TutorialView.swift */; };
+		F0371A972819D0FE00972DBF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0371A962819D0FE00972DBF /* MainView.swift */; };
 		F0422FDA27BF1CD300D90247 /* MidPointApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FD927BF1CD300D90247 /* MidPointApp.swift */; };
 		F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0422FDB27BF1CD300D90247 /* ContentView.swift */; };
 		F0422FDE27BF1CD500D90247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0422FDD27BF1CD500D90247 /* Assets.xcassets */; };
@@ -59,6 +62,9 @@
 		F01D5B322808BC8B008AC6D2 /* DetailInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInformationView.swift; sourceTree = "<group>"; };
 		F0352DBB27CD315400DD091D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		F0352DC327CD3EA400DD091D /* PlacesAutoComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesAutoComplete.swift; sourceTree = "<group>"; };
+		F0371A922819CA4A00972DBF /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		F0371A942819CA5700972DBF /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		F0371A962819D0FE00972DBF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F0422FD627BF1CD300D90247 /* MidPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0422FD927BF1CD300D90247 /* MidPointApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidPointApp.swift; sourceTree = "<group>"; };
 		F0422FDB27BF1CD300D90247 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -228,6 +234,9 @@
 				F066726127DA6F0F00AE3790 /* GMapsView.swift */,
 				F0E0BB6627F5DEBD00064360 /* ListView.swift */,
 				F0E0BB6427F5440200064360 /* ResultsDetailsView.swift */,
+				F0371A922819CA4A00972DBF /* SwiftUIView.swift */,
+				F0371A942819CA5700972DBF /* TutorialView.swift */,
+				F0371A962819D0FE00972DBF /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -432,8 +441,10 @@
 			files = (
 				F0E0BB6527F5440200064360 /* ResultsDetailsView.swift in Sources */,
 				F066726027DA6A4800AE3790 /* DistanceMatrix.swift in Sources */,
+				F0371A932819CA4A00972DBF /* SwiftUIView.swift in Sources */,
 				F0E0BB6727F5DEBD00064360 /* ListView.swift in Sources */,
 				D089578227E10BB2003415FD /* Constants.swift in Sources */,
+				F0371A952819CA5700972DBF /* TutorialView.swift in Sources */,
 				8659D2C427DBEF55006F99B2 /* ResultsView.swift in Sources */,
 				F0352DBC27CD315400DD091D /* FavoritesView.swift in Sources */,
 				F042304D27C6AECD00D90247 /* GoogleMapsView.swift in Sources */,
@@ -441,6 +452,7 @@
 				869DFA1B27F685EA00597CFD /* PlaceDetails.swift in Sources */,
 				F042304F27C730C600D90247 /* Geocoding.swift in Sources */,
 				F0422FDC27BF1CD300D90247 /* ContentView.swift in Sources */,
+				F0371A972819D0FE00972DBF /* MainView.swift in Sources */,
 				F066726227DA6F0F00AE3790 /* GMapsView.swift in Sources */,
 				8659D30027DD52F2006F99B2 /* ResultsDetail.swift in Sources */,
 				F0352DC427CD3EA400DD091D /* PlacesAutoComplete.swift in Sources */,
