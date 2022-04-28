@@ -75,14 +75,18 @@ struct ListView: View {
                     }
                 )
                 
-            }.frame( height: 350, alignment: .bottom).ignoresSafeArea().navigationTitle("Results") .navigationBarTitleDisplayMode(.inline).edgesIgnoringSafeArea(.all).onAppear{
+            }.onAppear{
                 adjustMarker = false
-                print("marker false12")
-            }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)).edgesIgnoringSafeArea(.bottom)
+//                print("marker false12")
+//                UITabBar.appearance().backgroundColor = UIColor(Color.BackgroundColor)
+//                UITabBar.appearance().unselectedItemTintColor = UIColor(Color.black)
+                
+            }.frame( height: 350, alignment: .bottom).ignoresSafeArea().navigationTitle("Results") .navigationBarTitleDisplayMode(.inline)
             //fullscreen?
             
             
-        }.navigationViewStyle(StackNavigationViewStyle()).edgesIgnoringSafeArea(.all).tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)).edgesIgnoringSafeArea(.bottom)
+        }
+//        .navigationViewStyle(StackNavigationViewStyle())
 }
 }
 

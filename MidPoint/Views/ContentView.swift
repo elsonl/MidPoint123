@@ -77,15 +77,15 @@ struct ContentView: View {
 //                                                       }
 //                                                   })
 //                                                   }
-                        
-                        Image("InAppIcon").resizable().padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)).background(Color.BackgroundColor).clipShape(Circle()).shadow(color: Color.BackgroundColor, radius: 10).overlay(Circle().stroke(Color.gray,lineWidth: 3)).frame(width: 175, height: 175).aspectRatio(contentMode: .fit)
-                        
+
+                        Image("InAppIcon").resizable().padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)).background(Color.BackgroundColor).clipShape(Circle()).shadow(color: Color.BackgroundColor, radius: 10).overlay(Circle().stroke(Color.gray,lineWidth: 3)).frame(width: 175, height: 175).aspectRatio(contentMode: .fit).frame(alignment: .top)
 
 //                        Text("MidPoint").foregroundColor(Color.black) //(distance done easy)
                         //No Space Here, no time to fix
                         Text("Enter Locations Below").font(Font.system(size: 24, weight: .bold))
                             .foregroundColor(Color.black)
                             .padding()
+                        
                         
                         //Address1
                         HStack{

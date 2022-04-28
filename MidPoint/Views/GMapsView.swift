@@ -33,8 +33,13 @@ struct GMapsView: View {
 
             if nearbySearch.responses3.results.first?.name! != nil {
 
-                ListView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, cameraChange: $cameraChange, toLat: $toLat, toLong: $toLong, adjustMarker: $adjustMarker).edgesIgnoringSafeArea(.all).onAppear{
+                ListView(delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, cameraChange: $cameraChange, toLat: $toLat, toLong: $toLong, adjustMarker: $adjustMarker).onAppear{
                     adjustMarker = false
+               
+//                            UITabBar.appearance().backgroundColor = UIColor(Color.BackgroundColor)
+//                            UITabBar.appearance().unselectedItemTintColor = UIColor(Color.black)
+//                            
+                        
                     
                 }
             } else {
