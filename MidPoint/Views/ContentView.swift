@@ -166,10 +166,10 @@ struct ContentView: View {
                         }, label: {
                             NavigationLink(destination : GMapsView( delegatePlaceID: $delegatePlaceID, showPlaceID: $showPlaceID, showDetail: $showDetail, cameraChange: $cameraChange, toLat: $toLat, toLong: $toLong, adjustMarker: $adjustMarker)){
                                 
-                                Text("Search")
+                                Text("Search").font(Font.system(size: 18, weight: .bold))
                                 
                             }
-                        }).padding().background(Color.FavoritesBackground).clipShape(Capsule()).foregroundColor(.black)
+                        }).padding().background(Color.gray).clipShape(Capsule()).foregroundColor(.black)
                         
                         Spacer().frame(height: 35)
                     }
