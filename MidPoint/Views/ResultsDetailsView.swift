@@ -114,7 +114,7 @@ Text("From Location 1 : \(PlaceIDResults[1])")
 Text("From Location 2 : \(PlaceIDResults[3])")
                         
                     
-                }.font(Font.system(size: 10))
+                }.font(Font.system(size: 12))
                 
 //                                Text(verbatim : "\(name)")
 //                                HStack{

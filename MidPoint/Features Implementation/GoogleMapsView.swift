@@ -243,6 +243,7 @@ class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
 //        delegatePlaceID = marker.userData as! String
 //        print("DelegatePlaceID\(delegatePlaceID)")
         
+        
         print("delegate Thing")
         if markerDel.userData == nil {
             print("UserData Delegate Return False")
@@ -257,6 +258,9 @@ class Coordinator : NSObject, GMSMapViewDelegate, ObservableObject{
         print("DelegatePlaceID \(delegatePlaceID)")
         
         showDetail = true
+        
+        
+        markerDel.icon = GMSMarker.markerImage(with: UIColor.blue)
         
         var show : Bool = true
         placeDetails.PlaceIDs = delegatePlaceID
